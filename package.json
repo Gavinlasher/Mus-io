@@ -1,0 +1,16 @@
+
+  {
+    "name": "mus-io",
+    "version": "1.0.0",
+    "scripts": {
+      "build": "npm run setup:server",
+      "setup:app": "npm run setup:server && npm run setup:client",
+      "setup:client": "cd Mus-io.client && npm i",
+      "setup:server": "cd Mus-io && npm i",
+      "start": "node Mus-io/index.js"
+    },
+    "engines": {
+      "node": "^14.17.0"
+    }
+  }
+  
