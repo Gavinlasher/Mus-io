@@ -17,12 +17,12 @@ class VenuesService {
     return original
   }
 
-  async deleteVenue(body) {
-    const venue = await dbContext.Venues.findById(body.id)
-    if (venue.creatorId.toString() !== body.creatorId) {
+  async deleteVenue(venueId, userId) {
+    const venue = await dbContext.Venues.findById(venueId)
+    if (venue.creatorId.toString() !== userId) {
       throw new BadRequest('not your venue to update')
     }
-    await dbContext.Venues.findByIdAndDelete(body.id)
+    venue.delete()
     return 'deleted'
   }
 
