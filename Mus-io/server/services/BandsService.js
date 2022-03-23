@@ -36,7 +36,7 @@ class BandsService {
         original.genre = update.genre ? update.genre : original.genre
         original.writer = update.writer ? update.writer : original.writer
 
-        await original.save
+        await original.save()
         return original
     }
 
