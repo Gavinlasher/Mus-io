@@ -1,3 +1,5 @@
+import { api } from "./AxiosService"
+
 class OffersService {
     async getMyOffers(){
         const res = await api.get('account/offers')
