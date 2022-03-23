@@ -5,12 +5,11 @@ import { VenueSchema } from "./Venue"
 export const OfferSchema = new Schema({
   venueId: { type: Schema.Types.ObjectId, required: true, ref: 'Venue' },
   bandId: { type: Schema.Types.ObjectId, required: true, ref: 'Band' },
-  isAccepted: { type: Boolean, required: true, default: false },
-  status: { type: String, enum: ['pending', 'accepted', 'declind', 'deleted'] },
+  status: { type: String, enum: ['pending', 'accepted', 'declind', 'deleted'], required: true, default: 'pending' },
   body: { type: String, required: true },
   creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' }
 },
-{ timestamps: true, toJSON: { virtuals: true } }
+  { timestamps: true, toJSON: { virtuals: true } }
 )
 
 
