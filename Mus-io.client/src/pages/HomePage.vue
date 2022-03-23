@@ -1,35 +1,12 @@
 <template>
-  <div class="container-fluid bg-gradient">
-    <div class="row justify-content-around">
-      <div class="col-5">
-        <Band />
-      </div>
-    </div>
-    <div class="row justify-content-around mt-2">
-      <div class="col-5">
-        <Venue />
-      </div>
-    </div>
-  </div>
+  <div class="container-fluid bg-gradient"></div>
 </template>
 
 <script>
-import { onMounted } from "@vue/runtime-core"
-import { logger } from "../utils/Logger"
-import { bandsService } from "../services/BandsService"
-import { venuesService } from "../services/VenuesService"
-export default {
-  name: 'Home',
-  setup() {
-    onMounted(async () => {
-      try {
-        await bandsService.getAll()
-        await venuesService.getAll()
-      } catch (error) {
-        logger.error(error)
-      }
-    })
 
+export default {
+  setup() {
+    return {}
   }
 }
 </script>
