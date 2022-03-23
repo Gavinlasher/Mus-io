@@ -1,8 +1,9 @@
 import mongoose from 'mongoose'
 import { AccountSchema, ProfileSchema } from '../models/Account'
-import { BandSchema } from '../models/Band';
+import { BandSchema } from '../models/Band'
+import { OfferSchema } from '../models/Offer'
 import { ValueSchema } from '../models/Value'
-import { VenueSchema } from '../models/Venue';
+import { VenueSchema } from '../models/Venue'
 
 class DbContext {
   Values = mongoose.model('Value', ValueSchema);
@@ -11,8 +12,7 @@ class DbContext {
   Bands = mongoose.model('Band', BandSchema)
   Venues = mongoose.model('Venue', VenueSchema)
 
-  // NOTE COMMENT THIS BACK IN WHEN WE MAKE THE SCHEMA
-  // Offers = mongoose.model('Offer', OfferSchema)
+  Offers = mongoose.model('Offer', OfferSchema)
 }
 
 export const dbContext = new DbContext()

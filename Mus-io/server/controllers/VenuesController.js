@@ -45,9 +45,9 @@ export class VenuesController extends BaseController {
 
   async deleteVenue(req, res, next) {
     try {
-      req.body.creatorId = req.userInfo.id
-      req.body.id = req.params.id
-      const venue = await venuesService.deleteVenue(req.body)
+      const venueId = req.params.id
+      const userId = req.userInfo.id
+      const venue = await venuesService.deleteVenue(venueId, userId)
       res.send(venue)
     } catch (error) {
       next(error)
