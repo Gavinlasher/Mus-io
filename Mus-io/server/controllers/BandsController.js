@@ -9,10 +9,10 @@ export class BandsController extends BaseController {
 
         super('api/bands')
         this.router
-            .use(Auth0Provider.getAuthorizedUserInfo)
-            .post('', this.createBand)
             .get('', this.getAllBands)
             .get('/:id', this.getBandById)
+            .use(Auth0Provider.getAuthorizedUserInfo)
+            .post('', this.createBand)
             .put('/:id', this.editBand)
             .delete('/:id', this.deleteBand)
 
@@ -57,7 +57,7 @@ export class BandsController extends BaseController {
     async deleteBand(req, res, next) {
         try {
             const bandId = req.params.id
-            const userId = req.user.id
+            const userId = req.userInfo.id
             const doomedBand = await bandsService.deleteBand(bandId, userId)
             res.send('Delorted')
         } catch (error) {

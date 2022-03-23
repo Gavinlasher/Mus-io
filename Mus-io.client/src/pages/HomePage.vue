@@ -1,28 +1,13 @@
 <template>
-  <div class="container-fluid">
-    <div class="row justify-content-around">
-      <Band />
-    </div>
-    <div class="row justify-content-around mt-2">
-      <Venue />
-    </div>
-  </div>
+  <div class="container-fluid bg-gradient"></div>
 </template>
 
 <script>
-import { onMounted } from "@vue/runtime-core"
-import { logger } from "../utils/Logger"
-export default {
-  name: 'Home',
-  // setup(){
-  //   onMounted(async ()=> {
-  //     try {
 
-  //     } catch (error) {
-  //       logger.error(error)
-  //     }
-  //   })
-  // }
+export default {
+  setup() {
+    return {}
+  }
 }
 </script>
 

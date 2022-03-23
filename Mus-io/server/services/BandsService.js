@@ -25,7 +25,7 @@ class BandsService {
 
     async editBand(update) {
         const original = await dbContext.Bands.findById(update.id)
-        if (original.id.toString() !== update.id) {
+        if (original.creatorId.toString() !== update.creatorId) {
             throw new Forbidden('You cannot edit this band')
         }
         original.name = update.name ? update.name : original.name
