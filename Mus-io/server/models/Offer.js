@@ -9,7 +9,7 @@ export const OfferSchema = new Schema({
   status: { type: String, enum: ['pending', 'accepted', 'declind', 'deleted'] },
   body: { type: String, required: true },
   creatorId: { type: Schema.Types.ObjectId, required: true, ref: 'Account' }
-}
+},
 { timestamps: true, toJSON: { virtuals: true } }
 )
 
