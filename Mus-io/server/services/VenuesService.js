@@ -22,7 +22,7 @@ class VenuesService {
     if (venue.creatorId.toString() !== userId) {
       throw new BadRequest('not your venue to update')
     }
-    await dbContext.Venues.findByIdAndDelete(venueId)
+    venue.delete()
     return 'deleted'
   }
 
