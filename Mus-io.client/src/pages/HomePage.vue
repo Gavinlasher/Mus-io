@@ -1,10 +1,14 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid bg-gradient">
     <div class="row justify-content-around">
-      <Band />
+      <div class="col-5">
+        <Band />
+      </div>
     </div>
     <div class="row justify-content-around mt-2">
-      <Venue />
+      <div class="col-5">
+        <Venue />
+      </div>
     </div>
   </div>
 </template>
@@ -12,17 +16,21 @@
 <script>
 import { onMounted } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
+import { bandsService } from "../services/BandsService"
+import { venuesService } from "../services/VenuesService"
 export default {
   name: 'Home',
-  // setup(){
-  //   onMounted(async ()=> {
-  //     try {
+  setup() {
+    onMounted(async () => {
+      try {
+        await bandsService.getAll()
+        await venuesService.getAll()
+      } catch (error) {
+        logger.error(error)
+      }
+    })
 
-  //     } catch (error) {
-  //       logger.error(error)
-  //     }
-  //   })
-  // }
+  }
 }
 </script>
 

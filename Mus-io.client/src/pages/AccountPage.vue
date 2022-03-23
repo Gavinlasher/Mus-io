@@ -23,4 +23,8 @@ export default {
 img {
   max-width: 100px;
 }
+
+/* .bg-darkblue{
+  background-color: 
+} */
 </style>
