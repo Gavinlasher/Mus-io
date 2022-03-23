@@ -1,3 +1,4 @@
+
 import { dbContext } from "../db/DbContext"
 import { Forbidden } from "../utils/Errors"
 
@@ -30,6 +31,10 @@ class OffersService {
         doomedOffer.delete()
         return "Delorted"
     }
-}
 
+    async getAllMyOffers(query) {
+        const offers = await dbContext.Offers.find(query).populate('creator').populate('venue').populate('band')
+        return offers
+    }
+}
 export const offersService = new OffersService()
