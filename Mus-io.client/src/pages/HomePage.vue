@@ -1,7 +1,10 @@
 <template>
-  <div class="container-fluid bg-gradient p-5">
-    <div class="row bg-primary p-1 rounded-pill">
-      <div class="col-12">Filter</div>
+  <div class="container-fluid bg-gradient p-3">
+    <div class="row justify-content-center p-1">
+      <input
+        placeholder="Search......."
+        class="bg-primary border-primary rounded-pill p-1 col-10"
+      />
     </div>
     <div class="mt-5 justify-content-around row">
       <div
