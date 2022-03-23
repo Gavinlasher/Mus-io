@@ -1,5 +1,6 @@
 import { Schema } from 'mongoose'
 
+
 export const BandSchema = new Schema({
   name: { type: String, required: true },
   bannerImg: { type: String, required: true },
