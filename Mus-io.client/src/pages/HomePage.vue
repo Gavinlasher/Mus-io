@@ -46,15 +46,13 @@
         :key="b.id"
       >
         <PerformerCard :band="b" />
-        <!-- <VenueCard /> -->
       </div>
       <div
         class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
-        @click="goTo(v.id)"
+        @click="goTo2(v.id)"
         v-for="v in venues"
         :key="v.id"
       >
-        <!-- <PerformerCard /> -->
         <VenueCard :venue="v" />
       </div>
     </div>
@@ -93,6 +91,18 @@ export default {
           router.push({
             name: 'Band',
             params: { id: AppState.activeBand.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      },
+      async goTo2(id) {
+        try {
+          await venuesService.getVenueById(id)
+          router.push({
+            name: 'Venue',
+            params: { id: AppState.activeVenue.id }
           })
         } catch (error) {
           logger.error(error)
