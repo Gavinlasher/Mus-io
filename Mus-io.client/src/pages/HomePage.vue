@@ -40,8 +40,10 @@
       <div
         class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
         @click="goTo()"
+        v-for="b in bands"
+        :key="b.id"
       >
-        <PerformerCard />
+        <PerformerCard :band="b" />
         <!-- <VenueCard /> -->
       </div>
     </div>
@@ -49,11 +51,12 @@
 </template>
 
 <script>
-import { watchEffect } from "@vue/runtime-core"
+import { computed, watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { bandsService } from "../services/BandsService"
 import { venuesService } from "../services/VenuesService"
+import { AppState } from "../AppState"
 
 
 export default {
@@ -67,7 +70,9 @@ export default {
         Pop.toast(error.message, 'error message')
       }
     })
-    return {}
+    return {
+      bands: computed(() => AppState.bands)
+    }
   }
 }
 </script>
