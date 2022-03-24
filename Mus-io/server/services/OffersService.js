@@ -12,6 +12,14 @@ class OffersService {
         return offer
     }
 
+    async getOfferById(id) {
+        const offer = await dbContext.Offers.findById(id)
+        if (!offer) {
+            throw new NotFound("There is no offer with this id")
+        }
+        return offer
+    }
+
     async editOffer(update) {
         const original = await dbContext.Offers.findById(update.id)
         if (!original) {
