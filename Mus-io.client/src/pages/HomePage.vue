@@ -71,7 +71,8 @@ export default {
       }
     })
     return {
-      bands: computed(() => AppState.bands)
+      bands: computed(() => AppState.bands),
+      Venues: computed(() => AppState.venues)
     }
   }
 }
