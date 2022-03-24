@@ -29,7 +29,7 @@ const routes = [
 
   },
   {
-    path: '/band',
+    path: '/band/:id',
     name: 'Band',
     component: loadPage('BandPage'),
 

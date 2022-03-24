@@ -39,7 +39,7 @@
     <div class="row justify-content-center p-0 mt-5">
       <div
         class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
-        @click="goTo()"
+        @click="goTo(b.id)"
         v-for="b in bands"
         :key="b.id"
       >
@@ -57,10 +57,13 @@ import Pop from "../utils/Pop"
 import { bandsService } from "../services/BandsService"
 import { venuesService } from "../services/VenuesService"
 import { AppState } from "../AppState"
+import { useRouter } from "vue-router"
 
 
 export default {
+
   setup() {
+    const router = useRouter()
     watchEffect(async () => {
       try {
         await bandsService.getAll()
@@ -72,7 +75,19 @@ export default {
     })
     return {
       bands: computed(() => AppState.bands),
-      Venues: computed(() => AppState.venues)
+      Venues: computed(() => AppState.venues),
+      async goTo(id) {
+        try {
+          await bandsService.getBandById(id)
+          router.push({
+            name: 'Band',
+            params: { id: AppState.activeBand.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      }
     }
   }
 }
