@@ -100,7 +100,7 @@ import { AppState } from "../AppState"
 import { watchEffect } from "@vue/runtime-core"
 export default {
   setup() {
-    const editable = ref({ writer: [] })
+    const editable = ref({})
     let writerEditable = ref()
     watchEffect(() => {
       editable.value = AppState.activeBand;
