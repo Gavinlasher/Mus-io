@@ -56,6 +56,7 @@
 <script>
 import { ref } from "@vue/reactivity"
 import { logger } from "../utils/Logger"
+import { accountService } from "../services/AccountService"
 export default {
   setup() {
     const editable = ref({})
@@ -63,7 +64,6 @@ export default {
       editable,
       async editAccount() {
         try {
-
         } catch (error) {
           logger.error(error)
         }
