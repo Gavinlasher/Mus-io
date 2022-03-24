@@ -65,7 +65,7 @@
               alt=""
             />
           </div> -->
-          <VenueCard :venues="v" />
+          <VenueCard :venue="v" />
         </div>
       </div>
     </div>
