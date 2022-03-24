@@ -12,12 +12,11 @@
     "
     @submit.prevent="editBand"
   >
-    <h2>Edit Account</h2>
+    <h2>Edit Band</h2>
     <div class="col-md-4 mb-2">
       <label for="" class="form-label">Name: </label>
       <input
         v-model="editable.name"
-        required
         type="text"
         class="form-control"
         aria-describedby="helpId"
@@ -28,7 +27,6 @@
       <label for="" class="form-label">Banner Picture: </label>
       <input
         v-model="editable.bannerImg"
-        required
         type="text"
         class="form-control"
         aria-describedby="helpId"
@@ -39,7 +37,6 @@
       <label for="" class="form-label">Bio: </label>
       <input
         v-model="editable.bio"
-        required
         type="text"
         class="form-control"
         aria-describedby="helpId"
@@ -50,7 +47,6 @@
       <label for="" class="form-label">Genre: </label>
       <input
         v-model="editable.genre"
-        required
         type="text"
         class="form-control"
         aria-describedby="helpId"
@@ -61,7 +57,6 @@
       <label for="" class="form-label">SoundCloud: </label>
       <input
         v-model="editable.soundCloud"
-        required
         type="text"
         class="form-control"
         aria-describedby="helpId"
@@ -72,7 +67,6 @@
       <label for="" class="form-label">Spotify: </label>
       <input
         v-model="editable.spotify"
-        required
         type="text"
         class="form-control"
         aria-describedby="helpId"
@@ -80,14 +74,13 @@
       />
     </div>
     <div class="col-md-4 mb-2">
-      <label for="" class="form-label">Banner Picture: </label>
+      <label for="" class="form-label">Writer: </label>
       <input
         v-model="writerEditable"
-        required
         type="text"
         class="form-control"
         aria-describedby="helpId"
-        placeholder="picture url....."
+        placeholder="add to writer..."
       />
       <button @click="addToWriter(writerEditable)">add to writer</button>
     </div>
@@ -104,12 +97,19 @@ import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { bandsService } from "../services/BandsService"
 import { AppState } from "../AppState"
+import { watchEffect } from "@vue/runtime-core"
 export default {
   setup() {
     const editable = ref({ writer: [] })
-    const writerEditable = ref('')
+    let writerEditable = ref()
+    watchEffect(() => {
+      editable.value = AppState.activeBand;
+    });
+    // editable = AppState.activeBand
+
     return {
       editable,
+      writerEditable,
       async editBand() {
         try {
           await bandsService.editBand(editable.value, AppState.activeBand.id)
@@ -119,7 +119,9 @@ export default {
         }
       },
       addToWriter(string) {
-        editable.writer.push(string)
+        string.toString()
+        logger.log(string)
+        editable.value.writer.push(string)
         writerEditable = ''
       }
     }
