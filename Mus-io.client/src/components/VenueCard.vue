@@ -1,15 +1,15 @@
 <template>
   <div class="col-12">
-    <h1 class="ms-2 p-1">{{ venues.name }}</h1>
-    <h5 class="ms-4">{{ venues.location }}</h5>
-    <img class="img-fluid rounded shadow mt-3" :src="venues.bannerImg" alt="" />
+    <h1 class="ms-2 p-1">{{ venue.name }}</h1>
+    <h5 class="ms-4">{{ venue.location }}</h5>
+    <img class="img-fluid rounded shadow mt-3" :src="venue.bannerImg" alt="" />
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    venues: {
+    venue: {
       type: Object,
       required: true
     }
