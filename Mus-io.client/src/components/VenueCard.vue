@@ -1,8 +1,14 @@
 <template>
-  <div class="col-12">
+  <div class="col-12 align-items-stretch">
     <h1 class="ms-2 p-1">{{ venue.name }}</h1>
     <h5 class="ms-4">{{ venue.location }}</h5>
-    <img class="img-fluid rounded shadow mt-3" :src="venue.bannerImg" alt="" />
+    <div class="d-flex align-items-stretch align-items-end">
+      <img
+        class="img-fluid rounded shadow mt-3"
+        :src="venue.bannerImg"
+        alt=""
+      />
+    </div>
   </div>
 </template>
 
@@ -20,7 +26,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .hoverable:hover {
   transform: scale(1.03);
   box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.3);
@@ -30,5 +36,11 @@ export default {
 .hoverable:active {
   transform: scale(0.98);
   transition: 50ms ease-in-out;
+}
+img {
+  width: 50vh;
+  height: 33vh;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>
