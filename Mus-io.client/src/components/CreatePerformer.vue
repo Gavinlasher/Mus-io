@@ -70,7 +70,7 @@
     </div>
     <label for="" class="form-label">Choose Genre: </label>
     <div class="btn-group m-2">
-      <select required name="" id="" class="px-2" v-model="editable.type">
+      <select required name="" id="" class="px-2" v-model="editable.genre">
         <option value="rock">
           <a class="dropdown-item" href="#">Rock</a>
         </option>
