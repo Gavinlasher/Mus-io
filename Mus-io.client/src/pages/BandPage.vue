@@ -40,7 +40,7 @@
                 </button>
               </div>
               <!-- NOTE - V if account == creatorId -->
-              <div class="col-12 ps-4 pb-3">
+              <div class="col-12 ps-4 pb-3" v-if="band.creatorId == account.id">
                 <button
                   class="btn btn-primary"
                   data-bs-toggle="modal"
@@ -164,6 +164,7 @@ export default {
       }
     })
     return {
+      account: computed(() => AppState.account),
       band: computed(() => AppState.activeBand),
       myVenues: computed(() => AppState.venues.find(v => v.creatorId == AppState.account.id))
     }
