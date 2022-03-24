@@ -78,6 +78,7 @@ export default {
   box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.3);
   transition: 50ms ease-in-out;
   cursor: pointer;
+  user-select: none;
 }
 .hoverable:active {
   transform: scale(0.98);
