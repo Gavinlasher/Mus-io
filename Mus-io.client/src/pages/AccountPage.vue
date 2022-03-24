@@ -36,7 +36,7 @@
         <!-- <img :src="b.bannerImg" alt="" />
         {{ b.name }} -->
         <div class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded">
-          <div class="col-12">
+          <!-- <div class="col-12">
             <h1 class="ms-2 p-1">{{ b.name }}</h1>
             <h5 class="ms-4">{{ b.genre }}</h5>
             <img
@@ -44,7 +44,8 @@
               :src="b.bannerImg"
               alt=""
             />
-          </div>
+          </div> -->
+          <PerformerCard :bands="b" />
         </div>
       </div>
     </div>
@@ -53,7 +54,7 @@
         <!-- <img :src="v.bannerImg" alt="" />
         <h3>{{ v.location }}</h3> -->
         <div class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded">
-          <div class="col-12">
+          <!-- <div class="col-12">
             <h1 class="ms-2 p-1">{{ v.name }}</h1>
             <h5 class="ms-4">{{ v.location }}</h5>
             <img
@@ -61,7 +62,8 @@
               :src="v.bannerImg"
               alt=""
             />
-          </div>
+          </div> -->
+          <VenueCard :venues="v" />
         </div>
       </div>
     </div>

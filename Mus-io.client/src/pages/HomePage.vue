@@ -37,7 +37,10 @@
       </div>
     </div>
     <div class="row justify-content-center p-0 mt-5">
-      <div class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded">
+      <div
+        class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
+        @click="goTo()"
+      >
         <PerformerCard />
         <!-- <VenueCard /> -->
       </div>
@@ -46,13 +49,23 @@
 </template>
 
 <script>
+import { watchEffect } from "@vue/runtime-core"
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
+import { bandsService } from "../services/BandsService"
 
 
 export default {
   setup() {
-    return {
-
-    }
+    watchEffect(async () => {
+      try {
+        await bandsService.getAll()
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'error message')
+      }
+    })
+    return {}
   }
 }
 </script>
