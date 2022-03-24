@@ -25,17 +25,6 @@
       />
     </div>
     <div class="col-md-4 mb-2">
-      <label for="" class="form-label">Email: </label>
-      <input
-        v-model="editable.email"
-        required
-        type="text"
-        class="form-control"
-        aria-describedby="helpId"
-        placeholder="email here....."
-      />
-    </div>
-    <div class="col-md-4 mb-2">
       <label for="" class="form-label">Picture: </label>
       <input
         v-model="editable.picture"
@@ -57,13 +46,28 @@
 import { ref } from "@vue/reactivity"
 import { logger } from "../utils/Logger"
 import { accountService } from "../services/AccountService"
+import { watchEffect } from "@vue/runtime-core"
+import { Modal } from "bootstrap"
 export default {
-  setup() {
+  props: {
+    accountData: {
+      type: Object,
+      required: false,
+    }
+  },
+  setup(props) {
     const editable = ref({})
+    watchEffect(() => {
+      logger.log("this is thw watch effect for the account")
+      editable.value = props.accountData
+    })
     return {
       editable,
       async editAccount() {
         try {
+          Modal.getOrCreateInstance(document.getElementById('edit-account')).hide()
+          await accountService.editAccount(editable.value)
+
         } catch (error) {
           logger.error(error)
         }

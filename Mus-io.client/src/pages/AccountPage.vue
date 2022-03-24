@@ -45,7 +45,7 @@
               alt=""
             />
           </div> -->
-          <PerformerCard :bands="b" />
+          <PerformerCard :band="b" />
         </div>
       </div>
     </div>
@@ -78,7 +78,7 @@
   </Modal>
   <Modal id="edit-account">
     <template #title> Edit Account </template>
-    <!-- <template #body><template> -->
+    <template #body><EditAccount :accountData="account" /></template>
   </Modal>
 </template>
 
