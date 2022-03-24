@@ -22,18 +22,49 @@
         >
           Add New Venue
         </button>
+        <button
+          class="btn btn-info ms-5"
+          data-bs-toggle="modal"
+          data-bs-target="#edit-account"
+        >
+          Edit Account
+        </button>
       </div>
     </div>
     <div class="row">
       <div class="col-3" v-for="b in band" :key="b.id">
-        <img :src="b.bannerImg" alt="" />
-        {{ b.name }}
+        <!-- <img :src="b.bannerImg" alt="" />
+        {{ b.name }} -->
+        <div class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded">
+          <!-- <div class="col-12">
+            <h1 class="ms-2 p-1">{{ b.name }}</h1>
+            <h5 class="ms-4">{{ b.genre }}</h5>
+            <img
+              class="img-fluid rounded shadow mt-3"
+              :src="b.bannerImg"
+              alt=""
+            />
+          </div> -->
+          <PerformerCard :bands="b" />
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col-3" v-for="v in venue" :key="v.id">
-        <img :src="v.bannerImg" alt="" />
-        <h3>{{ v.location }}</h3>
+        <!-- <img :src="v.bannerImg" alt="" />
+        <h3>{{ v.location }}</h3> -->
+        <div class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded">
+          <!-- <div class="col-12">
+            <h1 class="ms-2 p-1">{{ v.name }}</h1>
+            <h5 class="ms-4">{{ v.location }}</h5>
+            <img
+              class="img-fluid rounded shadow mt-3"
+              :src="v.bannerImg"
+              alt=""
+            />
+          </div> -->
+          <VenueCard :venues="v" />
+        </div>
       </div>
     </div>
   </div>
@@ -44,6 +75,10 @@
   <Modal id="create-venue">
     <template #title> Create Venue </template>
     <template #body><CreateVenue :venueData="venue" /></template>
+  </Modal>
+  <Modal id="edit-account">
+    <template #title> Edit Account </template>
+    <!-- <template #body><template> -->
   </Modal>
 </template>
 

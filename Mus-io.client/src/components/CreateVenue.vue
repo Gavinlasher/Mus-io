@@ -12,7 +12,7 @@
     "
     @submit.prevent="createVenue"
   >
-    <h2>Create Performer</h2>
+    <h2>Create Venue</h2>
     <div class="col-md-4 mb-2">
       <label for="" class="form-label">Name: </label>
       <input
@@ -122,6 +122,7 @@ export default {
         try {
           Modal.getOrCreateInstance(document.getElementById('create-venue')).hide()
           await venuesService.createVenue(editable.value)
+          editable.value = {}
         } catch (error) {
           logger.error(error)
         }

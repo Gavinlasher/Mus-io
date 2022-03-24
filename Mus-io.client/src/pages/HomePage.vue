@@ -37,22 +37,33 @@
       </div>
     </div>
     <div class="row justify-content-center p-0 mt-5">
-      <PerformerCard />
-      <VenueCard />
-      <PerformerCard />
-      <VenueCard />
-      <PerformerCard />
-      <VenueCard />
-      <PerformerCard />
-      <VenueCard />
+      <div
+        class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
+        @click="goTo()"
+      >
+        <PerformerCard />
+        <!-- <VenueCard /> -->
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { watchEffect } from "@vue/runtime-core"
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
+import { bandsService } from "../services/BandsService"
 
 export default {
   setup() {
+    watchEffect(async () => {
+      try {
+        await bandsService.getAll()
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'error message')
+      }
+    })
     return {}
   }
 }
@@ -82,6 +93,7 @@ export default {
   box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.3);
   transition: 50ms ease-in-out;
   cursor: pointer;
+  user-select: none;
 }
 .hoverable:active {
   transform: scale(0.98);
