@@ -1,16 +1,30 @@
 import { dbContext } from "../db/DbContext"
-import { Forbidden } from "../utils/Errors"
+import { Forbidden, NotFound } from "../utils/Errors"
 
 
 class OffersService {
 
     async createOffer(body) {
         const offer = await dbContext.Offers.create(body)
-        await offer.populate('creator').populate('band').populate('venue')
+        await offer.populate('creator')
+        await offer.populate('band')
+        await offer.populate('venue')
+        return offer
+    }
+
+    async getOfferById(id) {
+        const offer = await dbContext.Offers.findById(id)
+        if (!offer) {
+            throw new NotFound("There is no offer with this id")
+        }
+        return offer
     }
 
     async editOffer(update) {
         const original = await dbContext.Offers.findById(update.id)
+        if (!original) {
+            throw new NotFound("There was no Offer at this id")
+        }
         if (original.creatorId.toString() !== update.creatorId) {
             throw new Forbidden("You cannot update this Offer")
         }

@@ -1,5 +1,6 @@
 import { Auth0Provider } from "@bcwdev/auth0provider"
 import { bandsService } from "../services/BandsService"
+import { offersService } from "../services/OffersService"
 import BaseController from "../utils/BaseController"
 
 
@@ -43,6 +44,7 @@ export class BandsController extends BaseController {
             next(error)
         }
     }
+
     async editBand(req, res, next) {
         try {
             req.body.creatorId = req.userInfo.id

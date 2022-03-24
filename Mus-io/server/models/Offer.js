@@ -21,13 +21,13 @@ OfferSchema.virtual('creator', {
   ref: 'Account'
 })
 
-BandSchema.virtual('band', {
+OfferSchema.virtual('band', {
   localField: 'bandId',
   foreignField: '_id',
   justOne: true,
   ref: 'Band'
 })
-VenueSchema.virtual('venue', {
+OfferSchema.virtual('venue', {
   localField: 'venueId',
   foreignField: '_id',
   justOne: true,

@@ -26,8 +26,15 @@ const routes = [
     path: '/venue',
     name: 'Venue',
     component: loadPage('VenuePage'),
-    
-  }
+
+  },
+  {
+    path: '/band',
+    name: 'Band',
+    component: loadPage('BandPage'),
+
+  },
+
 ]
 
 export const router = createRouter({
