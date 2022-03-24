@@ -9,7 +9,7 @@ export const BandSchema = new Schema({
   spotify: { type: String, default: 'https://www.spotify.com/us/' },
   basePrice: { type: Number, min: 0, required: true },
   writer: { type: Array, required: true },
-  genre: { type: String, enum: ['rock', 'country', 'pop', 'rap', 'electronic'] },
+  genre: { type: String, enum: ['rock', 'country', 'pop', 'rap', 'electronic'], required: true },
   creatorId: { type: Schema.Types.ObjectId, ref: 'Account', required: true }
 },
   { timestamps: true, toJSON: { virtuals: true } }
