@@ -12,6 +12,7 @@ export class BandsController extends BaseController {
         this.router
             .get('', this.getAllBands)
             .get('/:id', this.getBandById)
+            .get('/:id/offers', this.getOffersByBandId)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createBand)
             .put('/:id', this.editBand)
@@ -40,6 +41,15 @@ export class BandsController extends BaseController {
         try {
             const band = await bandsService.getBandById(req.params.id)
             res.send(band)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getOffersByBandId(req, res, next) {
+        try {
+            const offers = await offersService.getOffersByBandId(req.params.id)
+            res.send(offers)
         } catch (error) {
             next(error)
         }
