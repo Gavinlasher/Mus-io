@@ -1,8 +1,8 @@
 <template>
   <div class="col-12">
-    <h1 class="ms-2 p-1">{{ bands.name }}</h1>
-    <h5 class="ms-4">{{ bands.genre }}</h5>
-    <img class="img-fluid rounded shadow mt-3" :src="bands.bannerImg" alt="" />
+    <h1 class="ms-2 p-1">{{ band.name }}</h1>
+    <h5 class="ms-4">{{ band.genre }}</h5>
+    <img class="img-fluid rounded shadow mt-3" :src="band.bannerImg" alt="" />
   </div>
 </template>
 
