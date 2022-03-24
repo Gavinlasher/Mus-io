@@ -13,7 +13,7 @@
     @submit.prevent="editBand"
   >
     <h2>Edit Band</h2>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-12 mb-2">
       <label for="" class="form-label">Name: </label>
       <input
         v-model="editable.name"
@@ -23,7 +23,7 @@
         placeholder="Name....."
       />
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-12 mb-2">
       <label for="" class="form-label">Banner Picture: </label>
       <input
         v-model="editable.bannerImg"
@@ -33,7 +33,7 @@
         placeholder="picture url....."
       />
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-12 mb-2">
       <label for="" class="form-label">Bio: </label>
       <input
         v-model="editable.bio"
@@ -43,7 +43,7 @@
         placeholder="picture url....."
       />
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-12 mb-2">
       <label for="" class="form-label">Genre: </label>
       <input
         v-model="editable.genre"
@@ -53,7 +53,7 @@
         placeholder="picture url....."
       />
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-12 mb-2">
       <label for="" class="form-label">SoundCloud: </label>
       <input
         v-model="editable.soundCloud"
@@ -63,7 +63,7 @@
         placeholder="picture url....."
       />
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-12 mb-2">
       <label for="" class="form-label">Spotify: </label>
       <input
         v-model="editable.spotify"
@@ -73,7 +73,7 @@
         placeholder="picture url....."
       />
     </div>
-    <div class="col-md-4 mb-2">
+    <div class="col-md-12 mb-2">
       <label for="" class="form-label">Writer: </label>
       <input
         v-model="writerEditable"
@@ -82,10 +82,17 @@
         aria-describedby="helpId"
         placeholder="add to writer..."
       />
-      <button @click="addToWriter(writerEditable)">add to writer</button>
+      <div class="col-md-12 d-flex mb-5 justify-content-end">
+        <button
+          class="btn btn-primary mt-2"
+          @click="addToWriter(writerEditable)"
+        >
+          <span> Add To Writer </span>
+        </button>
+      </div>
     </div>
     <div class="col-12 d-flex justify-content-end">
-      <button class="btn btn-primary">edit</button>
+      <button class="btn btn-primary">Edit Band Information</button>
     </div>
   </form>
 </template>
@@ -131,4 +138,7 @@ export default {
 
 
 <style lang="scss" scoped>
+span {
+  font-size: 16px;
+}
 </style>
