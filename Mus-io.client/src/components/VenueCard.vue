@@ -1,17 +1,19 @@
 <template>
   <div class="col-12">
-    <h1 class="ms-2 p-1">Venue Name</h1>
-    <h5 class="ms-4">Location</h5>
-    <img
-      class="img-fluid rounded shadow mt-3"
-      src="https://c.stocksy.com/a/7cL600/z9/1513055.jpg"
-      alt=""
-    />
+    <h1 class="ms-2 p-1">{{ venues.name }}</h1>
+    <h5 class="ms-4">{{ venues.location }}</h5>
+    <img class="img-fluid rounded shadow mt-3" :src="venues.bannerImg" alt="" />
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    venues: {
+      type: Object,
+      required: true
+    }
+  },
   setup() {
     return {}
   }
