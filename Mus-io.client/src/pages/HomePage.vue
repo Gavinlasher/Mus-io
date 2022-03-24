@@ -53,12 +53,14 @@ import { watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { bandsService } from "../services/BandsService"
+import { venuesService } from "../services/VenuesService"
 
 export default {
   setup() {
     watchEffect(async () => {
       try {
         await bandsService.getAll()
+        await venuesService.getAll()
       } catch (error) {
         logger.error(error)
         Pop.toast(error.message, 'error message')
