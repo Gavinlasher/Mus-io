@@ -23,12 +23,14 @@
           Add New Venue
         </button>
         <button
-          class="btn btn-info ms-5"
+          class="btn btn-info ms-5 me-5"
           data-bs-toggle="modal"
           data-bs-target="#edit-account"
         >
           Edit Account
         </button>
+
+        <Offcanvas />
       </div>
     </div>
     <div class="row">
