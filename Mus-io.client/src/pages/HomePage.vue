@@ -37,14 +37,10 @@
       </div>
     </div>
     <div class="row justify-content-center p-0 mt-5">
-      <PerformerCard />
-      <VenueCard />
-      <PerformerCard />
-      <VenueCard />
-      <PerformerCard />
-      <VenueCard />
-      <PerformerCard />
-      <VenueCard />
+      <div class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded">
+        <PerformerCard />
+        <!-- <VenueCard /> -->
+      </div>
     </div>
   </div>
 </template>
