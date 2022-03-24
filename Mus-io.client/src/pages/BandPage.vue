@@ -29,11 +29,13 @@
                   ><h3><i class="mdi mdi-soundcloud"></i></h3>
                 </a>
               </div>
+              <!-- NOTE - Opens model to do offer -->
               <div class="col-12 ps-4 pb-3">
-                <button class="btn btn-primary">Click Me</button>
+                <button class="btn btn-primary">Send Offer</button>
               </div>
+              <!-- NOTE - V if account == creatorId -->
               <div class="col-12 ps-4 pb-3">
-                <button class="btn btn-primary">Placeholder</button>
+                <button class="btn btn-primary">Edit Account</button>
               </div>
             </div>
           </div>
