@@ -37,7 +37,10 @@
       </div>
     </div>
     <div class="row justify-content-center p-0 mt-5">
-      <div class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded">
+      <div
+        class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
+        @click="goTo()"
+      >
         <PerformerCard />
         <!-- <VenueCard /> -->
       </div>
@@ -53,7 +56,7 @@ import { bandsService } from "../services/BandsService"
 
 export default {
   setup() {
-    watchEffect(() => {
+    watchEffect(async () => {
       try {
         await bandsService.getAll()
       } catch (error) {
