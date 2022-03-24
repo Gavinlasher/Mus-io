@@ -8,6 +8,7 @@
     </div>
     <div class="mt-5 justify-content-around row">
       <div
+        @click="getAllPerformers"
         class="
           p-3
           col-4
@@ -22,6 +23,7 @@
         Performers
       </div>
       <div
+        @click="getAllVenues"
         class="
           p-3
           col-4
@@ -44,7 +46,14 @@
         :key="b.id"
       >
         <PerformerCard :band="b" />
-        <!-- <VenueCard /> -->
+      </div>
+      <div
+        class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
+        @click="goTo2(v.id)"
+        v-for="v in venues"
+        :key="v.id"
+      >
+        <VenueCard :venue="v" />
       </div>
     </div>
   </div>
@@ -75,7 +84,7 @@ export default {
     })
     return {
       bands: computed(() => AppState.bands),
-      Venues: computed(() => AppState.venues),
+      venues: computed(() => AppState.venues),
       async goTo(id) {
         try {
           await bandsService.getBandById(id)
@@ -86,6 +95,36 @@ export default {
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error message')
+        }
+      },
+      async goTo2(id) {
+        try {
+          await venuesService.getVenueById(id)
+          router.push({
+            name: 'Venue',
+            params: { id: AppState.activeVenue.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      },
+      async getAllVenues() {
+        try {
+          await venuesService.getAll()
+          AppState.bands = []
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message)
+        }
+      },
+      async getAllPerformers() {
+        try {
+          await bandsService.getAll()
+          AppState.venues = []
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message)
         }
       }
     }

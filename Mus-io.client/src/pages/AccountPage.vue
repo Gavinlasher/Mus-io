@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid">
-    <div class="row mt-3 justify-content-start ms-5">
+  <div class="container-fluid bg-gradient">
+    <div class="row justify-content-start ms-5">
       <div class="col-2">
         <img :src="account.picture" class="img-fluid cropped" alt="" />
       </div>
@@ -23,20 +23,39 @@
           Add New Venue
         </button>
         <button
-          class="btn btn-info ms-5"
+          class="btn btn-primary ms-5 me-5"
           data-bs-toggle="modal"
           data-bs-target="#edit-account"
         >
           Edit Account
         </button>
+
+        <!-- <OffCanvas> </OffCanvas> -->
+        <OffCanvas>
+          <template #requests>
+            <div class="row">
+              <div class="col-8" v-for="o in offers" :key="o.id">
+                <div v-if="o.creatorId == account.id">
+                  <h4>{{ o.band.name }} is wanting to friend you</h4>
+                  <h4>
+                    {{ o.body }} || this persons budget is {{ o.band.price }}
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </template>
+        </OffCanvas>
       </div>
     </div>
-    <div class="row">
-      <div class="col-3" v-for="b in band" :key="b.id">
+    <div class="row justify-content-center p-0 mt-5">
+      <div
+        class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
+        v-for="b in band"
+        :key="b.id"
+      >
         <!-- <img :src="b.bannerImg" alt="" />
         {{ b.name }} -->
-        <div class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded">
-          <!-- <div class="col-12">
+        <!-- <div class="col-12">
             <h1 class="ms-2 p-1">{{ b.name }}</h1>
             <h5 class="ms-4">{{ b.genre }}</h5>
             <img
@@ -45,16 +64,19 @@
               alt=""
             />
           </div> -->
-          <PerformerCard :band="b" />
-        </div>
+        <PerformerCard :band="b" />
       </div>
     </div>
-    <div class="row">
-      <div class="col-3" v-for="v in venue" :key="v.id">
+    <div class="row justify-content-center p-0 mt-5">
+      <div
+        class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
+        v-for="v in venue"
+        :key="v.id"
+      >
         <!-- <img :src="v.bannerImg" alt="" />
         <h3>{{ v.location }}</h3> -->
-        <div class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded">
-          <!-- <div class="col-12">
+
+        <!-- <div class="col-12">
             <h1 class="ms-2 p-1">{{ v.name }}</h1>
             <h5 class="ms-4">{{ v.location }}</h5>
             <img
@@ -63,8 +85,7 @@
               alt=""
             />
           </div> -->
-          <VenueCard :venues="v" />
-        </div>
+        <VenueCard :venue="v" />
       </div>
     </div>
   </div>
@@ -102,7 +123,8 @@ export default {
     return {
       account: computed(() => AppState.account),
       band: computed(() => AppState.bands),
-      venue: computed(() => AppState.venues)
+      venue: computed(() => AppState.venues),
+      offers: computed(() => AppState.offers)
     }
   }
 }
