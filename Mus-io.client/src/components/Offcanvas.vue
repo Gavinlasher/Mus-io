@@ -1,12 +1,12 @@
 <template>
   <button
-    class="btn btn-primary"
+    class="btn btn-info"
     type="button"
     data-bs-toggle="offcanvas"
     data-bs-target="#offcanvasExample"
     aria-controls="offcanvasExample"
   >
-    Button with data-bs-target
+    See offers
   </button>
 
   <div
@@ -16,7 +16,9 @@
     aria-labelledby="offcanvasExampleLabel"
   >
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+        Offers for {{ account.name }}
+      </h5>
       <button
         type="button"
         class="btn-close text-reset"
@@ -50,9 +52,13 @@
 
 
 <script>
+import { computed } from "@vue/reactivity"
+import { AppState } from "../AppState"
 export default {
   setup() {
-    return {}
+    return {
+      account: computed(() => AppState.account)
+    }
   }
 }
 </script>
