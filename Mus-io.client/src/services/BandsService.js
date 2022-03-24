@@ -1,27 +1,29 @@
 import { AppState } from "../AppState"
+import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
 class BandsService {
-    async getAll(query = ""){
+    async getAll(query = "") {
         const res = await api.get('api/bands/' + query)
         AppState.bands = res.data
-        
+
     }
-    async createBand(body){
+    async createBand(body) {
         const res = await api.post('api/bands', body)
+        logger.log(res.data)
         AppState.activeBand = res.data
         AppState.bands = [...AppState.bands, res.data]
     }
-    async getBandById(id){
-        const res = await api.get('api/bands/'+id)
+    async getBandById(id) {
+        const res = await api.get('api/bands/' + id)
         AppState.activeBand = res.data
-        
+
     }
-    async deleteBand(id){
+    async deleteBand(id) {
         const res = await api.delete('api/bands/' + id)
         AppState.bands = AppState.bands.filter(b => b.id !== id)
     }
-    async editBand(body, id){
+    async editBand(body, id) {
         const res = await api.put('api/bands/' + id, body)
     }
 
