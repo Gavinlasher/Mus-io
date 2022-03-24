@@ -17,6 +17,7 @@ class BandsService {
     }
     async getBandById(id) {
         const res = await api.get('api/bands/' + id)
+        logger.log(res.data)
         AppState.activeBand = res.data
 
     }
