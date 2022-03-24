@@ -55,6 +55,7 @@ import Pop from "../utils/Pop"
 import { bandsService } from "../services/BandsService"
 import { venuesService } from "../services/VenuesService"
 
+
 export default {
   setup() {
     watchEffect(async () => {
