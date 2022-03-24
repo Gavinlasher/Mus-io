@@ -13,7 +13,7 @@ class OffersService {
     }
 
     async getOfferById(id) {
-        const offer = await dbContext.Offers.findById(id)
+        const offer = await dbContext.Offers.findById(id).populate('creator').populate('band').populate('venue')
         if (!offer) {
             throw new NotFound("There is no offer with this id")
         }

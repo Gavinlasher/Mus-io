@@ -27,17 +27,18 @@ class VenuesService {
   }
 
   async getAllVenues(query = {}) {
-    const venues = await dbContext.Venues.find(query)
+    const venues = await dbContext.Venues.find(query).populate('creator')
     return venues
   }
 
   async createVenue(body) {
     const venue = await dbContext.Venues.create(body)
+    await venue.populate('creator')
     return venue
   }
 
   async getById(id) {
-    const venue = await dbContext.Venues.findById(id)
+    const venue = await dbContext.Venues.findById(id).populate('creator')
     return venue
   }
 }
