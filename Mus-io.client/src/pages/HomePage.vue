@@ -46,6 +46,15 @@
         <PerformerCard :band="b" />
         <!-- <VenueCard /> -->
       </div>
+      <div
+        class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
+        @click="goTo(v.id)"
+        v-for="v in venue"
+        :key="v.id"
+      >
+        <!-- <PerformerCard /> -->
+        <VenueCard :venue="v" />
+      </div>
     </div>
   </div>
 </template>
