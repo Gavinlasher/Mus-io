@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { computed } from "@vue/reactivity"
+import { AppState } from "../AppState"
 export default {
   props: {
     bands: {
@@ -15,7 +17,9 @@ export default {
     }
   },
   setup() {
-    return {}
+    return {
+      band: computed(() => AppState.bands)
+    }
   }
 }
 </script>
