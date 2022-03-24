@@ -46,9 +46,21 @@
 </template>
 
 <script>
+import { watchEffect } from "@vue/runtime-core"
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
+import { bandsService } from "../services/BandsService"
 
 export default {
   setup() {
+    watchEffect(() => {
+      try {
+        await bandsService.getAll()
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.message, 'error message')
+      }
+    })
     return {}
   }
 }
