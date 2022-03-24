@@ -24,7 +24,7 @@
       <label for="" class="form-label">Offer: </label>
 
       <textarea
-        v-model="editable.bio"
+        v-model="editable.body"
         required
         rows="7"
         type="text"
@@ -43,12 +43,29 @@
 <script>
 import { computed, ref } from "@vue/reactivity"
 import { AppState } from "../AppState"
+import { offersService } from "../services/OffersService"
+import { watchEffect } from "@vue/runtime-core"
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
+import { venuesService } from "../services/VenuesService"
 export default {
   setup() {
     const editable = ref({})
+    watchEffect(async () => {
+      try {
+        await venuesService.getAll()
+      } catch (error) {
+        logger.log(error)
+        Pop.toast(error.message, "error")
+      }
+    })
     return {
       myVenues: computed(() => AppState.venues.filter(v => v.creatorId == AppState.account.id)),
-      editable
+      editable,
+      async sendOffer() {
+        editable.value.bandId = AppState.activeBand.id
+        await offersService.createOffer(editable.value)
+      }
     }
   }
 }
