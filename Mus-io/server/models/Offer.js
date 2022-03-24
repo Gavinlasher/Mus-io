@@ -1,5 +1,6 @@
 import { Schema } from 'mongoose'
 
+// NOTE MIGHT EVENTUALLY ADD A "SENDER_ID AND RECEIVER_ID"
 export const OfferSchema = new Schema({
   venueId: { type: Schema.Types.ObjectId, required: true, ref: 'Venue' },
   bandId: { type: Schema.Types.ObjectId, required: true, ref: 'Band' },
