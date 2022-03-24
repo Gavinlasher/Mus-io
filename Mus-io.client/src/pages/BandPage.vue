@@ -31,7 +31,13 @@
               </div>
               <!-- NOTE - Opens model to do offer -->
               <div class="col-12 ps-4 pb-3">
-                <button class="btn btn-primary">Send Offer</button>
+                <button
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#create-offer"
+                >
+                  Send Offer
+                </button>
               </div>
               <!-- NOTE - V if account == creatorId -->
               <div class="col-12 ps-4 pb-3">
@@ -50,14 +56,29 @@
       <div class="col-12 spacer" style="height: 15vh"></div>
     </div>
   </div>
+  <Modal id="create-offer">
+    <template #title> Create Offer</template>
+    <template #body><OfferForm /> </template>
+  </Modal>
 </template>
 
 
 <script>
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState"
+import Modal from "../components/Modal.vue"
+import { watchEffect } from "@vue/runtime-core"
+import { bandsService } from "../services/BandsService"
+import { useRoute } from "vue-router"
 export default {
+  components: { Modal },
   setup() {
+    const route = useRoute()
+    watchEffect(async () => {
+      if (route.name == "Band") {
+        await bandsService.getBandById(route.params.id)
+      }
+    })
     return {
       band: computed(() => AppState.activeBand)
     }
