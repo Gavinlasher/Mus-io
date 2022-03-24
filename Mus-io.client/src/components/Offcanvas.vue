@@ -6,7 +6,7 @@
     data-bs-target="#offcanvasExample"
     aria-controls="offcanvasExample"
   >
-    See offers
+    See Band Offers
   </button>
 
   <div
@@ -28,14 +28,17 @@
     </div>
     <div class="offcanvas-body">
       <div>
-        <slot name="body"></slot>
+        <slot name="requests"><!--title slot--></slot>
+
+        <!-- <h2>This is bands</h2>
+        <slot name="bands"></slot> -->
+      </div>
+      <!-- <div>
+        <slot id="sent" name="body"></slot>
       </div>
       <div>
-        <slot name="body"></slot>
-      </div>
-      <div>
-        <slot name="body"></slot>
-      </div>
+        <slot id="messages" name="body"></slot>
+      </div> -->
       <!-- <div class="dropdown mt-3">
         <button
           class="btn btn-secondary dropdown-toggle"

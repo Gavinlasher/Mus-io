@@ -30,7 +30,21 @@
           Edit Account
         </button>
 
-        <Offcanvas />
+        <!-- <OffCanvas> </OffCanvas> -->
+        <OffCanvas>
+          <template #requests>
+            <div class="row">
+              <div class="col-8" v-for="o in offers" :key="o.id">
+                <div v-if="o.creatorId == account.id">
+                  <h4>{{ o.band.name }} is wanting to friend you</h4>
+                  <h4>
+                    {{ o.body }} || this persons budget is {{ o.band.price }}
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </template>
+        </OffCanvas>
       </div>
     </div>
     <div class="row justify-content-center p-0 mt-5">
@@ -109,7 +123,8 @@ export default {
     return {
       account: computed(() => AppState.account),
       band: computed(() => AppState.bands),
-      venue: computed(() => AppState.venues)
+      venue: computed(() => AppState.venues),
+      offers: computed(() => AppState.offers)
     }
   }
 }
