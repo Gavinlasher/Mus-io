@@ -1,6 +1,6 @@
 <template>
   <button
-    class="btn btn-info"
+    class="btn btn-primary"
     type="button"
     data-bs-toggle="offcanvas"
     data-bs-target="#offcanvasExample"
@@ -28,10 +28,15 @@
     </div>
     <div class="offcanvas-body">
       <div>
-        Some text as placeholder. In real life you can have the elements you
-        have chosen. Like, text, images, lists, etc.
+        <slot name="body"></slot>
       </div>
-      <div class="dropdown mt-3">
+      <div>
+        <slot name="body"></slot>
+      </div>
+      <div>
+        <slot name="body"></slot>
+      </div>
+      <!-- <div class="dropdown mt-3">
         <button
           class="btn btn-secondary dropdown-toggle"
           type="button"
@@ -45,7 +50,7 @@
           <li><a class="dropdown-item" href="#">Another action</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
