@@ -29,19 +29,25 @@
                   ><h3><i class="mdi mdi-soundcloud"></i></h3>
                 </a>
               </div>
-              <!-- NOTE - Opens model to do offer -->
               <div class="col-12 ps-4 pb-3">
                 <button
                   class="btn btn-primary"
                   data-bs-toggle="modal"
                   data-bs-target="#create-offer"
+                  v-if="myVenues"
                 >
                   Send Offer
                 </button>
               </div>
               <!-- NOTE - V if account == creatorId -->
               <div class="col-12 ps-4 pb-3">
-                <button class="btn btn-primary">Edit Account</button>
+                <button
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#edit-band"
+                >
+                  Edit Band Info
+                </button>
               </div>
             </div>
           </div>
@@ -70,17 +76,20 @@ import Modal from "../components/Modal.vue"
 import { watchEffect } from "@vue/runtime-core"
 import { bandsService } from "../services/BandsService"
 import { useRoute } from "vue-router"
+import { venuesService } from "../services/VenuesService"
 export default {
   components: { Modal },
   setup() {
     const route = useRoute()
     watchEffect(async () => {
       if (route.name == "Band") {
+        await venuesService.getAll()
         await bandsService.getBandById(route.params.id)
       }
     })
     return {
-      band: computed(() => AppState.activeBand)
+      band: computed(() => AppState.activeBand),
+      myVenues: computed(() => AppState.venues.find(v => v.creatorId == AppState.account.id))
     }
   }
 }
