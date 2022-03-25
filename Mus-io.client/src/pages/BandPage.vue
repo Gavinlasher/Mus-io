@@ -149,13 +149,31 @@
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState"
 import Modal from "../components/Modal.vue"
-import { watchEffect } from "@vue/runtime-core"
+import { onMounted, watchEffect } from "@vue/runtime-core"
 import { bandsService } from "../services/BandsService"
 import { useRoute } from "vue-router"
 import { venuesService } from "../services/VenuesService"
+
+
+
+
 export default {
+  name: 'app',
+  data() {
+    return {
+      editorData: '<p>Content of the editor.</p>',
+      editorConfig: {
+        // The configuration of the editor.
+      }
+    };
+  },
   components: { Modal },
   setup() {
+
+
+
+
+
     const route = useRoute()
     watchEffect(async () => {
       if (route.name == "Band") {
@@ -171,6 +189,8 @@ export default {
   }
 }
 </script>
+
+
 
 
 <style lang="scss" scoped>
