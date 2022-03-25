@@ -1,6 +1,7 @@
 <template>
   <div class="container-fluid bg-gradient p-3">
     <div class="row justify-content-center p-1">
+      <div class="p-5"></div>
       <input
         placeholder="Search......."
         class="bg-primary border-primary rounded-pill p-1 col-10"

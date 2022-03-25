@@ -1,6 +1,14 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+      <span class="mx-2">
+        <img
+          style="width: 3vw"
+          class="img-fluid col-2 rounded-circle"
+          src="src\assets\img\dsadsad.png"
+          alt=""
+        />
+      </span>
       <div class="d-flex flex-column align-items-center">
         <h2 class="text-success">Mus.io</h2>
       </div>

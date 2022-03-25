@@ -1,7 +1,7 @@
 <template>
   <div class="col-12 align-items-stretch">
-    <h1 class="ms-2 p-1">{{ band.name }}</h1>
-    <h5 class="ms-4">{{ band.genre }}</h5>
+    <h1 class="ms-2 text-start col-12 p-1">{{ band.name }}</h1>
+    <h5 class="ms-4 text-start col-12 mt-5">{{ band.genre }}</h5>
     <div class="d-flex align-items-stretch align-items-end">
       <img class="img-fluid rounded shadow mt-3" :src="band.bannerImg" alt="" />
     </div>
@@ -38,8 +38,12 @@ export default {
 }
 img {
   width: 50vh;
-  height: 33vh;
+  height: 40vh;
   background-repeat: no-repeat;
   background-size: cover;
+}
+h1 {
+  text-overflow: hidden;
+  height: 8vh;
 }
 </style>
