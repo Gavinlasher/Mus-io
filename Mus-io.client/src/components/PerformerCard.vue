@@ -11,17 +11,29 @@
       data-bs-toggle="offcanvas"
       :data-bs-target="'#requests' + band.id"
       aria-controls="offcanvasExample"
+      @click="setActive"
     >
       See Offers
     </button>
+    <OffCanvas :id="'requests' + band.id">
+      <template #requests>
+        <div class="row">
+          <div class="col-8">
+            {{ offersBand.name }}
+          </div>
+        </div>
+      </template>
+    </OffCanvas>
   </div>
-  <OffCanvas :id="'requests' + band.id">
-    <template #requests>{{ band.name }}</template>
-  </OffCanvas>
 </template>
 
 <script>
-
+import { computed } from "@vue/reactivity"
+import { AppState } from "../AppState"
+import { watchEffect } from "@vue/runtime-core"
+import { bandsService } from "../services/BandsService"
+import { logger } from "../utils/Logger"
+import { useRoute } from "vue-router"
 export default {
   props: {
     band: {
@@ -29,9 +41,22 @@ export default {
       required: true
     }
   },
-  setup() {
-    return {
+  setup(props) {
+    const route = useRoute()
+    // watchEffect(async () => {
+    //   try {
+    //     await bandsService.getOffersBand(props.band.id)
+    //   } catch (error) {
+    //     logger.error(error)
+    //   }
 
+    // })
+    return {
+      // offerBand: computed(() => AppState.offers)
+      setActive() {
+        bandsService.setActive(props.band)
+      },
+      offersBand: computed(() => AppState.activeBand)
     }
   }
 }
