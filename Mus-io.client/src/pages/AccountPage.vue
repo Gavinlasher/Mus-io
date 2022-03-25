@@ -73,6 +73,15 @@
     <template #title> Edit Account </template>
     <template #body><EditAccount :accountData="account" /></template>
   </Modal>
+  <OffCanvas id="requests">
+    <template #requests>
+      <div class="row">
+        <div class="col-8">
+          {{ offersBand.name }}
+        </div>
+      </div>
+    </template>
+  </OffCanvas>
   <!-- <OffCanvas> </OffCanvas> -->
   <!-- <OffCanvas> -->
   <!-- <template #requests> -->
@@ -110,7 +119,8 @@ export default {
       account: computed(() => AppState.account),
       band: computed(() => AppState.bands),
       venue: computed(() => AppState.venues),
-      offers: computed(() => AppState.offers)
+      offers: computed(() => AppState.offers),
+      offersBand: computed(() => AppState.activeBand)
     }
   }
 }

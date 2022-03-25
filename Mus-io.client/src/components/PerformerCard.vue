@@ -9,21 +9,12 @@
       class="btn btn-primary"
       type="button"
       data-bs-toggle="offcanvas"
-      :data-bs-target="'#requests' + band.id"
+      data-bs-target="#requests"
       aria-controls="offcanvasExample"
       @click="setActive"
     >
       See Offers
     </button>
-    <OffCanvas :id="'requests' + band.id">
-      <template #requests>
-        <div class="row">
-          <div class="col-8">
-            {{ offersBand.name }}
-          </div>
-        </div>
-      </template>
-    </OffCanvas>
   </div>
 </template>
 
@@ -56,7 +47,6 @@ export default {
       setActive() {
         bandsService.setActive(props.band)
       },
-      offersBand: computed(() => AppState.activeBand)
     }
   }
 }
