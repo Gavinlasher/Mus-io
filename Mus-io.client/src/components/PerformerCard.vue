@@ -9,7 +9,7 @@
       class="btn btn-primary"
       type="button"
       data-bs-toggle="offcanvas"
-      data-bs-target="#requests"
+      data-bs-target="#request"
       aria-controls="offcanvasExample"
       @click="setActive"
     >

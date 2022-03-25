@@ -2,6 +2,14 @@
   <div class="container-fluid bg-gradient">
     <div class="row justify-content-start ms-5">
       <div class="p-5"></div>
+      <div
+        v-for="r in sentBand"
+        class="col-6 bg-primary text-light"
+        :key="r.id"
+      >
+        <h1>{{ r.creator.name }} hs {{ r.body }}</h1>
+      </div>
+
       <div class="col-6 mt-3">
         <div class="d-flex align-items-center">
           <img
@@ -73,7 +81,7 @@
     <template #title> Edit Account </template>
     <template #body><EditAccount :accountData="account" /></template>
   </Modal>
-  <OffCanvas id="requests">
+  <OffCanvas id="request">
     <template #requests>
       <div class="row">
         <div class="col-8">
@@ -82,6 +90,7 @@
       </div>
     </template>
   </OffCanvas>
+
   <!-- <OffCanvas> </OffCanvas> -->
   <!-- <OffCanvas> -->
   <!-- <template #requests> -->
@@ -99,17 +108,19 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, watchEffect } from 'vue'
 import { AppState } from '../AppState'
 import { logger } from "../utils/Logger"
 import { bandsService } from "../services/BandsService"
 import { venuesService } from "../services/VenuesService"
+import { offersService } from "../services/OffersService"
 export default {
   name: 'Account',
   setup() {
-    onMounted(async () => {
+    watchEffect(async () => {
       try {
         await bandsService.getAll()
+        await offersService.getMyOffers()
         await venuesService.getAll()
       } catch (error) {
         logger.error(error)
@@ -120,7 +131,8 @@ export default {
       band: computed(() => AppState.bands),
       venue: computed(() => AppState.venues),
       offers: computed(() => AppState.offers),
-      offersBand: computed(() => AppState.activeBand)
+      offersBand: computed(() => AppState.activeBand),
+      sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id))
     }
   }
 }
