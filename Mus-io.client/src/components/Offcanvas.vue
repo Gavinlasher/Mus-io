@@ -1,16 +1,6 @@
 <template>
-  <button
-    class="btn btn-primary"
-    type="button"
-    data-bs-toggle="offcanvas"
-    data-bs-target="#offcanvasExample"
-    aria-controls="offcanvasExample"
-  >
-    See Band Offers
-  </button>
-
   <div
-    class="offcanvas offcanvas-start"
+    class="offcanvas offcanvas-start text-dark"
     tabindex="-1"
     id="offcanvasExample"
     aria-labelledby="offcanvasExampleLabel"
@@ -28,8 +18,7 @@
     </div>
     <div class="offcanvas-body">
       <div>
-        <slot name="requests"><!--title slot--></slot>
-
+        <slot name="requests"></slot>
         <!-- <h2>This is bands</h2>
         <slot name="bands"></slot> -->
       </div>

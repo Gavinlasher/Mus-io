@@ -5,7 +5,19 @@
     <div class="d-flex align-items-stretch align-items-end">
       <img class="img-fluid rounded shadow mt-3" :src="band.bannerImg" alt="" />
     </div>
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="offcanvas"
+      :data-bs-target="'#requests' + band.id"
+      aria-controls="offcanvasExample"
+    >
+      See Offers
+    </button>
   </div>
+  <OffCanvas :id="'requests' + band.id">
+    <template #requests>{{ band.name }}</template>
+  </OffCanvas>
 </template>
 
 <script>
