@@ -1,90 +1,59 @@
 <template>
   <div class="container-fluid bg-gradient">
     <div class="row justify-content-start ms-5">
-      <div class="col-2">
-        <img :src="account.picture" class="img-fluid cropped" alt="" />
+      <div class="col-6 mt-3">
+        <div class="d-flex align-items-center">
+          <img
+            :src="account.picture"
+            class="img-fluid cropped"
+            alt="Profile Picture of the User"
+          />
+
+          <h2 class="ms-3 text-light">{{ account.name }}</h2>
+        </div>
       </div>
-      <div class="col-4 d-flex justify-content-start mt-3 pt-5">
-        <h2>{{ account.name }}</h2>
-      </div>
-      <div class="col-4 mt-3 pt-5 justify-content-between">
+
+      <div class="col-6 p-3">
         <button
-          class="btn btn-success me-5"
+          class="btn btn-success rounded-pill me-5"
           data-bs-toggle="modal"
           data-bs-target="#create-performer"
         >
           Add New Performer
         </button>
         <button
-          class="btn btn-success"
+          class="btn btn-success rounded-pill"
           data-bs-toggle="modal"
           data-bs-target="#create-venue"
         >
           Add New Venue
         </button>
         <button
-          class="btn btn-primary ms-5 me-5"
+          class="btn btn-success rounded-pill ms-5 me-5"
           data-bs-toggle="modal"
           data-bs-target="#edit-account"
         >
           Edit Account
         </button>
-
-        <!-- <OffCanvas> </OffCanvas> -->
-        <OffCanvas>
-          <template #requests>
-            <div class="row">
-              <div class="col-8" v-for="o in offers" :key="o.id">
-                <div v-if="o.creatorId == account.id">
-                  <h4>{{ o.band.name }} is wanting to friend you</h4>
-                  <h4>
-                    {{ o.body }} || this persons budget is {{ o.band.price }}
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </template>
-        </OffCanvas>
       </div>
     </div>
+    <h1 class="text-center text-light custom-text p-3">My Preformers</h1>
     <div class="row justify-content-center p-0 mt-5">
       <div
         class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
         v-for="b in band"
         :key="b.id"
       >
-        <!-- <img :src="b.bannerImg" alt="" />
-        {{ b.name }} -->
-        <!-- <div class="col-12">
-            <h1 class="ms-2 p-1">{{ b.name }}</h1>
-            <h5 class="ms-4">{{ b.genre }}</h5>
-            <img
-              class="img-fluid rounded shadow mt-3"
-              :src="b.bannerImg"
-              alt=""
-            />
-          </div> -->
         <PerformerCard :band="b" />
       </div>
     </div>
+    <h1 class="text-center text-light custom-text p-3">My Venues</h1>
     <div class="row justify-content-center p-0 mt-5">
       <div
         class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
         v-for="v in venue"
         :key="v.id"
       >
-        <!-- <img :src="v.bannerImg" alt="" />
-        <h3>{{ v.location }}</h3> -->
-
-        <!-- <div class="col-12">
-            <h1 class="ms-2 p-1">{{ v.name }}</h1>
-            <h5 class="ms-4">{{ v.location }}</h5>
-            <img
-              class="img-fluid rounded shadow mt-3"
-              :src="v.bannerImg"
-              alt=""
-            />
-          </div> -->
         <VenueCard :venue="v" />
       </div>
     </div>
@@ -101,6 +70,19 @@
     <template #title> Edit Account </template>
     <template #body><EditAccount :accountData="account" /></template>
   </Modal>
+  <!-- <OffCanvas> </OffCanvas> -->
+  <OffCanvas>
+    <template #requests>
+      <div class="row">
+        <div class="col-8" v-for="o in offers" :key="o.id">
+          <div v-if="o.creatorId == account.id">
+            <h4>{{ o.band.name }} is wanting to friend you</h4>
+            <h4>{{ o.body }} || this persons budget is {{ o.band.price }}</h4>
+          </div>
+        </div>
+      </div>
+    </template>
+  </OffCanvas>
 </template>
 
 <script>
@@ -132,13 +114,18 @@ export default {
 
 <style scoped>
 img {
-  max-width: 100px;
+  height: 40vh;
+  width: 40vh;
+}
+.custom-text {
+  text-decoration: underline;
 }
 
 .cropped {
   border-radius: 50%;
-  height: 300px;
-  max-width: 300px;
+  height: 30vh;
+  max-width: 30vh;
+  border: 2px solid rgba(135, 190, 202, 1);
 }
 
 /* .bg-darkblue{
