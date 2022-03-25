@@ -1,11 +1,12 @@
 <template>
   <div class="container-fluid bg-gradient">
     <div class="row justify-content-start ms-5">
+      <div class="p-5"></div>
       <div class="col-6 mt-3">
         <div class="d-flex align-items-center">
           <img
             :src="account.picture"
-            class="img-fluid cropped"
+            class="img-fluid cropped border border-dark"
             alt="Profile Picture of the User"
           />
 

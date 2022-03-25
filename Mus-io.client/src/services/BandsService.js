@@ -29,6 +29,19 @@ class BandsService {
         const res = await api.put('api/bands/' + id, body)
     }
 
+    async getOffersBand(band) {
+        // logger.log("this is offersband", id)
+        const res = await api.get('api/bands/' + band + '/offers')
+        logger.log("getting offers for the band", res.data)
+        // AppState.offers = res.data
+    }
+
+    setActive(band) {
+        logger.log(band)
+        // const res = await api.get('api/bands/' + band.id + '/offers')
+        AppState.activeBand = band
+    }
+
 }
 
 

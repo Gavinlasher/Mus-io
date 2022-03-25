@@ -20,7 +20,7 @@
             :src="account.picture"
             alt="account photo"
             height="40"
-            class="login-img"
+            class="login-img border border-dark"
           />
           <span class="mx-3 text-success lighten-30">{{ account.name }}</span>
         </div>

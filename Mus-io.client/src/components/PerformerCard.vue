@@ -1,7 +1,7 @@
 <template>
   <div class="col-12 align-items-stretch">
-    <h1 class="ms-2 p-1">{{ band.name }}</h1>
-    <h5 class="ms-4">{{ band.genre }}</h5>
+    <h1 class="ms-2 text-start col-12 p-1">{{ band.name }}</h1>
+    <h5 class="ms-4 text-start col-12 mt-5">{{ band.genre }}</h5>
     <div class="d-flex align-items-stretch align-items-end">
       <img class="img-fluid rounded shadow mt-3" :src="band.bannerImg" alt="" />
     </div>
@@ -11,17 +11,29 @@
       data-bs-toggle="offcanvas"
       :data-bs-target="'#requests' + band.id"
       aria-controls="offcanvasExample"
+      @click="setActive"
     >
       See Offers
     </button>
+    <OffCanvas :id="'requests' + band.id">
+      <template #requests>
+        <div class="row">
+          <div class="col-8">
+            {{ offersBand.name }}
+          </div>
+        </div>
+      </template>
+    </OffCanvas>
   </div>
-  <OffCanvas :id="'requests' + band.id">
-    <template #requests>{{ band.name }}</template>
-  </OffCanvas>
 </template>
 
 <script>
-
+import { computed } from "@vue/reactivity"
+import { AppState } from "../AppState"
+import { watchEffect } from "@vue/runtime-core"
+import { bandsService } from "../services/BandsService"
+import { logger } from "../utils/Logger"
+import { useRoute } from "vue-router"
 export default {
   props: {
     band: {
@@ -29,9 +41,22 @@ export default {
       required: true
     }
   },
-  setup() {
-    return {
+  setup(props) {
+    const route = useRoute()
+    // watchEffect(async () => {
+    //   try {
+    //     await bandsService.getOffersBand(props.band.id)
+    //   } catch (error) {
+    //     logger.error(error)
+    //   }
 
+    // })
+    return {
+      // offerBand: computed(() => AppState.offers)
+      setActive() {
+        bandsService.setActive(props.band)
+      },
+      offersBand: computed(() => AppState.activeBand)
     }
   }
 }
@@ -50,8 +75,12 @@ export default {
 }
 img {
   width: 50vh;
-  height: 33vh;
+  height: 40vh;
   background-repeat: no-repeat;
   background-size: cover;
+}
+h1 {
+  text-overflow: hidden;
+  height: 8vh;
 }
 </style>

@@ -16,12 +16,16 @@
         aria-label="Close"
       ></button>
     </div>
-    <div class="offcanvas-body">
-      <div>
-        <slot name="requests"></slot>
-        <!-- <h2>This is bands</h2>
+    <div class="offcanvas-body text-dark">
+      <slot name="requests"></slot>
+      <!-- <div class="row">
+        <div class="col-11" v-for="offer in offersBand" :key="offer.id">
+          <h2>{{ offer.name }}</h2>
+        </div>
+      </div> -->
+      <!-- <h2>This is bands</h2>
         <slot name="bands"></slot> -->
-      </div>
+
       <!-- <div>
         <slot id="sent" name="body"></slot>
       </div>
@@ -51,10 +55,27 @@
 <script>
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState"
+import { onMounted, watchEffect } from "@vue/runtime-core"
+import { useRoute } from "vue-router"
+import { logger } from "../utils/Logger"
+import { bandsService } from "../services/BandsService"
 export default {
   setup() {
+    const route = useRoute()
+    watchEffect(async () => {
+      if (AppState.activeBand.id) {
+        try {
+          await bandsService.getOffersBand(AppState.activeBand.id)
+        } catch (error) {
+          logger.error(error)
+        }
+
+      }
+
+    })
     return {
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      // offersBand: computed(() => AppState.offers)
     }
   }
 }
