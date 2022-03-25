@@ -18,6 +18,7 @@
           fs-4
           hoverable
           bg-success
+          hoverable
         "
       >
         Performers

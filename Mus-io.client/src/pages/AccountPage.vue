@@ -15,21 +15,21 @@
 
       <div class="col-6 p-3">
         <button
-          class="btn btn-success rounded-pill me-5"
+          class="btn btn-success rounded-pill me-5 hoverable"
           data-bs-toggle="modal"
           data-bs-target="#create-performer"
         >
           Add New Performer
         </button>
         <button
-          class="btn btn-success rounded-pill"
+          class="btn btn-success rounded-pill hoverable"
           data-bs-toggle="modal"
           data-bs-target="#create-venue"
         >
           Add New Venue
         </button>
         <button
-          class="btn btn-success rounded-pill ms-5 me-5"
+          class="btn btn-success rounded-pill ms-5 me-5 hoverable"
           data-bs-toggle="modal"
           data-bs-target="#edit-account"
         >
@@ -126,6 +126,17 @@ img {
   height: 30vh;
   max-width: 30vh;
   border: 2px solid rgba(135, 190, 202, 1);
+}
+.hoverable:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.3);
+  transition: 50ms ease-in-out;
+  cursor: pointer;
+  user-select: none;
+}
+.hoverable:active {
+  transform: scale(0.98);
+  transition: 50ms ease-in-out;
 }
 
 /* .bg-darkblue{

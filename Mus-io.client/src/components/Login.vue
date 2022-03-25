@@ -20,7 +20,7 @@
             :src="account.picture"
             alt="account photo"
             height="40"
-            class="rounded"
+            class="login-img"
           />
           <span class="mx-3 text-success lighten-30">{{ account.name }}</span>
         </div>
@@ -80,5 +80,11 @@ export default {
 }
 .hoverable {
   cursor: pointer;
+}
+.login-img {
+  height: 7vh;
+  width: 7vh;
+  border: 1px solid white;
+  border-radius: 50%;
 }
 </style>
