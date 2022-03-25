@@ -17,6 +17,7 @@ class VenuesService {
     }
     async getVenueById(id) {
         const res = await api.get('api/venues/' + id)
+        logger.log(res.data)
         AppState.activeVenue = res.data
 
     }
