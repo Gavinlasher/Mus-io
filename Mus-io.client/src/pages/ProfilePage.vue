@@ -4,14 +4,14 @@
       <div class="p-5"></div>
 
       <div class="col-12 mt-3">
-        <div class="d-flex align-items-center">
+        <div class="">
           <img
             :src="profile.picture"
             class="img-fluid cropped border border-dark ms-5"
             alt="Profile Picture of the User"
           />
 
-          <h2 class="ms-3 text-light">{{ profile.name }}</h2>
+          <h2 class="ms-5 mt-3 text-light">{{ profile.name }}</h2>
         </div>
       </div>
 
@@ -49,9 +49,9 @@
       My Preformers
     </h1>
     <h1 class="text-center text-light custom-text p-3" v-else>Preformers</h1>
-    <div class="row justify-content-center p-0 mt-5">
+    <div class="row justify-content-center p-3 mt-5">
       <div
-        class="col-md-3 p-1 my-1 mx-1 bg-grey shadow rounded"
+        class="col-md-4 p-1 m-3 bg-grey shadow rounded"
         v-for="b in myBands"
         :key="b.id"
       >
@@ -67,16 +67,15 @@
       My Venues
     </h1>
     <h1 class="text-center text-light custom-text p-3" v-else>Venues</h1>
-    <div class="row justify-content-center p-0 mt-5">
+    <div class="row justify-content-center p-3 mt-5">
       <div
-        class="col-md-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
+        class="col-md-4 p-1 m-3 bg-grey shadow hoverable rounded"
         v-for="v in myVenues"
         :key="v.id"
       >
         <VenueCard :venue="v" />
       </div>
     </div>
-  </div>
   <Modal id="create-performer">
     <template #title> Create Performer </template>
     <template #body><CreatePerformer :bandData="band" /></template>
@@ -112,6 +111,7 @@
       </div> -->
   <!-- </template> -->
   <!-- </OffCanvas> -->
+  </div>
   <!-- <OffCanvas /> -->
 </template>
 
