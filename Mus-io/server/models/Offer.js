@@ -1,7 +1,8 @@
 import { Schema } from 'mongoose'
 
 export const OfferSchema = new Schema({
-  bandId: { type: Schema.Types.ObjectId, required: true, ref: 'Band' },
+  bandId: { type: Schema.Types.ObjectId, required: true, ref: 'Band', default: null },
+  venueId: { type: Schema.Types.ObjectId, required: true, ref: 'Venue', default: null },
   status: { type: String, enum: ['pending', 'accepted', 'declined', 'deleted'], required: true, default: 'pending' },
   body: { type: String, required: true },
   recipientId: { type: Schema.Types.ObjectId, required: true, },
@@ -21,4 +22,10 @@ OfferSchema.virtual('band', {
   foreignField: '_id',
   justOne: true,
   ref: 'Band'
+})
+OfferSchema.virtual('venue', {
+  localField: 'venueId',
+  foreignField: '_id',
+  justOne: true,
+  ref: 'Venue'
 })
