@@ -69,7 +69,7 @@
     <h1 class="text-center text-light custom-text p-3" v-else>Venues</h1>
     <div class="row justify-content-center p-0 mt-5">
       <div
-        class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
+        class="col-md-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
         v-for="v in myVenues"
         :key="v.id"
       >
