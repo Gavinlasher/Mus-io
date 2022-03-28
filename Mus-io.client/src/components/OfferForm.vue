@@ -12,15 +12,19 @@
     "
     @submit.prevent="sendOffer()"
   >
-    <div class="col-12">
-      <select v-model="editable.bandId">
+    <div
+      class="col-12 d-flex justify-content-start"
+      v-if="route.name == 'Venue'"
+    >
+      <label for="bands" class="">Bands:</label>
+      <select v-model="editable.bandId" class="ms-5">
         <option v-for="b in myBands" :key="b.id" :value="b.id">
           {{ b.name }}
         </option>
       </select>
     </div>
     <div class="col-12">
-      <label for="" class="form-label">Offer: </label>
+      <label for="" class="form-label mt-5">Offer: </label>
 
       <textarea
         v-model="editable.body"
@@ -48,9 +52,11 @@ import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { venuesService } from "../services/VenuesService"
 import { bandsService } from "../services/BandsService"
+import { useRoute } from "vue-router"
 export default {
   setup() {
     const editable = ref({})
+    const route = useRoute()
     watchEffect(async () => {
       try {
         await venuesService.getAll()
@@ -61,13 +67,22 @@ export default {
       }
     })
     return {
+      route,
       myBands: computed(() => AppState.bands.filter(b => b.creatorId == AppState.account.id)),
       creator: computed(() => AppState.activeBand.creator),
       editable,
       async sendOffer() {
-        editable.value.recipientId = AppState.activeVenue.creator.id
+        if (route.name == "Venue") {
+          logger.log(AppState.activeVenue.creatorId)
+          editable.value.recipientId = AppState.activeVenue.creatorId
+          await offersService.createOffer(editable.value)
+        }
 
-        await offersService.createOffer(editable.value)
+        if (await route.name == "Band") {
+          editable.value.recipientId = AppState.activeBand.creatorId
+          await offersService.createOffer(editable.value)
+        }
+
       }
     }
   }
