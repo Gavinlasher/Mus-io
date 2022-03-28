@@ -24,10 +24,10 @@ class OffersService {
         return offers
     }
 
-    // async getOffersByVenueId(id) {
-    //     const offers = await dbContext.Offers.find({ venueId: id }).populate('creator').populate('band').populate('venue')
-    //     return offers
-    // }
+    async getOffersByVenueId(id) {
+        const offers = await dbContext.Offers.find({ venueId: id }).populate('creator').populate('band').populate('venue')
+        return offers
+    }
 
     async editOffer(update) {
         const original = await dbContext.Offers.findById(update.id)

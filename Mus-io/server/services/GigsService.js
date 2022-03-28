@@ -9,14 +9,18 @@ class GigsService {
         const gig = await dbContext.Gigs.findById(id).populate('creator').populate('band').populate('venue')
         return gig
     }
-    async getGigByBandId(id) {
+    async getGigsByBandId(id) {
+        const gig = await dbContext.Gigs.find(id).populate('creator').populate('band').populate('venue')
+        return gig
+    }
+    async getGigsByVenueId(id) {
         const gig = await dbContext.Gigs.find(id).populate('creator').populate('band').populate('venue')
         return gig
     }
     async createGig(body) {
-        // if (body.startDate < new Date()) {
-        //     throw new Forbidden("You can't make a date in the past")
-        // }
+        if (body.startDate < new Date()) {
+            throw new Forbidden("You can't make a date in the past")
+        }
         const gig = await dbContext.Gigs.create(body)
         await gig.populate('creator')
         await gig.populate('band')
