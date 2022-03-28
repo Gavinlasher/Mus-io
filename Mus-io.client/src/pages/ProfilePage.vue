@@ -33,7 +33,7 @@
           Add New Venue
         </button>
         <button
-          class="btn btn-success rounded-pill  hoverable"
+          class="btn btn-success rounded-pill m-2 hoverable"
           data-bs-toggle="modal"
           data-bs-target="#edit-account"
           v-if="account.id == profile.id"
