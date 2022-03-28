@@ -15,8 +15,9 @@
           <h6 class="ms-5 mt-3 text-light mb-3"> <i class="mdi mdi-email"></i> {{ profile.email }}</h6>
         </div>
       </div>
-
+      
       <div class="col-12 p-3 d-flex justify-content-around mt-3">
+        
         <button
           class="btn btn-success rounded-pill m-2 hoverable"
           data-bs-toggle="modal"
@@ -41,10 +42,12 @@
         >
           Edit Account
         </button>
+        
       </div>
+      
     </div>
     <h1
-      class="text-center text-light custom-text p-3"
+      class="text-center text-light custom-text p-3 mt-5"
       v-if="account.id == profile.id"
     >
       My Preformers
