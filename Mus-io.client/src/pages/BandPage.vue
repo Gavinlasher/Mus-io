@@ -31,7 +31,7 @@
               </div>
               <div class="col-12 ps-4 pb-3">
                 <button
-                  class="btn btn-primary"
+                  class="btn btn-primary rounded-pill hoverable"
                   data-bs-toggle="modal"
                   data-bs-target="#create-offer"
                   v-if="myVenues"
@@ -42,7 +42,7 @@
               <!-- NOTE - V if account == creatorId -->
               <div class="col-12 ps-4 pb-3" v-if="band.creatorId == account.id">
                 <button
-                  class="btn btn-primary"
+                  class="btn btn-primary rounded-pill"
                   data-bs-toggle="modal"
                   data-bs-target="#edit-band"
                 >

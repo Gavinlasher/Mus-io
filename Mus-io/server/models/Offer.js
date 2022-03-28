@@ -11,8 +11,6 @@ export const OfferSchema = new Schema({
   { timestamps: true, toJSON: { virtuals: true } }
 )
 
-
-
 OfferSchema.virtual('creator', {
   localField: 'creatorId',
   foreignField: '_id',

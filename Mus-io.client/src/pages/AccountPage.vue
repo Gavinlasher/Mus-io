@@ -2,13 +2,6 @@
   <div class="container-fluid bg-gradient">
     <div class="row justify-content-start ms-5">
       <div class="p-5"></div>
-      <div
-        v-for="r in sentBand"
-        class="col-6 bg-primary text-light"
-        :key="r.id"
-      >
-        <h1>{{ r.creator.name }} hs {{ r.body }}</h1>
-      </div>
 
       <div class="col-6 mt-3">
         <div class="d-flex align-items-center">
