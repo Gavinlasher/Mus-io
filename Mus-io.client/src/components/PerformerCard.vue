@@ -1,20 +1,14 @@
 <template>
   <div class="col-12 align-items-stretch">
     <h1 class="ms-2 text-start col-12 p-1">{{ band.name }}</h1>
-    
+
     <div>
-      <img class="img-fluid rounded-bottom shadow mt-1" :src="band.bannerImg" alt="" />
+      <img
+        class="img-fluid rounded-bottom shadow mt-1"
+        :src="band.bannerImg"
+        alt=""
+      />
     </div>
-    <!-- <button
-      class="btn btn-primary"
-      type="button"
-      data-bs-toggle="offcanvas"
-      data-bs-target="#request"
-      aria-controls="offcanvasExample"
-      @click="setActive"
-    >
-      See Offers
-    </button> -->
   </div>
 </template>
 
@@ -44,16 +38,14 @@ export default {
     // })
     return {
       // offerBand: computed(() => AppState.offers)
-      setActive() {
-        bandsService.setActive(props.band)
-      },
+
     }
   }
 }
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
 .hoverable:hover {
   transform: scale(1.03);
   box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.3);
@@ -73,6 +65,6 @@ img {
 h1 {
   text-overflow: hidden;
   height: 8vh;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 </style>

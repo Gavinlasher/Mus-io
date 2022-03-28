@@ -10,5 +10,6 @@ export const AppState = reactive({
   offers: [],
   activeBand: {},
   activeVenue: {},
-  activeOffer: {}
+  activeOffer: {},
+  recievedOffers: []
 })

@@ -12,12 +12,13 @@
           />
 
           <h2 class="ms-5 mt-3 text-light">{{ profile.name }}</h2>
-          <h6 class="ms-5 mt-3 text-light mb-3"> <i class="mdi mdi-email"></i> {{ profile.email }}</h6>
+          <h6 class="ms-5 mt-3 text-light mb-3">
+            <i class="mdi mdi-email"></i> {{ profile.email }}
+          </h6>
         </div>
       </div>
-      
+
       <div class="col-12 p-3 d-flex justify-content-around mt-3">
-        
         <button
           class="btn btn-success rounded-pill m-2 hoverable"
           data-bs-toggle="modal"
@@ -42,9 +43,17 @@
         >
           Edit Account
         </button>
-        
+        <button
+          class="btn btn-success rounded-pill ms-5 me-5 hoverable"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#request"
+          aria-controls="offcanvasExample"
+          @click="setActive"
+        >
+          See Offers
+        </button>
       </div>
-      
     </div>
     <h1
       class="text-center text-light custom-text p-3 mt-5"
@@ -80,32 +89,37 @@
         <VenueCard :venue="v" />
       </div>
     </div>
-  <Modal id="create-performer">
-    <template #title> Create Performer </template>
-    <template #body><CreatePerformer :bandData="band" /></template>
-  </Modal>
-  <Modal id="create-venue">
-    <template #title> Create Venue </template>
-    <template #body><CreateVenue :venueData="venue" /></template>
-  </Modal>
-  <Modal id="edit-account">
-    <template #title> Edit Account </template>
-    <template #body><EditAccount :accountData="account" /></template>
-  </Modal>
-  <OffCanvas id="request">
-    <template #requests>
-      <div class="row">
-        <div class="col-8">
-          {{ offersBand.name }}
+    <Modal id="create-performer">
+      <template #title> Create Performer </template>
+      <template #body><CreatePerformer :bandData="band" /></template>
+    </Modal>
+    <Modal id="create-venue">
+      <template #title> Create Venue </template>
+      <template #body><CreateVenue :venueData="venue" /></template>
+    </Modal>
+    <Modal id="edit-account">
+      <template #title> Edit Account </template>
+      <template #body><EditAccount :accountData="account" /></template>
+    </Modal>
+    <OffCanvas id="request">
+      <template #requests>
+        <div class="row">
+          <h2>My Sent offers</h2>
+          <div class="col-8" v-for="offer in offers" :key="offer.id">
+            <p>{{ offer.body }} ||| {{ offer.band.name }}</p>
+          </div>
+          <h3>This is recieved offers</h3>
+          <div class="col-8" v-for="r in rOffers" :key="r.id">
+            <h5>{{ r.bio }} | {{ r.band.name }}</h5>
+          </div>
         </div>
-      </div>
-    </template>
-  </OffCanvas>
+      </template>
+    </OffCanvas>
 
-  <!-- <OffCanvas> </OffCanvas> -->
-  <!-- <OffCanvas> -->
-  <!-- <template #requests> -->
-  <!-- <div class="row">
+    <!-- <OffCanvas> </OffCanvas> -->
+    <!-- <OffCanvas> -->
+    <!-- <template #requests> -->
+    <!-- <div class="row">
         <div class="col-8" v-for="o in offers" :key="o.id">
           <div v-if="o.creatorId == account.id">
             <h4>{{ o.band.name }} is wanting to friend you</h4>
@@ -113,8 +127,8 @@
           </div>
         </div>
       </div> -->
-  <!-- </template> -->
-  <!-- </OffCanvas> -->
+    <!-- </template> -->
+    <!-- </OffCanvas> -->
   </div>
   <!-- <OffCanvas /> -->
 </template>
@@ -132,6 +146,13 @@ export default {
   name: 'Account',
   setup() {
     const route = useRoute()
+    // onMounted(async () => {
+    //   try {
+
+    //   } catch (error) {
+    //     logger.log(error)
+    //   }
+    // })
     watchEffect(async () => {
       try {
         await bandsService.getAll()
@@ -161,7 +182,19 @@ export default {
       myVenues: computed(() => AppState.venues.filter(v => v.creatorId == AppState.profile.id)),
       offers: computed(() => AppState.offers),
       offersBand: computed(() => AppState.activeBand),
-      sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id))
+      sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
+      // recievedOffers: computed(() => AppState.recievedOffers)
+      rOffers: computed(async () => {
+        let offerBands = AppState.bands.filter(b => b.creatorId == AppState.profile.id)
+        for (let i = 0; i < offerBands.length; i++) {
+          await bandsService.getOffersBand(offerBands[i].id)
+          logger.log('our offer iteration')
+        }
+        return AppState.recievedOffers
+      })
+      // setActive() {
+      //   bandsService.setActive()
+      // },
     }
   }
 }
@@ -197,8 +230,7 @@ img {
 /* .bg-darkblue{
   background-color: 
 } */
-h2{
+h2 {
   font-weight: bold;
 }
-
 </style>

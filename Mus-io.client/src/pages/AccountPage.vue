@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <div class="col-6 p-3">
+      <div class="col-10 p-3">
         <button
           class="btn btn-success rounded-pill me-5 hoverable"
           data-bs-toggle="modal"
@@ -74,29 +74,20 @@
     <template #title> Edit Account </template>
     <template #body><EditAccount :accountData="account" /></template>
   </Modal>
-  <OffCanvas id="request">
-    <template #requests>
-      <div class="row">
-        <div class="col-8">
-          {{ offersBand.name }}
-        </div>
-      </div>
-    </template>
-  </OffCanvas>
 
   <!-- <OffCanvas> </OffCanvas> -->
-  <!-- <OffCanvas> -->
-  <!-- <template #requests> -->
-  <!-- <div class="row">
+  <!-- <OffCanvas>
+    <template #requests>
+      <div class="row">
         <div class="col-8" v-for="o in offers" :key="o.id">
           <div v-if="o.creatorId == account.id">
             <h4>{{ o.band.name }} is wanting to friend you</h4>
             <h4>{{ o.body }} || this persons budget is {{ o.band.price }}</h4>
           </div>
         </div>
-      </div> -->
-  <!-- </template> -->
-  <!-- </OffCanvas> -->
+      </div>
+    </template>
+  </OffCanvas> -->
   <!-- <OffCanvas /> -->
 </template>
 
@@ -125,7 +116,8 @@ export default {
       venue: computed(() => AppState.venues),
       offers: computed(() => AppState.offers),
       offersBand: computed(() => AppState.activeBand),
-      sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id))
+      sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
+
     }
   }
 }
