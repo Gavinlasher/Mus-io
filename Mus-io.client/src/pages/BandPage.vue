@@ -8,6 +8,15 @@
           class="img-fluid img-banner"
         />
       </div>
+      <div class="col-md-12 text-light">
+        <img
+          class="img-fluid pp"
+          :src="band.creator.picture"
+          alt=""
+          srcset=""
+        />
+        {{ band.creator.name }}
+      </div>
       <div class="col-12 ps-4 pb-3">
         <h1 class="text-light title">{{ band.name }}</h1>
       </div>
@@ -201,6 +210,12 @@ export default {
 }
 .title {
   font-size: 40pt;
+}
+.pp {
+  height: 20vh;
+  width: 20vh;
+  border: 1px solid whitesmoke;
+  border-radius: 50%;
 }
 </style>
 7
