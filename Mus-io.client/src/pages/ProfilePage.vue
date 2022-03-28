@@ -4,18 +4,20 @@
       <div class="p-5"></div>
 
       <div class="col-12 mt-3">
-        <div class="d-flex align-items-center">
+        <div class="border-bottom">
           <img
             :src="profile.picture"
             class="img-fluid cropped border border-dark ms-5"
             alt="Profile Picture of the User"
           />
 
-          <h2 class="ms-3 text-light">{{ profile.name }}</h2>
+          <h2 class="ms-5 mt-3 text-light">{{ profile.name }}</h2>
+          <h6 class="ms-5 mt-3 text-light mb-3"> <i class="mdi mdi-email"></i> {{ profile.email }}</h6>
         </div>
       </div>
-
+      
       <div class="col-12 p-3 d-flex justify-content-around mt-3">
+        
         <button
           class="btn btn-success rounded-pill m-2 hoverable"
           data-bs-toggle="modal"
@@ -33,25 +35,27 @@
           Add New Venue
         </button>
         <button
-          class="btn btn-success rounded-pill  hoverable"
+          class="btn btn-success rounded-pill m-2 hoverable"
           data-bs-toggle="modal"
           data-bs-target="#edit-account"
           v-if="account.id == profile.id"
         >
           Edit Account
         </button>
+        
       </div>
+      
     </div>
     <h1
-      class="text-center text-light custom-text p-3"
+      class="text-center text-light custom-text p-3 mt-5"
       v-if="account.id == profile.id"
     >
       My Preformers
     </h1>
     <h1 class="text-center text-light custom-text p-3" v-else>Preformers</h1>
-    <div class="row justify-content-center p-0 mt-5">
+    <div class="row justify-content-center p-3 mt-5">
       <div
-        class="col-md-3 p-1 my-1 mx-1 bg-grey shadow rounded"
+        class="col-md-4 p-0 m-3 bg-grey shadow rounded hoverable"
         v-for="b in myBands"
         :key="b.id"
       >
@@ -67,16 +71,15 @@
       My Venues
     </h1>
     <h1 class="text-center text-light custom-text p-3" v-else>Venues</h1>
-    <div class="row justify-content-center p-0 mt-5">
+    <div class="row justify-content-center p-3 mt-5">
       <div
-        class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
+        class="col-md-4 p-0 m-3 bg-grey shadow hoverable rounded"
         v-for="v in myVenues"
         :key="v.id"
       >
         <VenueCard :venue="v" />
       </div>
     </div>
-  </div>
   <Modal id="create-performer">
     <template #title> Create Performer </template>
     <template #body><CreatePerformer :bandData="band" /></template>
@@ -112,6 +115,7 @@
       </div> -->
   <!-- </template> -->
   <!-- </OffCanvas> -->
+  </div>
   <!-- <OffCanvas /> -->
 </template>
 
@@ -193,4 +197,8 @@ img {
 /* .bg-darkblue{
   background-color: 
 } */
+h2{
+  font-weight: bold;
+}
+
 </style>
