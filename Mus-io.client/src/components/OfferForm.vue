@@ -12,14 +12,6 @@
     "
     @submit.prevent="sendOffer()"
   >
-    <div class="col-12 mb-3">
-      <label for="">Choose Venue:</label>
-      <select name="" id="" v-model="editable.venueId">
-        <option :value="v.id" v-for="v in myVenues" :key="v.id">
-          {{ v.name }}
-        </option>
-      </select>
-    </div>
     <div class="col-12">
       <label for="" class="form-label">Offer: </label>
 
@@ -61,8 +53,10 @@ export default {
     })
     return {
       myVenues: computed(() => AppState.venues.filter(v => v.creatorId == AppState.account.id)),
+      creator: computed(() => AppState.activeBand.creator),
       editable,
       async sendOffer() {
+        editable.value.recipientId = AppState.activeBand.creator.id
         editable.value.bandId = AppState.activeBand.id
         await offersService.createOffer(editable.value)
       }
