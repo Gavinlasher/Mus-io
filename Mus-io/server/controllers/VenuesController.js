@@ -9,7 +9,7 @@ export class VenuesController extends BaseController {
     this.router
       .get('', this.getAllVenues)
       .get('/:id', this.getById)
-      .get('/:id/offers', this.getOffersByVenueId)
+      // .get('/:id/offers', this.getOffersByVenueId)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createVenue)
       .delete('/:id', this.deleteVenue)
@@ -35,14 +35,14 @@ export class VenuesController extends BaseController {
     }
   }
 
-  async getOffersByVenueId(req, res, next) {
-    try {
-      const offers = await offersService.getOffersByVenueId(req.params.id)
-      res.send(offers)
-    } catch (error) {
-      next(error)
-    }
-  }
+  // async getOffersByVenueId(req, res, next) {
+  //   try {
+  //     const offers = await offersService.getOffersByVenueId(req.params.id)
+  //     res.send(offers)
+  //   } catch (error) {
+  //     next(error)
+  //   }
+  // }
 
   async getById(req, res, next) {
     try {

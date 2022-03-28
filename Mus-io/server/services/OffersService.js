@@ -8,12 +8,11 @@ class OffersService {
         const offer = await dbContext.Offers.create(body)
         await offer.populate('creator')
         await offer.populate('band')
-        await offer.populate('venue')
         return offer
     }
 
     async getOfferById(id) {
-        const offer = await dbContext.Offers.findById(id).populate('creator').populate('band').populate('venue')
+        const offer = await dbContext.Offers.findById(id).populate('creator').populate('band')
         if (!offer) {
             throw new NotFound("There is no offer with this id")
         }
@@ -21,14 +20,14 @@ class OffersService {
     }
 
     async getOffersByBandId(id) {
-        const offers = await dbContext.Offers.find({ bandId: id }).populate('creator').populate('band').populate('venue')
+        const offers = await dbContext.Offers.find({ bandId: id }).populate('creator').populate('band')
         return offers
     }
 
-    async getOffersByVenueId(id) {
-        const offers = await dbContext.Offers.find({ venueId: id }).populate('creator').populate('band').populate('venue')
-        return offers
-    }
+    // async getOffersByVenueId(id) {
+    //     const offers = await dbContext.Offers.find({ venueId: id }).populate('creator').populate('band').populate('venue')
+    //     return offers
+    // }
 
     async editOffer(update) {
         const original = await dbContext.Offers.findById(update.id)

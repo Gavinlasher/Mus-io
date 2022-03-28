@@ -1,5 +1,6 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { accountService } from '../services/AccountService'
+import { gigsService } from '../services/GigsService'
 import { offersService } from '../services/OffersService'
 import BaseController from '../utils/BaseController'
 
@@ -9,6 +10,7 @@ export class AccountController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
+      .get('/gigs', this.getMyGigs)
       .get('/offers', this.getAll)
       .put('', this.editUserAccount)
   }
@@ -36,6 +38,14 @@ export class AccountController extends BaseController {
     try {
       const offers = await offersService.getAllMyOffers({ creatorId: req.userInfo.id })
       res.send(offers)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async getMyGigs(req, res, next) {
+    try {
+      const gigs = await gigsService.getMyGigs({ creatorId: req.userInfo.id })
+      res.send(gigs)
     } catch (error) {
       next(error)
     }

@@ -1,5 +1,6 @@
 import { Auth0Provider } from "@bcwdev/auth0provider"
 import { bandsService } from "../services/BandsService"
+import { gigsService } from "../services/GigsService"
 import { offersService } from "../services/OffersService"
 import BaseController from "../utils/BaseController"
 
@@ -13,6 +14,7 @@ export class BandsController extends BaseController {
             .get('', this.getAllBands)
             .get('/:id', this.getBandById)
             .get('/:id/offers', this.getOffersByBandId)
+            .get('/:id/gigs', this.getGigByBandId)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createBand)
             .put('/:id', this.editBand)
@@ -41,6 +43,15 @@ export class BandsController extends BaseController {
         try {
             const band = await bandsService.getBandById(req.params.id)
             res.send(band)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    async getGigByBandId(req, res, next) {
+        try {
+            const gig = await gigsService.getGigByBandId({ bandId: req.params.id })
+            return res.send(gig)
         } catch (error) {
             next(error)
         }

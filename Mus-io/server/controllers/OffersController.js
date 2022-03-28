@@ -1,5 +1,4 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
-import { dbContext } from "../db/DbContext";
 import { offersService } from "../services/OffersService";
 import BaseController from "../utils/BaseController";
 
@@ -8,8 +7,8 @@ export class OffersController extends BaseController {
     constructor() {
         super('api/offers')
         this.router
-            .get('/:id', this.getOfferById)
             .use(Auth0Provider.getAuthorizedUserInfo)
+            .get('/:id', this.getOfferById)
             .post('', this.createOffer)
             .put('/:id', this.editOffer)
             .delete('/:id', this.deleteOffer)
