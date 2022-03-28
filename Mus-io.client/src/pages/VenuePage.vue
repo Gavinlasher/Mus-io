@@ -21,7 +21,13 @@
                 {{ venue.location }}
               </div>
               <div class="col-12 ps-4 pb-3">
-                <button class="btn btn-primary rounded-pill">Send Offer</button>
+                <button
+                  class="btn btn-primary rounded-pill"
+                  data-bs-toggle="modal"
+                  data-bs-target="#create-offer"
+                >
+                  Send Offer
+                </button>
               </div>
               <div class="col-12 ps-4 pb-3">
                 <button
@@ -48,6 +54,10 @@
   <Modal id="edit-venue">
     <template #title> Edit Venue</template>
     <template #body><VenueForm /></template>
+  </Modal>
+  <Modal id="create-offer">
+    <template #title> Create Offer</template>
+    <template #body><OfferForm /> </template>
   </Modal>
 </template>
 

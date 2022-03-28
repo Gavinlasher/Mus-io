@@ -13,6 +13,13 @@
     @submit.prevent="sendOffer()"
   >
     <div class="col-12">
+      <select v-model="editable.bandId">
+        <option v-for="b in myBands" :key="b.id" :value="b.id">
+          {{ b.name }}
+        </option>
+      </select>
+    </div>
+    <div class="col-12">
       <label for="" class="form-label">Offer: </label>
 
       <textarea
@@ -40,24 +47,26 @@ import { watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { venuesService } from "../services/VenuesService"
+import { bandsService } from "../services/BandsService"
 export default {
   setup() {
     const editable = ref({})
     watchEffect(async () => {
       try {
         await venuesService.getAll()
+        await bandsService.getAll()
       } catch (error) {
         logger.log(error)
         Pop.toast(error.message, "error")
       }
     })
     return {
-      myVenues: computed(() => AppState.venues.filter(v => v.creatorId == AppState.account.id)),
+      myBands: computed(() => AppState.bands.filter(b => b.creatorId == AppState.account.id)),
       creator: computed(() => AppState.activeBand.creator),
       editable,
       async sendOffer() {
-        editable.value.recipientId = AppState.activeBand.creator.id
-        editable.value.bandId = AppState.activeBand.id
+        editable.value.recipientId = AppState.activeVenue.creator.id
+
         await offersService.createOffer(editable.value)
       }
     }
