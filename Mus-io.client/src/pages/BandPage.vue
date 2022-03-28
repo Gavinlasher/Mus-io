@@ -8,14 +8,16 @@
           class="img-fluid img-banner"
         />
       </div>
-      <div class="col-md-12 text-light" @click="goTo(band.creator.id)">
+      <div class="col-md-3 text-light mb-5" @click="goTo(band.creator.id)">
         <img
           class="img-fluid pp"
           :src="band.creator.picture"
           alt=""
           srcset=""
         />
-        <h5>
+      </div>
+      <div class="col-md-3 align-items-center">
+        <h5 class="text-light">
           {{ band.creator.name }}
         </h5>
       </div>
