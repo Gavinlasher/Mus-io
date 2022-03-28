@@ -35,6 +35,7 @@ class BandsService {
         logger.log("getting offers for the band", res.data)
         // AppState.offers = res.data
         AppState.recievedOffers = [...AppState.recievedOffers, res.data]
+        // AppState.recievedOffers.push(res.data)
     }
 
     // setActive(band) {

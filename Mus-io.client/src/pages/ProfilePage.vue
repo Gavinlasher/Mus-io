@@ -153,6 +153,13 @@ export default {
     //     logger.log(error)
     //   }
     // })
+    onMounted(async () => {
+      try {
+        await bandsService.getBandById()
+      } catch (error) {
+        logger.error(error)
+      }
+    })
     watchEffect(async () => {
       try {
         await bandsService.getAll()
@@ -184,14 +191,17 @@ export default {
       offersBand: computed(() => AppState.activeBand),
       sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
       // recievedOffers: computed(() => AppState.recievedOffers)
-      rOffers: computed(async () => {
-        let offerBands = AppState.bands.filter(b => b.creatorId == AppState.profile.id)
-        for (let i = 0; i < offerBands.length; i++) {
-          await bandsService.getOffersBand(offerBands[i].id)
-          logger.log('our offer iteration')
-        }
-        return AppState.recievedOffers
-      })
+      rOffers: computed(async () => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
+      // console.log('papapapapapap', offerBands)
+      // for (let i = 0; i < offerBands.length; i++) {
+      //   await bandsService.getOffersBand(offerBands[i].id)
+      //   // let myOffers = offerBands[i].id
+      //   logger.log('our offer iteration')
+      // }
+      // console.log("this is r o", AppState.recievedOffers)
+      // return myOffers
+      // return AppState.recievedOffers
+
       // setActive() {
       //   bandsService.setActive()
       // },
