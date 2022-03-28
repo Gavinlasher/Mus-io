@@ -17,7 +17,7 @@
 
       <div class="col-12 p-3 d-flex justify-content-around mt-3">
         <button
-          class="btn btn-success rounded-pill me-5 hoverable"
+          class="btn btn-success rounded-pill m-2 hoverable"
           data-bs-toggle="modal"
           data-bs-target="#create-performer"
           v-if="account.id == profile.id"
@@ -25,7 +25,7 @@
           Add New Performer
         </button>
         <button
-          class="btn btn-success rounded-pill hoverable"
+          class="btn btn-success rounded-pill m-2 hoverable"
           data-bs-toggle="modal"
           data-bs-target="#create-venue"
           v-if="account.id == profile.id"
@@ -33,7 +33,7 @@
           Add New Venue
         </button>
         <button
-          class="btn btn-success rounded-pill ms-5 me-5 hoverable"
+          class="btn btn-success rounded-pill  hoverable"
           data-bs-toggle="modal"
           data-bs-target="#edit-account"
           v-if="account.id == profile.id"
@@ -51,7 +51,7 @@
     <h1 class="text-center text-light custom-text p-3" v-else>Preformers</h1>
     <div class="row justify-content-center p-0 mt-5">
       <div
-        class="col-3 p-1 my-1 mx-1 bg-grey shadow rounded"
+        class="col-md-3 p-1 my-1 mx-1 bg-grey shadow rounded"
         v-for="b in myBands"
         :key="b.id"
       >
