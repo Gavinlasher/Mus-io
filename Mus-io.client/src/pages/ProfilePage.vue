@@ -4,7 +4,7 @@
       <div class="p-5"></div>
 
       <div class="col-12 mt-3">
-        <div class="">
+        <div class="border-bottom">
           <img
             :src="profile.picture"
             class="img-fluid cropped border border-dark ms-5"
@@ -12,6 +12,7 @@
           />
 
           <h2 class="ms-5 mt-3 text-light">{{ profile.name }}</h2>
+          <h6 class="ms-5 mt-3 text-light mb-3"> <i class="mdi mdi-email"></i> {{ profile.email }}</h6>
         </div>
       </div>
 
@@ -193,4 +194,8 @@ img {
 /* .bg-darkblue{
   background-color: 
 } */
+h2{
+  font-weight: bold;
+}
+
 </style>
