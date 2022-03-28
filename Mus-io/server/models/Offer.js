@@ -1,8 +1,8 @@
 import { Schema } from 'mongoose'
 
 export const OfferSchema = new Schema({
-  bandId: { type: Schema.Types.ObjectId, required: true, ref: 'Band', default: null },
-  venueId: { type: Schema.Types.ObjectId, required: true, ref: 'Venue', default: null },
+  bandId: { type: Schema.Types.ObjectId, ref: 'Band', default: null },
+  venueId: { type: Schema.Types.ObjectId, ref: 'Venue', default: null },
   status: { type: String, enum: ['pending', 'accepted', 'declined', 'deleted'], required: true, default: 'pending' },
   body: { type: String, required: true },
   recipientId: { type: Schema.Types.ObjectId, required: true, },
