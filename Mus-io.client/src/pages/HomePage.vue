@@ -1,6 +1,7 @@
 <template>
-  <div class="container-fluid bg-gradient p-3">
+  <div class="container-fluid bg-gradient">
     <div class="row justify-content-center p-1">
+      <div class="p-5"></div>
       <input
         placeholder="Search......."
         class="bg-primary border-primary rounded-pill p-1 col-10"
@@ -18,6 +19,7 @@
           fs-4
           hoverable
           bg-success
+          hoverable
         "
       >
         Performers
@@ -38,9 +40,9 @@
         Venues
       </div>
     </div>
-    <div class="row justify-content-center p-0 mt-5">
+    <div class="row justify-content-center p-3  mt-5">
       <div
-        class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
+        class="col-md-3  bg-grey p-0 m-3 shadow hoverable rounded"
         @click="goTo(b.id)"
         v-for="b in bands"
         :key="b.id"
@@ -48,7 +50,7 @@
         <PerformerCard :band="b" />
       </div>
       <div
-        class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
+        class="col-md-3 p-0 m-3 bg-grey shadow hoverable rounded"
         @click="goTo2(v.id)"
         v-for="v in venues"
         :key="v.id"

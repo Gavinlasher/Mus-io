@@ -8,6 +8,19 @@
           class="img-fluid img-banner"
         />
       </div>
+      <div class="col-md-3 text-light mb-5" @click="goTo(band.creator.id)">
+        <img
+          class="img-fluid pp"
+          :src="band.creator.picture"
+          alt=""
+          srcset=""
+        />
+      </div>
+      <div class="col-md-3 align-items-center">
+        <h5 class="text-light">
+          {{ band.creator.name }}
+        </h5>
+      </div>
       <div class="col-12 ps-4 pb-3">
         <h1 class="text-light title">{{ band.name }}</h1>
       </div>
@@ -31,7 +44,7 @@
               </div>
               <div class="col-12 ps-4 pb-3">
                 <button
-                  class="btn btn-primary"
+                  class="btn btn-primary rounded-pill hoverable"
                   data-bs-toggle="modal"
                   data-bs-target="#create-offer"
                   v-if="myVenues"
@@ -42,7 +55,7 @@
               <!-- NOTE - V if account == creatorId -->
               <div class="col-12 ps-4 pb-3" v-if="band.creatorId == account.id">
                 <button
-                  class="btn btn-primary"
+                  class="btn btn-primary rounded-pill"
                   data-bs-toggle="modal"
                   data-bs-target="#edit-band"
                 >
@@ -149,14 +162,28 @@
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState"
 import Modal from "../components/Modal.vue"
-import { watchEffect } from "@vue/runtime-core"
+import { onMounted, watchEffect } from "@vue/runtime-core"
 import { bandsService } from "../services/BandsService"
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
 import { venuesService } from "../services/VenuesService"
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
+import { profilesService } from '../services/ProfilesService'
+
+
+
+
 export default {
-  components: { Modal },
+  name: 'app',
+
   setup() {
+
+
+
+
+
     const route = useRoute()
+    const router = useRouter()
     watchEffect(async () => {
       if (route.name == "Band") {
         await venuesService.getAll()
@@ -166,11 +193,25 @@ export default {
     return {
       account: computed(() => AppState.account),
       band: computed(() => AppState.activeBand),
-      myVenues: computed(() => AppState.venues.find(v => v.creatorId == AppState.account.id))
+      myVenues: computed(() => AppState.venues.find(v => v.creatorId == AppState.account.id)),
+      async goTo(id) {
+        try {
+          await profilesService.getProfile(id)
+          router.push({
+            name: 'Profile',
+            params: { id: AppState.profile.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      }
     }
   }
 }
 </script>
+
+
 
 
 <style lang="scss" scoped>
@@ -181,6 +222,12 @@ export default {
 }
 .title {
   font-size: 40pt;
+}
+.pp {
+  height: 20vh;
+  width: 20vh;
+  border: 1px solid whitesmoke;
+  border-radius: 50%;
 }
 </style>
 7

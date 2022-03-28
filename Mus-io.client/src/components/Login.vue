@@ -20,7 +20,7 @@
             :src="account.picture"
             alt="account photo"
             height="40"
-            class="rounded"
+            class="login-img border border-dark"
           />
           <span class="mx-3 text-success lighten-30">{{ account.name }}</span>
         </div>
@@ -29,9 +29,9 @@
         class="dropdown-menu p-0 list-group w-100"
         aria-labelledby="authDropdown"
       >
-        <router-link :to="{ name: 'Account' }">
+        <router-link :to="{ name: 'Profile', params:{id: account.id} }">
           <div class="list-group-item list-group-item-action hoverable">
-            Manage Account
+            My Profile
           </div>
         </router-link>
         <div
@@ -80,5 +80,11 @@ export default {
 }
 .hoverable {
   cursor: pointer;
+}
+.login-img {
+  height: 7vh;
+  width: 7vh;
+  border: 1px solid white;
+  border-radius: 50%;
 }
 </style>

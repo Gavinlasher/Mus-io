@@ -10,8 +10,6 @@ export const OfferSchema = new Schema({
   { timestamps: true, toJSON: { virtuals: true } }
 )
 
-
-
 OfferSchema.virtual('creator', {
   localField: 'creatorId',
   foreignField: '_id',
@@ -23,4 +21,14 @@ OfferSchema.virtual('band', {
   foreignField: '_id',
   justOne: true,
   ref: 'Band'
+<<<<<<< HEAD
 })
+=======
+})
+OfferSchema.virtual('venue', {
+  localField: 'venueId',
+  foreignField: '_id',
+  justOne: true,
+  ref: 'Venue'
+})
+>>>>>>> 1015f8a51a2181e014c13417f881276fc4c77eb5
