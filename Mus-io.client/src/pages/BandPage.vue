@@ -8,14 +8,16 @@
           class="img-fluid img-banner"
         />
       </div>
-      <div class="col-md-12 text-light">
+      <div class="col-md-12 text-light" @click="goTo(band.creator.id)">
         <img
           class="img-fluid pp"
           :src="band.creator.picture"
           alt=""
           srcset=""
         />
-        {{ band.creator.name }}
+        <h5>
+          {{ band.creator.name }}
+        </h5>
       </div>
       <div class="col-12 ps-4 pb-3">
         <h1 class="text-light title">{{ band.name }}</h1>
@@ -160,23 +162,18 @@ import { AppState } from "../AppState"
 import Modal from "../components/Modal.vue"
 import { onMounted, watchEffect } from "@vue/runtime-core"
 import { bandsService } from "../services/BandsService"
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
 import { venuesService } from "../services/VenuesService"
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
+import { profilesService } from '../services/ProfilesService'
 
 
 
 
 export default {
   name: 'app',
-  data() {
-    return {
-      editorData: '<p>Content of the editor.</p>',
-      editorConfig: {
-        // The configuration of the editor.
-      }
-    };
-  },
-  components: { Modal },
+
   setup() {
 
 
@@ -184,6 +181,7 @@ export default {
 
 
     const route = useRoute()
+    const router = useRouter()
     watchEffect(async () => {
       if (route.name == "Band") {
         await venuesService.getAll()
@@ -193,7 +191,19 @@ export default {
     return {
       account: computed(() => AppState.account),
       band: computed(() => AppState.activeBand),
-      myVenues: computed(() => AppState.venues.find(v => v.creatorId == AppState.account.id))
+      myVenues: computed(() => AppState.venues.find(v => v.creatorId == AppState.account.id)),
+      async goTo(id) {
+        try {
+          await profilesService.getProfile(id)
+          router.push({
+            name: 'Profile',
+            params: { id: AppState.profile.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      }
     }
   }
 }

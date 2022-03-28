@@ -2,17 +2,16 @@
   <div class="container-fluid bg-gradient">
     <div class="row justify-content-start">
       <div class="p-5"></div>
-   
 
       <div class="col-12 mt-3">
         <div class="d-flex align-items-center">
           <img
-            :src="account.picture"
+            :src="profile.picture"
             class="img-fluid cropped border border-dark ms-5"
             alt="Profile Picture of the User"
           />
 
-          <h2 class="ms-3 text-light">{{ account.name }}</h2>
+          <h2 class="ms-3 text-light">{{ profile.name }}</h2>
         </div>
       </div>
 
@@ -43,8 +42,13 @@
         </button>
       </div>
     </div>
-    <h1 class="text-center text-light custom-text p-3" v-if="account.id == profile.id">My Preformers</h1>
-     <h1 class="text-center text-light custom-text p-3" v-else>Preformers</h1>
+    <h1
+      class="text-center text-light custom-text p-3"
+      v-if="account.id == profile.id"
+    >
+      My Preformers
+    </h1>
+    <h1 class="text-center text-light custom-text p-3" v-else>Preformers</h1>
     <div class="row justify-content-center p-0 mt-5">
       <div
         class="col-3 p-1 my-1 mx-1 bg-grey shadow rounded"
@@ -56,8 +60,13 @@
         <!-- <OffCanvas /> -->
       </div>
     </div>
-    <h1 class="text-center text-light custom-text p-3" v-if="account.id == profile.id">My Venues</h1>
-      <h1 class="text-center text-light custom-text p-3" v-else>Venues</h1>
+    <h1
+      class="text-center text-light custom-text p-3"
+      v-if="account.id == profile.id"
+    >
+      My Venues
+    </h1>
+    <h1 class="text-center text-light custom-text p-3" v-else>Venues</h1>
     <div class="row justify-content-center p-0 mt-5">
       <div
         class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
@@ -128,13 +137,13 @@ export default {
         logger.error(error)
       }
     })
-        watchEffect(async () => {
+    watchEffect(async () => {
       try {
         if (route.name == "Profile") {
           AppState.profile = {}
-          
+
           await profilesService.getProfile(route.params.id)
-          
+
         }
       } catch (error) {
         logger.error(error)
