@@ -4,8 +4,9 @@ import { api } from "./AxiosService"
 
 class BandsService {
     async getAll(query = "") {
-        const res = await api.get('api/bands/' + query)
-        logger.log(res.data)
+        logger.log(query)
+        const res = await api.get('api/bands' + query)
+        logger.log("Bands are...", res.data)
         AppState.bands = res.data
 
     }
