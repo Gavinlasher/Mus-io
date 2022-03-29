@@ -29,8 +29,9 @@ class OffersService {
         const res = await api.delete('api/offers/' + id)
         AppState.offers = AppState.offers.filter(o => o.id !== id)
     }
-    async editOffer(body, id) {
-        const res = await api.put('api/offers/' + id, body)
+    async editOffer(body) {
+        const res = await api.put('api/offers/' + body.id, body)
+        logger.log('edit offer', res.data)
     }
 }
 
