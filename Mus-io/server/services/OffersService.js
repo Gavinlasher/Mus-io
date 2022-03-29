@@ -25,8 +25,8 @@ class OffersService {
         return offers
     }
 
-    async getOffersByVenueId(id) {
-        const offers = await dbContext.Offers.find({ venueId: id }).populate('creator').populate('band').populate('venue')
+    async getOffersByVenueId(id, userId) {
+        const offers = await dbContext.Offers.find({ $and: [{ venueId: id }, { creatorId: { $ne: userId } }] }).populate('creator').populate('band').populate('venue')
         return offers
     }
 
@@ -51,7 +51,7 @@ class OffersService {
         if (doomedOffer.creatorId.toString() !== userId) {
             throw new Forbidden('You cannot delete this Offer')
         }
-        doomedOffer.delete()
+        await doomedOffer.remove()
         return "Delorted"
     }
 

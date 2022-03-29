@@ -28,6 +28,13 @@ class VenuesService {
     async editVenue(body, id) {
         const res = await api.put('api/venues/' + id, body)
     }
+
+    async getOffersVenue(venueId) {
+        const res = await api.get('api/venues/' + venueId + '/offers')
+        logger.log('this is getoffersvenue', res.data)
+        AppState.recievedOffers[venueId] = res.data
+        logger.log(AppState.recievedOffers, 'this is venue offers')
+    }
 }
 
 

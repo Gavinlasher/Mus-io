@@ -7,31 +7,31 @@
         <div class="d-flex align-items-center">
           <img
             :src="account.picture"
-            class="img-fluid cropped border border-dark"
+            class="img-fluid main-font cropped border border-dark"
             alt="Profile Picture of the User"
           />
 
-          <h2 class="ms-3 text-light">{{ account.name }}</h2>
+          <h2 class="ms-3 main-font text-light">{{ account.name }}</h2>
         </div>
       </div>
 
       <div class="col-10 p-3">
         <button
-          class="btn btn-success rounded-pill me-5 hoverable"
+          class="btn btn-success main-font rounded-pill me-5 hoverable"
           data-bs-toggle="modal"
           data-bs-target="#create-performer"
         >
           Add New Performer
         </button>
         <button
-          class="btn btn-success rounded-pill hoverable"
+          class="btn btn-success main-font rounded-pill hoverable"
           data-bs-toggle="modal"
           data-bs-target="#create-venue"
         >
           Add New Venue
         </button>
         <button
-          class="btn btn-success rounded-pill ms-5 me-5 hoverable"
+          class="btn btn-success main-font rounded-pill ms-5 me-5 hoverable"
           data-bs-toggle="modal"
           data-bs-target="#edit-account"
         >
@@ -39,7 +39,9 @@
         </button>
       </div>
     </div>
-    <h1 class="text-center text-light custom-text p-3">My Preformers</h1>
+    <h1 class="text-center text-light custom-text p-3 main-font">
+      My Preformers
+    </h1>
     <div class="row justify-content-center p-0 mt-5">
       <div
         class="col-3 p-1 my-1 mx-1 bg-grey shadow rounded"
@@ -51,7 +53,7 @@
         <!-- <OffCanvas /> -->
       </div>
     </div>
-    <h1 class="text-center text-light custom-text p-3">My Venues</h1>
+    <h1 class="text-center text-light custom-text p-3 main-font">My Venues</h1>
     <div class="row justify-content-center p-0 mt-5">
       <div
         class="col-3 p-1 my-1 mx-1 bg-grey shadow hoverable rounded"
@@ -62,15 +64,15 @@
       </div>
     </div>
   </div>
-  <Modal id="create-performer">
+  <Modal id="create-performer main-font">
     <template #title> Create Performer </template>
     <template #body><CreatePerformer :bandData="band" /></template>
   </Modal>
-  <Modal id="create-venue">
+  <Modal id="create-venue main-font">
     <template #title> Create Venue </template>
     <template #body><CreateVenue :venueData="venue" /></template>
   </Modal>
-  <Modal id="edit-account">
+  <Modal id="edit-account main-font">
     <template #title> Edit Account </template>
     <template #body><EditAccount :accountData="account" /></template>
   </Modal>
@@ -150,7 +152,8 @@ img {
   transition: 50ms ease-in-out;
 }
 
-/* .bg-darkblue{
-  background-color: 
-} */
+.main-font {
+  font-family: "Chakra Petch", sans-serif;
+}
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Teko:wght@300&display=swap");
 </style>
