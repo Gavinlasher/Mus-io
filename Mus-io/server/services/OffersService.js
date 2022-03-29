@@ -35,9 +35,9 @@ class OffersService {
         if (!original) {
             throw new NotFound("There was no Offer at this id")
         }
-        if (original.creatorId.toString() !== update.creatorId) {
-            throw new Forbidden("You cannot update this Offer")
-        }
+        // if (original.creatorId.toString() !== update.creatorId) {
+        //     throw new Forbidden("You cannot update this Offer")
+        // }
 
         original.body = update.body ? update.body : original.body
         original.status = update.status ? update.status : original.status
