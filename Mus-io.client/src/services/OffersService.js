@@ -33,6 +33,11 @@ class OffersService {
         const res = await api.put('api/offers/' + body.id, body)
         logger.log('edit offer', res.data)
     }
+
+    async declineVenueOffer(body) {
+        const res = await api.put('api/offers/' + body.id, body)
+        logger.log('edit venue offer', res.data)
+    }
 }
 
 

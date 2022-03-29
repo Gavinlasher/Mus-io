@@ -10,7 +10,7 @@
           role="group"
           aria-label="Basic mixed styles example"
         >
-          <button @click="decline(r.id)" type="button" class="btn btn-danger">
+          <button @click="declineVenue(r)" type="button" class="btn btn-danger">
             Decline
           </button>
           <button type="button" class="btn btn-success">Accept</button>
@@ -27,6 +27,7 @@ import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { venuesService } from "../services/VenuesService"
 import { AppState } from "../AppState"
+import { offersService } from "../services/OffersService"
 export default {
   props: {
     venue: {
@@ -44,7 +45,16 @@ export default {
       }
     })
     return {
-      recieved: computed(() => AppState.recievedOffers[props.venue.id]),
+      recieved: computed(() => AppState.recievedOffers[props.venue.id]?.filter(v => v.status == 'pending')),
+      async declineVenue(r) {
+        try {
+          logger.log(r)
+          r.status = 'declined'
+          await offersService.declineVenueOffer(r)
+        } catch (error) {
+          logger.error(error)
+        }
+      }
 
     }
   }

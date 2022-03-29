@@ -4,14 +4,17 @@ import { BadRequest, Forbidden } from '../utils/Errors'
 
 class BandsService {
     async createBand(body) {
-        const str = body.spotifyPlaylist
-        const index = str.indexOf('/playlist/')
-        const pId = str.slice(index + 10, index + 32)
-        if (pId.length <= 22) {
-            body.spotifyPlaylist = pId
-        } else {
-            body.spotifyPlaylist = '37i9dQZF1DXcBWIGoYBM5M'
-            // throw new BadRequest('This is not a valid link, please check..')
+        if (body.spotifyPlaylist) {
+            const str = body.spotifyPlaylist
+            const index = str.indexOf('/playlist/')
+            const pId = str.slice(index + 10, index + 32)
+
+            if (pId.length == 22) {
+                body.spotifyPlaylist = pId
+            } else {
+                body.spotifyPlaylist = '37i9dQZF1DXcBWIGoYBM5M'
+                // throw new BadRequest('This is not a valid link, please check..')
+            }
         }
         const band = await dbContext.Bands.create(body)
         await band.populate('creator')
@@ -19,7 +22,7 @@ class BandsService {
     }
 
     async getAllBands(query = {}) {
-        let searchReg = new RegExp(query.search, 'ig')
+        const searchReg = new RegExp(query.search, 'ig')
         const bands = await dbContext.Bands.find({ name: { $regex: searchReg } }).populate('creator')
         return bands
     }

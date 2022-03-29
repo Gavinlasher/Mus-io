@@ -50,11 +50,10 @@
       <label for="" class="form-label">SoundCloud: </label>
       <input
         v-model="editable.soundCloud"
-        required
         type="text"
         class="form-control"
         aria-describedby="helpId"
-        placeholder="location....."
+        placeholder="SoundCloud....."
       />
     </div>
     <div class="col-md-4 mb-2">
@@ -66,6 +65,16 @@
         class="form-control"
         aria-describedby="helpId"
         placeholder="capacity....."
+      />
+    </div>
+    <div class="col-md-4 mb-2">
+      <label for="" class="form-label">Spotify: </label>
+      <input
+        v-model="editable.spotifyPlaylist"
+        type="text"
+        class="form-control"
+        aria-describedby="helpId"
+        placeholder="Playlist Link....."
       />
     </div>
     <label for="" class="form-label">Choose Genre: </label>
