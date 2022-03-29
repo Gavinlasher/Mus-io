@@ -5,7 +5,7 @@
       fixed-top
       navbar-expand-lg navbar-dark
       bg-dark
-      px-3
+      px-0
       container-fluid
     "
   >
