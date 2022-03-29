@@ -10,7 +10,7 @@
           role="group"
           aria-label="Basic mixed styles example"
         >
-          <button @click="decline(r.id)" type="button" class="btn btn-danger">
+          <button @click="decline(r)" type="button" class="btn btn-danger">
             Decline
           </button>
           <button type="button" class="btn btn-success">Accept</button>
@@ -46,11 +46,12 @@ export default {
       }
     })
     return {
-      recieved: computed(() => AppState.recievedOffers[props.band.id]),
-      async decline(id) {
+      recieved: computed(() => AppState.recievedOffers[props.band.id]?.filter(r => r.status == 'pending')),
+      async decline(r) {
         try {
+          r.status = 'declined'
           // logger.log('this is an decline id', id)
-          await offersService.editOffer(id)
+          await offersService.declineOffer(r)
         } catch (error) {
           logger.error(error)
         }
