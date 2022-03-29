@@ -113,11 +113,11 @@
       </div>
     </div>
   </div>
-  <Modal id="create-offer main-font">
+  <Modal id="create-offer">
     <template #title> Create Offer</template>
     <template #body><OfferForm /> </template>
   </Modal>
-  <Modal id="edit-band main-font">
+  <Modal id="edit-band">
     <template #title> Edit Band</template>
     <template #body><EditBand /></template>
   </Modal>
