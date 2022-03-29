@@ -1,6 +1,6 @@
 <template>
   <div class="col-12">
-    <h1 class="mx-3 text-start col-12 main-font p-1">{{ venue.name }}</h1>
+    <h1 class="mx-1 text-start col-12 main-font p-1">{{ venue.name }}</h1>
     <h5 class="mx-4 text-start col-12 mt-4 main-font">{{ venue.location }}</h5>
     <div class="d-flex align-items-end">
       <img
@@ -29,7 +29,7 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
 .hoverable:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
   box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.3);
   transition: 50ms ease-in-out;
   cursor: pointer;
