@@ -79,6 +79,7 @@ export default {
         }
 
         if (await route.name == "Band") {
+          editable.value.bandId = AppState.activeBand.id
           editable.value.recipientId = AppState.activeBand.creatorId
           await offersService.createOffer(editable.value)
         }

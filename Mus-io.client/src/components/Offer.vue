@@ -1,6 +1,12 @@
 <template>
   <div>
     {{ band.name }}
+
+    <div class="row">
+      <div class="col-10" v-for="r in recieved" :key="r.id">
+        <h3>{{ r.body }}</h3>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -29,7 +35,7 @@ export default {
       }
     })
     return {
-      recieved: computed(() => AppState.recievedOffers)
+      recieved: computed(() => AppState.recievedOffers[props.band.id])
     }
   }
 }

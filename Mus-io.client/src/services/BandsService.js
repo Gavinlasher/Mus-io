@@ -34,7 +34,7 @@ class BandsService {
         const res = await api.get('api/bands/' + bandId + '/offers')
         logger.log("getting offers for the band", res.data)
         // AppState.offers = res.data
-        AppState.recievedOffers = [...AppState.recievedOffers, res.data]
+        AppState.recievedOffers[bandId] = res.data
         logger.log(AppState.recievedOffers, 'hell world this is offers')
         // AppState.recievedOffers.push(res.data)
     }

@@ -19,8 +19,9 @@ class OffersService {
         return offer
     }
 
-    async getOffersByBandId(id) {
-        const offers = await dbContext.Offers.find({ bandId: id }).populate('creator').populate('band')
+    async getOffersByBandId(id, userId) {
+
+        const offers = await dbContext.Offers.find({ $and: [{ bandId: id }, { creatorId: { $ne: userId } }] }).populate('creator').populate('band')
         return offers
     }
 
