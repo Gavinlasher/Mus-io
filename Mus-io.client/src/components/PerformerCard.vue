@@ -4,13 +4,13 @@
       {{ band.name }}
     </h1>
     <h5 class="mx-4 px-5 text-end col-12 mt-4 main-font">{{ band.genre }}</h5>
-    <div class="d-flex align-items-stretch align-items-end">
+    <!-- <div class="d-flex align-items-stretch align-items-end">
       <img
         class="img-fluid rounded-bottom shadow align-items-stretch mt-3"
         :src="band.bannerImg"
         alt=""
       />
-    </div>
+    </div> -->
   </div>
 </template>
 

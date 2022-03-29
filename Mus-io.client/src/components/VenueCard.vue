@@ -7,11 +7,11 @@
       {{ venue.location }}
     </h5>
     <div class="d-flex align-items-end">
-      <img
+      <!-- <img
         class="img-fluid rounded-bottom shadow mt-3"
         :src="venue.bannerImg"
         alt=""
-      />
+      /> -->
     </div>
   </div>
 </template>
