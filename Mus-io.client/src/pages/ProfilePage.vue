@@ -110,8 +110,8 @@
           </div>
           <!-- add a prop to the recived offers and pass it to the get service -->
           <h3>This is recieved offers</h3>
-          <div class="col-8" v-for="r in rOffers" :key="r.id">
-            <Offer :offer="r" />
+          <div class="col-8" v-for="b in myBands" :key="b.id">
+            <Offer :band="b" />
           </div>
         </div>
       </template>
@@ -192,7 +192,7 @@ export default {
       offersBand: computed(() => AppState.activeBand),
       sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
       // recievedOffers: computed(() => AppState.recievedOffers)
-      rOffers: computed(async () => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
+      rOffers: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
       // console.log('papapapapapap', offerBands)
       // for (let i = 0; i < offerBands.length; i++) {
       //   await bandsService.getOffersBand(offerBands[i].id)
