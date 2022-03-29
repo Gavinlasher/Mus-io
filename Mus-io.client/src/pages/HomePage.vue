@@ -10,7 +10,7 @@
         />
       </form>
     </div>
-    <div class="mt-5 justify-content-around row">
+    <div class="mt-5 justify-content-between mx-5 row">
       <div
         @click="getAllPerformers"
         class="
@@ -186,7 +186,7 @@ export default {
 }
 .hoverable:active {
   transform: scale(0.98);
-  transition: 0.2s ease-in-out;
+  transition: 50ms ease-in-out;
 }
 
 .main-font {
