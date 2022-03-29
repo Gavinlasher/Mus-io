@@ -2,7 +2,7 @@
   <div>
     <h4 class="text-info">{{ venue.name }}</h4>
 
-    <!-- <div class="row">
+    <div class="row">
       <div class="col-10" v-for="r in recieved" :key="r.id">
         <h5>{{ r.body }}</h5>
         <div
@@ -15,17 +15,18 @@
           </button>
           <button type="button" class="btn btn-success">Accept</button>
         </div>
-      </div> -->
-    <!-- </div> -->
+      </div>
+    </div>
   </div>
 </template>
 
 
 <script>
-import { onMounted } from "@vue/runtime-core"
+import { computed, onMounted } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { venuesService } from "../services/VenuesService"
+import { AppState } from "../AppState"
 export default {
   props: {
     venue: {
@@ -43,6 +44,7 @@ export default {
       }
     })
     return {
+      recieved: computed(() => AppState.recievedOffers[props.venue.id]),
 
     }
   }
