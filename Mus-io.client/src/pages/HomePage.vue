@@ -5,7 +5,7 @@
       <form @submit.prevent="search" class="d-flex justify-content-center mt-3">
         <input
           placeholder="Search......."
-          class="bg-primary border-primary rounded-pill p-1 col-10"
+          class="bg-primary border-primary rounded-pill p-1 col-6"
           v-model="query"
         />
       </form>
@@ -15,16 +15,16 @@
         @click="getAllPerformers"
         class="
           p-3
-          col-4
+          col-lg-4 col-md-4 col-sm-12
           rounded-pill
           text-center
           shadow
           fs-4
           hoverable
           bg-success
-          hoverable
           main-font
           button
+          mt-2
         "
       >
         Performers
@@ -33,7 +33,7 @@
         @click="getAllVenues"
         class="
           p-3
-          col-4
+          col-lg-4 col-md-4 col-sm-12
           rounded-pill
           text-center
           shadow
@@ -42,6 +42,7 @@
           bg-success
           main-font
           button
+          mt-2
         "
       >
         Venues
