@@ -66,9 +66,9 @@
       "
       v-if="account.id == profile.id"
     >
-      My Preformers
+      My Performers
     </h1>
-    <h1 class="text-center text-light custom-text p-3" v-else>Preformers</h1>
+    <h1 class="text-center text-light custom-text p-3" v-else>Performers</h1>
     <div class="row justify-content-center p-3 mt-5">
       <div
         class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
