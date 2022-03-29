@@ -54,7 +54,6 @@ export default {
 img {
   width: 50vh;
   height: 40vh;
-  background-repeat: no-repeat;
   background-size: cover;
 }
 h1 {
