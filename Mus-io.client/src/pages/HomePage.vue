@@ -2,7 +2,7 @@
   <div class="container-fluid bg-gradient">
     <div class="row justify-content-center p-1">
       <div class="p-5"></div>
-      <form @submit.prevent="search" class="d-flex justify-content-center">
+      <form @submit.prevent="search" class="d-flex justify-content-center mt-3">
         <input
           placeholder="Search......."
           class="bg-primary border-primary rounded-pill p-1 col-10"
@@ -48,17 +48,19 @@
       </div>
     </div>
     <div class="row justify-content-center p-3 mt-5">
+      <div v-if="bands" class="d-flex justify-content-center p-3">
+        <h2 class="text-light">Performers</h2>
+      </div>
       <div
-<<<<<<< HEAD
-        class="col-md-3 bg-grey p-0 m-3 shadow hoverable rounded"
-=======
         class="col-md-3 bg-dark card p-0 m-3 shadow hoverable rounded"
->>>>>>> f8bfe9b263361ec2575a972144acafd57f89a77b
         @click="goTo(b.id)"
         v-for="b in bands"
         :key="b.id"
       >
         <PerformerCard :band="b" />
+      </div>
+      <div v-if="venues" class="d-flex justify-content-center p-3">
+        <h2 class="text-light">Venues</h2>
       </div>
       <div
         class="col-md-3 bg-dark p-0 card m-3 shadow hoverable rounded"
