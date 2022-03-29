@@ -1,10 +1,18 @@
 <template>
   <div>
-    {{ band.name }}
+    <h4 class="text-info">{{ band.name }}</h4>
 
     <div class="row">
       <div class="col-10" v-for="r in recieved" :key="r.id">
-        <h3>{{ r.body }}</h3>
+        <h5>{{ r.body }}</h5>
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic mixed styles example"
+        >
+          <button type="button" class="btn btn-danger">Decline</button>
+          <button type="button" class="btn btn-success">Accept</button>
+        </div>
       </div>
     </div>
   </div>

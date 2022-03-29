@@ -106,10 +106,11 @@
         <div class="row">
           <h2>My Sent offers</h2>
           <div class="col-8" v-for="offer in offers" :key="offer.id">
-            <p>{{ offer.body }} ||| {{ offer.band.name }}</p>
+            <h4 class="text-info">{{ offer.band.name }}</h4>
+            <h5>{{ offer.body }}</h5>
           </div>
           <!-- add a prop to the recived offers and pass it to the get service -->
-          <h3>This is recieved offers</h3>
+          <h2>My recieved offers</h2>
           <div class="col-8" v-for="b in myBands" :key="b.id">
             <Offer :band="b" />
           </div>
