@@ -44,7 +44,7 @@
           Edit Account
         </button>
         <button
-          class="btn btn-success rounded-pill ms-5 me-5 hoverable"
+          class="btn btn-success rounded-pill m-2 hoverable"
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#request"

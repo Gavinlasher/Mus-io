@@ -1,7 +1,8 @@
 <template>
   <div class="container-fluid bg-gradient">
     <div class="row">
-      <div class="col-12 p-4">
+      <div class="div mt-5"></div>
+      <div class="col-12 p-4 mt-4">
         <img :src="venue.bannerImg" alt="" class="img-fluid img-banner" />
       </div>
       <div class="col-12 ps-4 pb-3">
@@ -49,6 +50,29 @@
         </div>
       </div>
       <div class="col-12 spacer" style="height: 15vh"></div>
+      <div
+        class="col-md-4 text-light mb-5 ms-4 selectable"
+        @click="goTo(venue.creator.id)"
+        title="venue manager"
+      >
+        <div class="row">
+          <div class="col-12">
+            <h4 class="border-bottom">Venue Manager</h4>
+          </div>
+          <div class="col-12">
+            <img
+              class="img-fluid pp mt-4"
+              :src="venue.creator.picture"
+              alt=""
+              srcset=""
+              :title="venue.creator.name"
+            />
+          </div>
+          <div class="col-12 mt-4">
+            <h6><i class="mdi mdi-email"></i> {{ venue.creator.email }}</h6>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <Modal id="edit-venue">
@@ -67,12 +91,14 @@ import { computed, popScopeId, watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { venuesService } from "../services/VenuesService"
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
 import { AppState } from "../AppState"
+import { profilesService } from "../services/ProfilesService"
 export default {
   setup() {
 
     const route = useRoute()
+    const router = useRouter()
     watchEffect(async () => {
       if (route.name == 'Venue') {
         await venuesService.getVenueById(route.params.id)
@@ -82,6 +108,18 @@ export default {
     return {
 
       venue: computed(() => AppState.activeVenue),
+      async goTo(id) {
+        try {
+          await profilesService.getProfile(id)
+          router.push({
+            name: 'Profile',
+            params: { id: AppState.profile.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      }
 
     }
   }
@@ -97,5 +135,11 @@ export default {
 }
 .title {
   font-size: 40pt;
+}
+.pp {
+  height: 15vh;
+  width: 15vh;
+  border: 1px solid whitesmoke;
+  border-radius: 50%;
 }
 </style>
