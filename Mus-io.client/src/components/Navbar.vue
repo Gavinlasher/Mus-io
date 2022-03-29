@@ -18,7 +18,7 @@
             glow
             main-font
             text-success
-            px-3
+            px-5
             my-0
             p-1
             fa fa-apple
@@ -94,13 +94,13 @@ a:hover {
     0 0 200px #0072ff;
 }
 #twitter {
-  animation-delay: 0.3s;
+  animation-delay: 2s;
 }
 #facebook {
-  animation-delay: 0.7s;
+  animation-delay: 2s;
 }
 #github {
-  animation-delay: 0.1s;
+  animation-delay: 2s;
 }
 
 @keyframes animate {

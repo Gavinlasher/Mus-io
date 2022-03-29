@@ -19,7 +19,7 @@
           <img
             :src="account.picture"
             alt="account photo"
-            height="40"
+            height="20"
             class="login-img border border-dark"
           />
           <span class="mx-3 text-success lighten-30 main-font">{{
