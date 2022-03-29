@@ -1,10 +1,10 @@
 <template>
   <div class="col-12 align-items-stretch">
-    <h1 class="ms-2 text-start col-12 p-1">{{ band.name }}</h1>
-
-    <div>
+    <h1 class="ms-2 text-start col-12 main-font p-1">{{ band.name }}</h1>
+    <h5 class="ms-4 text-start col-12 mt-2 main-font">{{ band.genre }}</h5>
+    <div class="d-flex align-items-stretch align-items-end">
       <img
-        class="img-fluid rounded-bottom shadow mt-1"
+        class="img-fluid rounded-bottom shadow align-items-stretch mt-3"
         :src="band.bannerImg"
         alt=""
       />
@@ -13,11 +13,7 @@
 </template>
 
 <script>
-import { computed } from "@vue/reactivity"
-import { AppState } from "../AppState"
-import { watchEffect } from "@vue/runtime-core"
-import { bandsService } from "../services/BandsService"
-import { logger } from "../utils/Logger"
+
 import { useRoute } from "vue-router"
 export default {
   props: {
@@ -45,7 +41,6 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
 .hoverable:hover {
   transform: scale(1.03);
   box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.3);
@@ -67,4 +62,8 @@ h1 {
   height: 8vh;
   font-family: "Roboto", sans-serif;
 }
+.main-font {
+  font-family: "Chakra Petch", sans-serif;
+}
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Teko:wght@300&display=swap");
 </style>

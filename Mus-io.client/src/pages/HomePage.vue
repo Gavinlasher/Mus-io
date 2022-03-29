@@ -4,7 +4,7 @@
       <div class="p-5"></div>
       <input
         placeholder="Search......."
-        class="bg-primary border-primary rounded-pill p-1 col-10"
+        class="bg-primary border-primary main-font rounded-pill p-1 col-10"
       />
     </div>
     <div class="mt-5 justify-content-around row">
@@ -20,6 +20,7 @@
           hoverable
           bg-success
           hoverable
+          main-font
         "
       >
         Performers
@@ -35,14 +36,15 @@
           fs-4
           hoverable
           bg-success
+          main-font
         "
       >
         Venues
       </div>
     </div>
-    <div class="row justify-content-center p-3  mt-5">
+    <div class="row justify-content-center p-3 mt-5">
       <div
-        class="col-md-3  bg-grey p-0 m-3 shadow hoverable rounded"
+        class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
         @click="goTo(b.id)"
         v-for="b in bands"
         :key="b.id"
@@ -50,7 +52,7 @@
         <PerformerCard :band="b" />
       </div>
       <div
-        class="col-md-3 p-0 m-3 bg-grey shadow hoverable rounded"
+        class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
         @click="goTo2(v.id)"
         v-for="v in venues"
         :key="v.id"
@@ -164,4 +166,8 @@ export default {
   transform: scale(0.98);
   transition: 50ms ease-in-out;
 }
+.main-font {
+  font-family: "Chakra Petch", sans-serif;
+}
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Teko:wght@300&display=swap");
 </style>
