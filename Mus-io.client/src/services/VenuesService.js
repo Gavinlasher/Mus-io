@@ -4,8 +4,8 @@ import { api } from "./AxiosService"
 
 class VenuesService {
     async getAll(query = "") {
-        const res = await api.get('api/venues/' + query)
-        logger.log(res.data)
+        const res = await api.get('api/venues' + query)
+        logger.log("Venues are...", res.data)
         AppState.venues = res.data
 
     }

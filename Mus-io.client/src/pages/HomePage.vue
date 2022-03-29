@@ -2,10 +2,13 @@
   <div class="container-fluid bg-gradient">
     <div class="row justify-content-center p-1">
       <div class="p-5"></div>
-      <input
-        placeholder="Search......."
-        class="bg-primary border-primary rounded-pill p-1 col-10"
-      />
+      <form @submit.prevent="search" class="d-flex justify-content-center">
+        <input
+          placeholder="Search......."
+          class="bg-primary border-primary rounded-pill p-1 col-10"
+          v-model="query"
+        />
+      </form>
     </div>
     <div class="mt-5 justify-content-around row">
       <div
@@ -40,9 +43,9 @@
         Venues
       </div>
     </div>
-    <div class="row justify-content-center p-3  mt-5">
+    <div class="row justify-content-center p-3 mt-5">
       <div
-        class="col-md-3  bg-grey p-0 m-3 shadow hoverable rounded"
+        class="col-md-3 bg-grey p-0 m-3 shadow hoverable rounded"
         @click="goTo(b.id)"
         v-for="b in bands"
         :key="b.id"
@@ -62,7 +65,7 @@
 </template>
 
 <script>
-import { computed, watchEffect } from "@vue/runtime-core"
+import { computed, ref, watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { bandsService } from "../services/BandsService"
@@ -74,7 +77,8 @@ import { useRouter } from "vue-router"
 export default {
 
   setup() {
-    const router = useRouter()
+    const query = ref("");
+    const router = useRouter();
     watchEffect(async () => {
       try {
         await bandsService.getAll()
@@ -85,8 +89,18 @@ export default {
       }
     })
     return {
+      query,
       bands: computed(() => AppState.bands),
       venues: computed(() => AppState.venues),
+      async search() {
+        try {
+          await bandsService.getAll('?search=' + query.value)
+          await venuesService.getAll('?search=' + query.value)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      },
       async goTo(id) {
         try {
           await bandsService.getBandById(id)
