@@ -73,7 +73,18 @@
           </div>
         </div>
       </div>
-
+      <div class="col-12 mt-5">
+        <div class="mt-5"></div>
+        <iframe
+          style="border-radius: 12px"
+          :src="`https://open.spotify.com/embed/playlist/${band.spotifyPlaylist}?utm_source=generator&theme=0`"
+          width="100%"
+          height="380"
+          frameBorder="0"
+          allowfullscreen=""
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        ></iframe>
+      </div>
       <div class="col-12 spacer" style="height: 15vh"></div>
       <div
         class="col-md-4 text-light mb-5 ms-4 selectable"
