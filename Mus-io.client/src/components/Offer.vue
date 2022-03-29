@@ -1,16 +1,16 @@
 <template>
   <div>
     {{ band.name }}
-    {{ band.body }}
   </div>
 </template>
 
 
 <script>
-import { onMounted } from "@vue/runtime-core"
+import { computed, onMounted } from "@vue/runtime-core"
 import Pop from "../utils/Pop"
 import { bandsService } from "../services/BandsService"
 import { logger } from "../utils/Logger"
+import { AppState } from "../AppState"
 export default {
   props: {
     band: {
@@ -28,7 +28,9 @@ export default {
         Pop.toast(error.message, 'error message')
       }
     })
-    return {}
+    return {
+      recieved: computed(() => AppState.recievedOffers)
+    }
   }
 }
 </script>

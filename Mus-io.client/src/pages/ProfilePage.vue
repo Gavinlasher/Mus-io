@@ -156,7 +156,7 @@ export default {
     // })
     onMounted(async () => {
       try {
-        await bandsService.getBandById()
+        // await bandsService.getBandById()
       } catch (error) {
         logger.error(error)
       }
