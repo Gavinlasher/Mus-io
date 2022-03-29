@@ -168,6 +168,7 @@ export default {
   transform: scale(0.98);
   transition: 0.2s ease-in-out;
 }
+
 .main-font {
   font-family: "Chakra Petch", sans-serif;
 }
