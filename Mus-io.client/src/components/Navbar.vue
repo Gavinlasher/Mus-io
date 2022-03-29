@@ -20,7 +20,7 @@
             text-success
             px-5
             my-0
-            p-1
+            p-0
             fa fa-apple
           "
           id="apple"
@@ -81,14 +81,10 @@ a:hover {
 #twitter,
 #github,
 #facebook {
-  font-size: 40pt;
+  font-size: 32pt;
   background-color: #18191f;
   color: #fff;
-  box-shadow: 1px 1px 1px #00000080, 10px 1px 12px #00000080,
-    2px 2px 10px #00000080, 2px 2px 3px #00000080, inset 2px 2px 10px #00000080,
-    inset 2px 2px 10px #00000080, inset 2px 2px 10px #00000080,
-    inset 2px 2px 10px #00000080;
-  border-radius: 10px;
+  border-radius: 6px;
   animation: animate 3s linear infinite;
   text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
     0 0 200px #0072ff;
