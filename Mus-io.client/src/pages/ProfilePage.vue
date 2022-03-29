@@ -56,7 +56,15 @@
       </div>
     </div>
     <h1
-      class="text-center text-light custom-text p-3 mt-5"
+      class="
+        text-center
+        border-bottom
+        main-font
+        text-light
+        custom-text
+        p-3
+        mt-5
+      "
       v-if="account.id == profile.id"
     >
       My Preformers
@@ -64,7 +72,7 @@
     <h1 class="text-center text-light custom-text p-3" v-else>Preformers</h1>
     <div class="row justify-content-center p-3 mt-5">
       <div
-        class="col-md-4 p-0 m-3 bg-grey shadow rounded hoverable"
+        class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
         v-for="b in myBands"
         :key="b.id"
       >
@@ -74,15 +82,17 @@
       </div>
     </div>
     <h1
-      class="text-center text-light custom-text p-3"
+      class="text-center border-bottom main-font text-light custom-text p-3"
       v-if="account.id == profile.id"
     >
       My Venues
     </h1>
-    <h1 class="text-center text-light custom-text p-3" v-else>Venues</h1>
+    <h1 class="text-center main-font text-light custom-text p-3" v-else>
+      Venues
+    </h1>
     <div class="row justify-content-center p-3 mt-5">
       <div
-        class="col-md-4 p-0 m-3 bg-grey shadow hoverable rounded"
+        class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
         v-for="v in myVenues"
         :key="v.id"
       >
@@ -217,9 +227,6 @@ img {
   height: 40vh;
   width: 40vh;
 }
-.custom-text {
-  text-decoration: underline;
-}
 
 .cropped {
   border-radius: 50%;
@@ -245,4 +252,9 @@ img {
 h2 {
   font-weight: bold;
 }
+.main-font,
+div {
+  font-family: "Chakra Petch", sans-serif;
+}
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Teko:wght@300&display=swap");
 </style>

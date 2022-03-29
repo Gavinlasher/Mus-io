@@ -6,19 +6,21 @@
         <img
           :src="band.bannerImg"
           alt="a band cover image"
-          class="img-fluid img-banner"
+          class="img-fluid shadow img-banner main-font"
         />
       </div>
 
       <div class="col-12 ps-4 pb-3">
-        <h1 class="text-light title">{{ band.name }}</h1>
+        <h1 class="text-light title main-font">{{ band.name }}</h1>
       </div>
       <div class="col-12">
         <div class="row">
           <div class="col-3">
             <div class="row">
-              <div class="col-12 text-light ps-4 pb-3">{{ band.genre }}</div>
-              <div class="col-12 text-light ps-4 pb-3">
+              <div class="col-12 text-light ps-4 main-font pb-3">
+                {{ band.genre }}
+              </div>
+              <div class="col-12 main-font text-light ps-4 pb-3">
                 Base Asking Price: ${{ band.basePrice }}
               </div>
               <div class="col-12 text-light ps-4 pb-3">
@@ -44,7 +46,7 @@
               <!-- NOTE - V if account == creatorId -->
               <div class="col-12 ps-4 pb-3" v-if="band.creatorId == account.id">
                 <button
-                  class="btn btn-primary rounded-pill"
+                  class="btn btn-primary main-font rounded-pill"
                   data-bs-toggle="modal"
                   data-bs-target="#edit-band"
                 >
@@ -54,7 +56,7 @@
             </div>
           </div>
           <div class="col-9 text-light">
-            <h3 class="ps-4 pb-3">About</h3>
+            <h3 class="ps-4 pb-3 main-font">About</h3>
             <p class="ps-4 pb-3">
               {{ band.bio }}
             </p>
@@ -70,7 +72,7 @@
       >
         <div class="row">
           <div class="col-12">
-            <h4 class="border-bottom">Band Manager</h4>
+            <h4 class="border-bottom main-font">Band Manager</h4>
           </div>
           <div class="col-12">
             <img
@@ -82,17 +84,19 @@
             />
           </div>
           <div class="col-12 mt-4">
-            <h6><i class="mdi mdi-email"></i> {{ band.creator.email }}</h6>
+            <h6>
+              <i class="mdi mdi-email main-font"></i> {{ band.creator.email }}
+            </h6>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <Modal id="create-offer">
+  <Modal id="create-offer main-font">
     <template #title> Create Offer</template>
     <template #body><OfferForm /> </template>
   </Modal>
-  <Modal id="edit-band">
+  <Modal id="edit-band main-font">
     <template #title> Edit Band</template>
     <template #body><EditBand /></template>
   </Modal>
@@ -170,5 +174,8 @@ export default {
   border: 1px solid whitesmoke;
   border-radius: 50%;
 }
+.main-font {
+  font-family: "Chakra Petch", sans-serif;
+}
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Teko:wght@300&display=swap");
 </style>
-7

@@ -22,15 +22,19 @@
             height="40"
             class="login-img border border-dark"
           />
-          <span class="mx-3 text-success lighten-30">{{ account.name }}</span>
+          <span class="mx-3 text-success lighten-30 main-font">{{
+            account.name
+          }}</span>
         </div>
       </div>
       <div
         class="dropdown-menu p-0 list-group w-100"
         aria-labelledby="authDropdown"
       >
-        <router-link :to="{ name: 'Profile', params:{id: account.id} }">
-          <div class="list-group-item list-group-item-action hoverable">
+        <router-link :to="{ name: 'Profile', params: { id: account.id } }">
+          <div
+            class="main-font list-group-item list-group-item-action hoverable"
+          >
             My Profile
           </div>
         </router-link>
@@ -87,4 +91,8 @@ export default {
   border: 1px solid white;
   border-radius: 50%;
 }
+.main-font {
+  font-family: "Chakra Petch", sans-serif;
+}
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Teko:wght@300&display=swap");
 </style>

@@ -1,5 +1,14 @@
 <template>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark px-3 container-fluid">
+  <nav
+    class="
+      navbar
+      fixed-top
+      navbar-expand-lg navbar-dark
+      bg-dark
+      px-3
+      container-fluid
+    "
+  >
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <span class="mx-2">
         <img
@@ -10,7 +19,7 @@
         />
       </span>
       <div class="d-flex flex-column align-items-center">
-        <h2 class="text-success">Mus.io</h2>
+        <h2 class="text-success main-font"><b>Mus.io</b></h2>
       </div>
     </router-link>
     <button
@@ -53,4 +62,8 @@ a:hover {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+.main-font {
+  font-family: "Chakra Petch", sans-serif;
+}
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Teko:wght@300&display=swap");
 </style>
