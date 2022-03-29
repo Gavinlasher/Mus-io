@@ -23,6 +23,7 @@ class OffersService {
         const res = await api.get('api/bands/' + bandId + '/offers')
         AppState.offers = res.data
 
+
     }
     async deleteOffer(id) {
         const res = await api.delete('api/offers/' + id)
