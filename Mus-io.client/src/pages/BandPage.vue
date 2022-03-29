@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid bg-gradient">
     <div class="row">
-      <div class="p-3 mt-5"></div>
+      <div class="mt-5"></div>
       <div class="col-12 p-4 mt-5">
         <img
           :src="band.bannerImg"
