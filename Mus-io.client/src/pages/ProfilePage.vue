@@ -49,7 +49,6 @@
           data-bs-toggle="offcanvas"
           data-bs-target="#request"
           aria-controls="offcanvasExample"
-          @click="setActive"
         >
           See Offers
         </button>
