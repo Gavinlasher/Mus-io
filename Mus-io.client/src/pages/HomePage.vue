@@ -48,7 +48,7 @@
       </div>
     </div>
     <div class="row justify-content-center p-3 mt-5">
-      <div v-if="bands" class="d-flex justify-content-center p-3">
+      <div v-if="bands.length > 0" class="d-flex justify-content-center p-3">
         <h2 class="text-light">Performers</h2>
       </div>
       <div
@@ -59,7 +59,7 @@
       >
         <PerformerCard :band="b" />
       </div>
-      <div v-if="venues" class="d-flex justify-content-center p-3">
+      <div v-if="venues.length > 0" class="d-flex justify-content-center p-3">
         <h2 class="text-light">Venues</h2>
       </div>
       <div
