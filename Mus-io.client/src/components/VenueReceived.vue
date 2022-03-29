@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 class="text-info">{{ band.name }}</h4>
+    <h4 class="text-info">{{ venue.name }}</h4>
 
     <div class="row">
       <div class="col-10" v-for="r in recieved" :key="r.id">
@@ -10,7 +10,7 @@
           role="group"
           aria-label="Basic mixed styles example"
         >
-          <button @click="decline(r)" type="button" class="btn btn-danger">
+          <button @click="decline(r.id)" type="button" class="btn btn-danger">
             Decline
           </button>
           <button type="button" class="btn btn-success">Accept</button>
@@ -23,39 +23,29 @@
 
 <script>
 import { computed, onMounted } from "@vue/runtime-core"
-import Pop from "../utils/Pop"
-import { bandsService } from "../services/BandsService"
 import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
+import { venuesService } from "../services/VenuesService"
 import { AppState } from "../AppState"
-import { offersService } from "../services/OffersService"
 export default {
   props: {
-    band: {
+    venue: {
       type: Object,
-      required: true
+      required: true,
     }
   },
   setup(props) {
     onMounted(async () => {
       try {
-        logger.log("this is props", props.band)
-        await bandsService.getOffersBand(props.band.id)
+        await venuesService.getOffersVenue(props.venue.id)
       } catch (error) {
         logger.error(error)
         Pop.toast(error.message, 'error message')
       }
     })
     return {
-      recieved: computed(() => AppState.recievedOffers[props.band.id]?.filter(r => r.status == 'pending')),
-      async decline(r) {
-        try {
-          r.status = 'declined'
-          // logger.log('this is an decline id', id)
-          await offersService.declineOffer(r)
-        } catch (error) {
-          logger.error(error)
-        }
-      }
+      recieved: computed(() => AppState.recievedOffers[props.venue.id]),
+
     }
   }
 }

@@ -5,21 +5,28 @@
       fixed-top
       navbar-expand-lg navbar-dark
       bg-dark
-      px-3
+      px-0
       container-fluid
     "
   >
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <span class="mx-2">
-        <img
-          style="width: 3vw"
-          class="img-fluid col-2 rounded-circle"
-          src="src\assets\img\dsadsad.png"
-          alt=""
-        />
-      </span>
+      <span class="mx-1"> </span>
       <div class="d-flex flex-column align-items-center">
-        <h2 class="text-success main-font"><b>Mus.io</b></h2>
+        <h2
+          class="
+            text-success
+            glow
+            main-font
+            text-success
+            px-5
+            my-0
+            p-0
+            fa fa-apple
+          "
+          id="apple"
+        >
+          <b>Mus.io</b>
+        </h2>
       </div>
     </router-link>
     <button
@@ -65,5 +72,39 @@ a:hover {
 .main-font {
   font-family: "Chakra Petch", sans-serif;
 }
+.glow:hover {
+  filter: drop-shadow(2px 2px 2px #41b8b2);
+  transition: 0.2s ease-in-out;
+}
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Teko:wght@300&display=swap");
+#apple,
+#twitter,
+#github,
+#facebook {
+  font-size: 32pt;
+  background-color: #18191f;
+  color: #fff;
+  border-radius: 6px;
+  animation: animate 3s linear infinite;
+  text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
+    0 0 200px #0072ff;
+}
+#twitter {
+  animation-delay: 2s;
+}
+#facebook {
+  animation-delay: 2s;
+}
+#github {
+  animation-delay: 2s;
+}
+
+@keyframes animate {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
 </style>

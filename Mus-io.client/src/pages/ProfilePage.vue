@@ -124,6 +124,9 @@
           <div class="col-8" v-for="b in myBands" :key="b.id">
             <Offer :band="b" />
           </div>
+          <div class="col-8" v-for="v in myVenues" :key="v.id">
+            <VenueReceived :venue="v" />
+          </div>
         </div>
       </template>
     </OffCanvas>
@@ -154,6 +157,7 @@ import { venuesService } from "../services/VenuesService"
 import { offersService } from "../services/OffersService"
 import { profilesService } from '../services/ProfilesService'
 import { useRoute } from 'vue-router'
+import Pop from "../utils/Pop"
 export default {
   name: 'Account',
   setup() {

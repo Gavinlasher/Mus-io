@@ -1,8 +1,8 @@
 $body-bg: #e5e5e5;
 $primary: rgba(135, 190, 202, 1);
 $secondary: #8392ab;
-$success: rgba(24, 213, 255, 1);
-$info: rgba(0, 95, 101, 1);
+$success: rgb(0, 211, 226);
+$info: rgb(0, 152, 163);
 $warning: #fbcf33;
 $danger: #ea0606;
 $light: #e9ecef;
@@ -11,7 +11,7 @@ $grey: rgba(105, 105, 105, 1);
 
 $font-sans-serif: Open Sans;
 $font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-$gradient: linear-gradient(180deg, rgba(0, 95, 101, 1), rgba(14, 14, 14, 1));
+$gradient: linear-gradient(180deg, rgb(0, 133, 143), rgba(14, 14, 14, 1));
 
 $colors: (
   "primary": $primary,

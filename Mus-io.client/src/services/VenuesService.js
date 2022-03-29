@@ -4,8 +4,8 @@ import { api } from "./AxiosService"
 
 class VenuesService {
     async getAll(query = "") {
-        const res = await api.get('api/venues/' + query)
-        logger.log(res.data)
+        const res = await api.get('api/venues' + query)
+        logger.log("Venues are...", res.data)
         AppState.venues = res.data
 
     }
@@ -27,6 +27,13 @@ class VenuesService {
     }
     async editVenue(body, id) {
         const res = await api.put('api/venues/' + id, body)
+    }
+
+    async getOffersVenue(venueId) {
+        const res = await api.get('api/venues/' + venueId + '/offers')
+        logger.log('this is getoffersvenue', res.data)
+        AppState.recievedOffers[venueId] = res.data
+        logger.log(AppState.recievedOffers, 'this is venue offers')
     }
 }
 

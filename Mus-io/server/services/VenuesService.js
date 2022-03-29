@@ -27,7 +27,8 @@ class VenuesService {
   }
 
   async getAllVenues(query = {}) {
-    const venues = await dbContext.Venues.find(query).populate('creator')
+    let searchReg = new RegExp(query.search, 'ig')
+    const venues = await dbContext.Venues.find({ name: { $regex: searchReg } }).populate('creator')
     return venues
   }
 

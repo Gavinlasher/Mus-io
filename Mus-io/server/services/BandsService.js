@@ -19,7 +19,8 @@ class BandsService {
     }
 
     async getAllBands(query = {}) {
-        const bands = await dbContext.Bands.find(query).populate('creator')
+        let searchReg = new RegExp(query.search, 'ig')
+        const bands = await dbContext.Bands.find({ name: { $regex: searchReg } }).populate('creator')
         return bands
     }
 

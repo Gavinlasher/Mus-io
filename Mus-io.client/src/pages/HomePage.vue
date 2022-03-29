@@ -2,26 +2,29 @@
   <div class="container-fluid bg-gradient">
     <div class="row justify-content-center p-1">
       <div class="p-5"></div>
-      <input
-        placeholder="Search......."
-        class="bg-primary border-primary main-font rounded-pill p-1 col-10"
-      />
+      <form @submit.prevent="search" class="d-flex justify-content-center mt-3">
+        <input
+          placeholder="Search......."
+          class="bg-primary border-primary rounded-pill p-1 col-6"
+          v-model="query"
+        />
+      </form>
     </div>
-    <div class="mt-5 justify-content-around row">
+    <div class="mt-5 justify-content-between mx-5 row">
       <div
         @click="getAllPerformers"
         class="
           p-3
-          col-4
+          col-lg-4 col-md-4 col-sm-12
           rounded-pill
           text-center
           shadow
           fs-4
           hoverable
           bg-success
-          hoverable
           main-font
           button
+          mt-2
         "
       >
         Performers
@@ -30,7 +33,7 @@
         @click="getAllVenues"
         class="
           p-3
-          col-4
+          col-lg-4 col-md-4 col-sm-12
           rounded-pill
           text-center
           shadow
@@ -39,12 +42,16 @@
           bg-success
           main-font
           button
+          mt-2
         "
       >
         Venues
       </div>
     </div>
     <div class="row justify-content-center p-3 mt-5">
+      <div v-if="bands.length > 0" class="d-flex justify-content-center p-3">
+        <h2 class="text-light col-12 border-bottom text-center">Performers</h2>
+      </div>
       <div
         class="col-md-3 bg-dark card p-0 m-3 shadow hoverable rounded"
         @click="goTo(b.id)"
@@ -52,6 +59,9 @@
         :key="b.id"
       >
         <PerformerCard :band="b" />
+      </div>
+      <div v-if="venues.length > 0" class="d-flex justify-content-center p-3">
+        <h2 class="text-light col-12 border-bottom text-center">Venues</h2>
       </div>
       <div
         class="col-md-3 bg-dark p-0 card m-3 shadow hoverable rounded"
@@ -66,7 +76,7 @@
 </template>
 
 <script>
-import { computed, watchEffect } from "@vue/runtime-core"
+import { computed, ref, watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { bandsService } from "../services/BandsService"
@@ -78,7 +88,8 @@ import { useRouter } from "vue-router"
 export default {
 
   setup() {
-    const router = useRouter()
+    const query = ref("");
+    const router = useRouter();
     watchEffect(async () => {
       try {
         await bandsService.getAll()
@@ -89,8 +100,18 @@ export default {
       }
     })
     return {
+      query,
       bands: computed(() => AppState.bands),
       venues: computed(() => AppState.venues),
+      async search() {
+        try {
+          await bandsService.getAll('?search=' + query.value)
+          await venuesService.getAll('?search=' + query.value)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      },
       async goTo(id) {
         try {
           await bandsService.getBandById(id)
@@ -166,8 +187,9 @@ export default {
 }
 .hoverable:active {
   transform: scale(0.98);
-  transition: 0.2s ease-in-out;
+  transition: 50ms ease-in-out;
 }
+
 .main-font {
   font-family: "Chakra Petch", sans-serif;
 }
