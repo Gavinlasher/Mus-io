@@ -51,7 +51,7 @@ class OffersService {
         if (doomedOffer.creatorId.toString() !== userId) {
             throw new Forbidden('You cannot delete this Offer')
         }
-        doomedOffer.delete()
+        await doomedOffer.remove()
         return "Delorted"
     }
 
