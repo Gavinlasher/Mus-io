@@ -74,6 +74,7 @@ export default {
       async sendOffer() {
         if (route.name == "Venue") {
           logger.log(AppState.activeVenue.creatorId)
+          editable.value.venueId = AppState.activeVenue.id
           editable.value.recipientId = AppState.activeVenue.creatorId
           await offersService.createOffer(editable.value)
         }
