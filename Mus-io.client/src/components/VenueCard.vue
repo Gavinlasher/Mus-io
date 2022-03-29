@@ -1,10 +1,10 @@
 <template>
-  <div class="col-12 align-items-stretch">
-    <h1 class="ms-2 text-start col-12 main-font p-1">{{ venue.name }}</h1>
-    <h5 class="ms-4 text-start col-12 mt-2 main-font">{{ venue.location }}</h5>
-    <div class="d-flex align-items-stretch align-items-end">
+  <div class="col-12">
+    <h1 class="mx-3 text-start col-12 main-font p-1">{{ venue.name }}</h1>
+    <h5 class="mx-4 text-start col-12 mt-4 main-font">{{ venue.location }}</h5>
+    <div class="d-flex align-items-end">
       <img
-        class="img-fluid rounded-bottom shadow align-items-stretch mt-3"
+        class="img-fluid rounded-bottom shadow mt-3"
         :src="venue.bannerImg"
         alt=""
       />

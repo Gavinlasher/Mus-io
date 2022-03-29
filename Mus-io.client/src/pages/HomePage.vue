@@ -21,6 +21,7 @@
           bg-success
           hoverable
           main-font
+          button
         "
       >
         Performers
@@ -37,6 +38,7 @@
           hoverable
           bg-success
           main-font
+          button
         "
       >
         Venues
@@ -44,7 +46,7 @@
     </div>
     <div class="row justify-content-center p-3 mt-5">
       <div
-        class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
+        class="col-md-3 bg-dark card p-0 m-3 shadow hoverable rounded"
         @click="goTo(b.id)"
         v-for="b in bands"
         :key="b.id"
@@ -52,7 +54,7 @@
         <PerformerCard :band="b" />
       </div>
       <div
-        class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
+        class="col-md-3 bg-dark p-0 card m-3 shadow hoverable rounded"
         @click="goTo2(v.id)"
         v-for="v in venues"
         :key="v.id"
@@ -158,13 +160,13 @@ export default {
 .hoverable:hover {
   transform: scale(1.03);
   box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.3);
-  transition: 50ms ease-in-out;
+  transition: 0.2s ease-in-out;
   cursor: pointer;
   user-select: none;
 }
 .hoverable:active {
   transform: scale(0.98);
-  transition: 50ms ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 .main-font {
   font-family: "Chakra Petch", sans-serif;
