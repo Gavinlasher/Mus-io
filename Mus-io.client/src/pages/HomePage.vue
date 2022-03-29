@@ -2,6 +2,7 @@
   <div class="container-fluid bg-gradient">
     <div class="row justify-content-center p-1">
       <div class="p-5"></div>
+      <div class="p-3"></div>
       <form @submit.prevent="search" class="d-flex justify-content-center">
         <input
           placeholder="Search......."

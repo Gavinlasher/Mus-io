@@ -1,6 +1,8 @@
 <template>
   <div class="col-12 align-items-stretch">
-    <h1 class="mx-1 text-start col-12 main-font p-1">{{ band.name }}</h1>
+    <h1 class="mx-1 px-2 py-1 text-start col-12 main-font p-1">
+      {{ band.name }}
+    </h1>
     <h5 class="mx-4 text-start col-12 mt-4 main-font">{{ band.genre }}</h5>
     <div class="d-flex align-items-stretch align-items-end">
       <img
