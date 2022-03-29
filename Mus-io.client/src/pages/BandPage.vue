@@ -1,26 +1,15 @@
 <template>
   <div class="container-fluid bg-gradient">
     <div class="row">
-      <div class="col-12 p-4">
+      <div class="div mt-4"></div>
+      <div class="col-12 p-4 mt-5">
         <img
           :src="band.bannerImg"
           alt="a band cover image"
           class="img-fluid img-banner"
         />
       </div>
-      <div class="col-md-3 text-light mb-5" @click="goTo(band.creator.id)">
-        <img
-          class="img-fluid pp"
-          :src="band.creator.picture"
-          alt=""
-          srcset=""
-        />
-      </div>
-      <div class="col-md-3 align-items-center">
-        <h5 class="text-light">
-          {{ band.creator.name }}
-        </h5>
-      </div>
+
       <div class="col-12 ps-4 pb-3">
         <h1 class="text-light title">{{ band.name }}</h1>
       </div>
@@ -69,82 +58,34 @@
             <p class="ps-4 pb-3">
               {{ band.bio }}
             </p>
-            <iframe
-              v-if="band.name == 'BLACKPINK'"
-              width="100%"
-              height="300"
-              scrolling="no"
-              frameborder="no"
-              allow="autoplay"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/277341570&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-            ></iframe>
-            <div
-              style="
-                font-size: 10px;
-                color: #cccccc;
-                line-break: anywhere;
-                word-break: normal;
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                font-family: Interstate, Lucida Grande, Lucida Sans Unicode,
-                  Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
-                font-weight: 100;
-              "
-            >
-              <a
-                href="https://soundcloud.com/genrse"
-                title="Genna"
-                target="_blank"
-                style="color: #cccccc; text-decoration: none"
-              ></a>
-              <a
-                href="https://soundcloud.com/genrse/blackpink-whistle"
-                title="BLACKPINK - WHISTLE"
-                target="_blank"
-                style="color: #cccccc; text-decoration: none"
-              ></a>
-            </div>
-            <iframe
-              v-if="band.name == 'BTS'"
-              width="100%"
-              height="300"
-              scrolling="no"
-              frameborder="no"
-              allow="autoplay"
-              src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/605006934&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-            ></iframe>
-            <div
-              style="
-                font-size: 10px;
-                color: #cccccc;
-                line-break: anywhere;
-                word-break: normal;
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                font-family: Interstate, Lucida Grande, Lucida Sans Unicode,
-                  Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
-                font-weight: 100;
-              "
-            >
-              <a
-                href="https://soundcloud.com/l2sharebts2"
-                title="L2ShareBTS♫2"
-                target="_blank"
-                style="color: #cccccc; text-decoration: none"
-              ></a>
-              <a
-                href="https://soundcloud.com/l2sharebts2/boy-with-luv"
-                title="Boy with Luv"
-                target="_blank"
-                style="color: #cccccc; text-decoration: none"
-              ></a>
-            </div>
           </div>
         </div>
       </div>
+
       <div class="col-12 spacer" style="height: 15vh"></div>
+      <div
+        class="col-md-4 text-light mb-5 ms-4 selectable"
+        @click="goTo(band.creator.id)"
+        title="band manager"
+      >
+        <div class="row">
+          <div class="col-12">
+            <h4 class="border-bottom">Band Manager</h4>
+          </div>
+          <div class="col-12">
+            <img
+              class="img-fluid pp mt-4"
+              :src="band.creator.picture"
+              alt=""
+              srcset=""
+              :title="band.creator.name"
+            />
+          </div>
+          <div class="col-12 mt-4">
+            <h6><i class="mdi mdi-email"></i> {{ band.creator.email }}</h6>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <Modal id="create-offer">
@@ -224,8 +165,8 @@ export default {
   font-size: 40pt;
 }
 .pp {
-  height: 20vh;
-  width: 20vh;
+  height: 15vh;
+  width: 15vh;
   border: 1px solid whitesmoke;
   border-radius: 50%;
 }
