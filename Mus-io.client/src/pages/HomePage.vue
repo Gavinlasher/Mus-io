@@ -49,11 +49,7 @@
     </div>
     <div class="row justify-content-center p-3 mt-5">
       <div
-<<<<<<< HEAD
-        class="col-md-3 bg-grey p-0 m-3 shadow hoverable rounded"
-=======
         class="col-md-3 bg-dark card p-0 m-3 shadow hoverable rounded"
->>>>>>> f8bfe9b263361ec2575a972144acafd57f89a77b
         @click="goTo(b.id)"
         v-for="b in bands"
         :key="b.id"
