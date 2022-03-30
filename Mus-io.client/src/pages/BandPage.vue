@@ -240,8 +240,6 @@ export default {
 
 
 <style lang="scss" scoped>
-.overflow {
-}
 .img-banner {
   height: 50vh;
   width: 100%;
