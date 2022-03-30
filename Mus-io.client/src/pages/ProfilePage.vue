@@ -74,6 +74,7 @@
         class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
         v-for="b in myBands"
         :key="b.id"
+        @click="goTo(b.id)"
       >
         <PerformerCard :band="b" />
 
@@ -94,6 +95,7 @@
         class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
         v-for="v in myVenues"
         :key="v.id"
+        @click="goTo2(v.id)"
       >
         <VenueCard :venue="v" />
       </div>
@@ -155,12 +157,13 @@ import { bandsService } from "../services/BandsService"
 import { venuesService } from "../services/VenuesService"
 import { offersService } from "../services/OffersService"
 import { profilesService } from '../services/ProfilesService'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import Pop from "../utils/Pop"
 export default {
   name: 'Account',
   setup() {
     const route = useRoute()
+    const router = useRouter()
     // onMounted(async () => {
     //   try {
 
@@ -207,6 +210,30 @@ export default {
       sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
       // recievedOffers: computed(() => AppState.recievedOffers)
       rOffers: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
+       async goTo(id) {
+        try {
+          await bandsService.getBandById(id)
+          router.push({
+            name: 'Band',
+            params: { id: AppState.activeBand.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      },
+       async goTo2(id) {
+        try {
+          await venuesService.getVenueById(id)
+          router.push({
+            name: 'Venue',
+            params: { id: AppState.activeVenue.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      },
       // console.log('papapapapapap', offerBands)
       // for (let i = 0; i < offerBands.length; i++) {
       //   await bandsService.getOffersBand(offerBands[i].id)
