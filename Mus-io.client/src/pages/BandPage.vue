@@ -6,7 +6,7 @@
         <img
           :src="band.bannerImg"
           alt="a band cover image"
-          class="img-fluid shadow img-banner main-font"
+          class="img-fluid shadow img-banner main-font rounded"
         />
       </div>
 
