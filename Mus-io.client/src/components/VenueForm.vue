@@ -87,6 +87,7 @@ import { AppState } from "../AppState"
 import Pop from '../utils/Pop'
 import { logger } from '../utils/Logger'
 import { venuesService } from '../services/VenuesService'
+import { Modal } from 'bootstrap'
 export default {
   setup() {
     const editable = ref({})
@@ -95,6 +96,7 @@ export default {
       async editVenue() {
         try {
           await venuesService.editVenue(editable.value, AppState.activeVenue.id)
+          // Modal.getOrCreateInstance(document.getElementById('create-offer')).hide()
           Pop.toast("Venue Edited!", 'success')
         } catch (error) {
           logger.error(error)

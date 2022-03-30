@@ -105,6 +105,7 @@ import Pop from "../utils/Pop"
 import { bandsService } from "../services/BandsService"
 import { AppState } from "../AppState"
 import { watchEffect } from "@vue/runtime-core"
+import { Modal } from 'bootstrap'
 export default {
   setup() {
     const editable = ref({})
@@ -120,6 +121,7 @@ export default {
       async editBand() {
         try {
           await bandsService.editBand(editable.value, AppState.activeBand.id)
+          Modal.getOrCreateInstance(document.getElementById('edit-band')).hide()
         } catch (error) {
           Pop.toast("Band Edited!", 'sucess')
           logger.error(error)
