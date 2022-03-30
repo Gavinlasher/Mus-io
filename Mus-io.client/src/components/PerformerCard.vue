@@ -24,18 +24,9 @@ export default {
       required: true
     }
   },
-  setup(props) {
+  setup() {
     const route = useRoute()
-    // watchEffect(async () => {
-    //   try {
-    //     await bandsService.getOffersBand(props.band.id)
-    //   } catch (error) {
-    //     logger.error(error)
-    //   }
-
-    // })
     return {
-      // offerBand: computed(() => AppState.offers)
 
     }
   }
