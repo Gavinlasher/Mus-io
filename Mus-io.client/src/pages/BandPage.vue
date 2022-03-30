@@ -87,7 +87,6 @@
                   @selectionChange="saveContent"
                   api-key="8cbcxix5kfgyb4dxa8i4jxkjudi7il8b7becshh9yq5218kv"
                   :init="{
-                    height: 500,
                     menubar: true,
                     plugins: [
                       'advlist autolink lists link image charmap print preview anchor',
@@ -231,6 +230,8 @@ export default {
 
 
 <style lang="scss" scoped>
+.overflow {
+}
 .img-banner {
   height: 50vh;
   width: 100%;
