@@ -69,13 +69,33 @@
           </div>
           <div class="col-9 text-light">
             <h3 class="ps-4 pb-3 main-font">About</h3>
-            <p class="ps-4 pb-3">
-              {{ band.bio }}
-            </p>
-            <h2>Writer</h2>
-            <ul v-for="w in writer" :key="w.id">
-              <li>{{ w }}</li>
-            </ul>
+            <div id="app">
+              <div class="bg-dark text-light p-1 mt-3">
+                <button @click="save">save</button>
+                <button @click="showPreview = !showPreview">preview</button>
+              </div>
+              <div v-if="!showPreview">
+                <editor
+                  v-model="editable.bio"
+                  @selectionChange="saveContent"
+                  api-key="8cbcxix5kfgyb4dxa8i4jxkjudi7il8b7becshh9yq5218kv"
+                  :init="{
+                    height: 500,
+                    menubar: true,
+                    plugins: [
+                      'advlist autolink lists link image charmap print preview anchor',
+                      'searchreplace visualblocks code fullscreen',
+                      'insertdatetime media table paste code help wordcount',
+                    ],
+                    toolbar:
+                      'undo redo | formatselect | bold italic backcolor | \
+           alignleft aligncenter alignright alignjustify | \
+           bullist numlist outdent indent | removeformat | help',
+                  }"
+                />
+              </div>
+              <div v-else v-html="editable.bio"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -131,7 +151,7 @@
 
 
 <script>
-import { computed } from "@vue/reactivity"
+import { computed, ref } from "@vue/reactivity"
 import { AppState } from "../AppState"
 import Modal from "../components/Modal.vue"
 import { onMounted, watchEffect } from "@vue/runtime-core"
@@ -153,7 +173,14 @@ export default {
 
 
 
-
+    const editable = ref({
+      bio: `
+    <h1>This is a heading...</h1>
+    this is a test
+    
+    `,
+    });
+    const showPreview = ref(false);
     const route = useRoute()
     const router = useRouter()
     watchEffect(async () => {
@@ -163,6 +190,8 @@ export default {
       }
     })
     return {
+      editable,
+      showPreview,
       account: computed(() => AppState.account),
       writer: computed(() => AppState.activeBand.writer),
       band: computed(() => AppState.activeBand),
