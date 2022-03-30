@@ -13,7 +13,9 @@
           <button @click="decline(r)" type="button" class="btn btn-danger">
             Decline
           </button>
-          <button type="button" class="btn btn-success">Accept</button>
+          <button @click="accept(r)" type="button" class="btn btn-success">
+            Accept
+          </button>
         </div>
       </div>
     </div>
@@ -52,6 +54,14 @@ export default {
           r.status = 'declined'
           // logger.log('this is an decline id', id)
           await offersService.declineOffer(r)
+        } catch (error) {
+          logger.error(error)
+        }
+      },
+      async accept(r) {
+        try {
+          r.status = 'accepted'
+          await offersService.acceptBandOffer(r)
         } catch (error) {
           logger.error(error)
         }

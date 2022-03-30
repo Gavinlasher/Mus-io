@@ -13,7 +13,9 @@
           <button @click="declineVenue(r)" type="button" class="btn btn-danger">
             Decline
           </button>
-          <button type="button" class="btn btn-success">Accept</button>
+          <button @click="acceptVenue(r)" type="button" class="btn btn-success">
+            Accept
+          </button>
         </div>
       </div>
     </div>
@@ -51,6 +53,14 @@ export default {
           logger.log(r)
           r.status = 'declined'
           await offersService.declineVenueOffer(r)
+        } catch (error) {
+          logger.error(error)
+        }
+      },
+      async acceptVenue(r) {
+        try {
+          r.status = 'accepted'
+          await offersService.acceptVenueOffer(r)
         } catch (error) {
           logger.error(error)
         }

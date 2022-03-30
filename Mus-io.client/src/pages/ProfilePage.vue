@@ -126,6 +126,10 @@
           <div class="col-8" v-for="v in myVenues" :key="v.id">
             <VenueReceived :venue="v" />
           </div>
+          <h2>Messages</h2>
+          <div class="col-8" v-for="a in accepted" :key="a.id">
+            <Accepted :accept="a" />
+          </div>
         </div>
       </template>
     </OffCanvas>
@@ -207,6 +211,7 @@ export default {
       sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
       // recievedOffers: computed(() => AppState.recievedOffers)
       rOffers: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
+      accepted: computed(() => AppState.accepted)
       // console.log('papapapapapap', offerBands)
       // for (let i = 0; i < offerBands.length; i++) {
       //   await bandsService.getOffersBand(offerBands[i].id)
