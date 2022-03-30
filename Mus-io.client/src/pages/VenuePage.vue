@@ -30,7 +30,10 @@
                   Send Offer
                 </button>
               </div>
-              <div class="col-12 ps-4 pb-3">
+              <div
+                class="col-12 ps-4 pb-3"
+                v-if="venue.creatorId == account.id"
+              >
                 <button
                   class="btn btn-primary rounded-pill"
                   data-bs-toggle="modal"
@@ -105,6 +108,7 @@ export default {
     })
     return {
       venue: computed(() => AppState.activeVenue),
+      account: computed(() => AppState.account),
       async goTo(id) {
         try {
           await profilesService.getProfile(id)
