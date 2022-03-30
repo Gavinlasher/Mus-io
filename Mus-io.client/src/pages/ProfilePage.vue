@@ -126,6 +126,10 @@
           <div class="col-8" v-for="v in myVenues" :key="v.id">
             <VenueReceived :venue="v" />
           </div>
+          <h2>Messages</h2>
+          <div class="col-8" v-for="a in accepted" :key="a.id">
+            <Accepted :accept="a" />
+          </div>
         </div>
       </template>
     </OffCanvas>

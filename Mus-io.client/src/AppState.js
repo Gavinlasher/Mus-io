@@ -13,6 +13,7 @@ export const AppState = reactive({
   activeOffer: {},
   recievedOffers: {},
   recievedVenueOffers: {},
-  myOffers: []
+  myOffers: [],
+  accepted: []
 
 })
