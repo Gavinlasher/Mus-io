@@ -18,7 +18,7 @@
             glow
             main-font
             text-success
-            px-5
+            px-3
             my-0
             p-2
             fa fa-apple
