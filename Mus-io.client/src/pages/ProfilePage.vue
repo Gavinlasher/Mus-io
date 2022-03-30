@@ -208,7 +208,6 @@ export default {
       offersBand: computed(() => AppState.activeBand),
       sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
       rOffers: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
-<<<<<<< HEAD
        async goTo(id) {
         try {
           await bandsService.getBandById(id)
@@ -246,8 +245,6 @@ export default {
       // setActive() {
       //   bandsService.setActive()
       // },
-=======
->>>>>>> 446a815a9ebe8bb86daa3454291b8cf80cc2732f
     }
   }
 }
