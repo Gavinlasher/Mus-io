@@ -8,8 +8,7 @@
       v-for="accepted in acceptedOffers"
       :key="accepted.id"
     >
-      {{ accepted.email }}
-      {{ accepted.body }}
+      <h5>{{ accepted.creator.name }}: {{ accepted.body }}</h5>
     </div>
   </div>
 </template>
