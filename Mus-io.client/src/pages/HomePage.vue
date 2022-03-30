@@ -157,6 +157,14 @@ export default {
           logger.error(error)
           Pop.toast(error.message)
         }
+      },
+      async filter(genre) {
+        try {
+          await bandsService.filter(genre)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
       }
     }
   }
