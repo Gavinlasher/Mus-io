@@ -96,17 +96,14 @@ import { AppState } from "../AppState"
 import { profilesService } from "../services/ProfilesService"
 export default {
   setup() {
-
     const route = useRoute()
     const router = useRouter()
     watchEffect(async () => {
       if (route.name == 'Venue') {
         await venuesService.getVenueById(route.params.id)
       }
-    }
-    )
+    })
     return {
-
       venue: computed(() => AppState.activeVenue),
       async goTo(id) {
         try {
