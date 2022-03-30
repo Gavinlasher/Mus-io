@@ -53,6 +53,7 @@ import Pop from "../utils/Pop"
 import { venuesService } from "../services/VenuesService"
 import { bandsService } from "../services/BandsService"
 import { useRoute } from "vue-router"
+import { Modal } from 'bootstrap'
 export default {
   setup() {
     const editable = ref({})
@@ -84,6 +85,7 @@ export default {
             editable.value.recipientId = AppState.activeBand.creatorId
             await offersService.createOffer(editable.value)
           }
+          Modal.getOrCreateInstance(document.getElementById('create-offer')).hide()
           Pop.toast("Offer Sent!", 'success')
         } catch (error) {
           Pop.toast(error.message, 'error')

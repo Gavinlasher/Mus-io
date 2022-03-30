@@ -14,7 +14,6 @@
 </template>
 
 <script>
-
 import { useRoute } from "vue-router"
 export default {
   props: {
