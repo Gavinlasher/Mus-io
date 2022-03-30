@@ -54,7 +54,9 @@ export default {
           r.status = 'declined'
           // logger.log('this is an decline id', id)
           await offersService.declineOffer(r)
+          Pop.toast('Offer Declined', 'info')
         } catch (error) {
+          Pop.toast(error.message, 'error')
           logger.error(error)
         }
       },

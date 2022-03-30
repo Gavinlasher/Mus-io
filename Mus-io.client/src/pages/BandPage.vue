@@ -6,7 +6,7 @@
         <img
           :src="band.bannerImg"
           alt="a band cover image"
-          class="img-fluid shadow img-banner main-font"
+          class="img-fluid shadow img-banner main-font rounded"
         />
       </div>
 
@@ -18,7 +18,9 @@
           <div class="col-3">
             <div class="row">
               <div class="col-12 text-light ps-4 main-font pb-3">
-                {{ band.genre }}
+                <h3>
+                  {{ band.genre }}
+                </h3>
               </div>
               <div class="col-12 main-font text-light ps-4 pb-3">
                 Base Asking Price: ${{ band.basePrice }}
@@ -70,6 +72,10 @@
             <p class="ps-4 pb-3">
               {{ band.bio }}
             </p>
+            <h2>Writer</h2>
+            <ul v-for="w in writer" :key="w.id">
+              <li>{{ w }}</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -158,6 +164,7 @@ export default {
     })
     return {
       account: computed(() => AppState.account),
+      writer: computed(() => AppState.activeBand.writer),
       band: computed(() => AppState.activeBand),
       myVenues: computed(() => AppState.venues.find(v => v.creatorId == AppState.account.id)),
       async goTo(id) {

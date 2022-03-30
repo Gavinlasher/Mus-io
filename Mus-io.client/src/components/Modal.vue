@@ -23,7 +23,7 @@
         <div class="modal-body">
           <slot name="body"><!--body slot--></slot>
         </div>
-        <div class="modal-footer">
+        <div class="">
           <slot name="footer"><!--footer slot--></slot>
         </div>
       </div>
