@@ -49,10 +49,11 @@
           "
           id="apple"
         >
-          <b>My Gigs</b>
+          <b>Gigs</b>
         </h2>
       </div>
     </router-link>
+
     <button
       class="navbar-toggler"
       type="button"

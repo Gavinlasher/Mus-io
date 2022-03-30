@@ -47,7 +47,7 @@ const routes = [
     beforeEnter: authSettled
   },
   {
-    path: '/teemo',
+    path: '/gigs',
     name: 'Gigs',
     component: loadPage('GigsPage'),
     // beforeEnter: authSettled
