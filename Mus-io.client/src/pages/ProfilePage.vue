@@ -206,12 +206,14 @@ export default {
       profile: computed(() => AppState.profile),
       myBands: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
       myVenues: computed(() => AppState.venues.filter(v => v.creatorId == AppState.profile.id)),
-      offers: computed(() => AppState.offers),
+      offers: computed(() => AppState.offers.filter(v => v.status == 'pending')),
       offersBand: computed(() => AppState.activeBand),
       sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
       rOffers: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
       acceptedOffers: computed(() => {
-        return Object.values(AppState.recievedOffers).flat().filter(v => v.status == 'accepted')
+        const recOffer = Object.values(AppState.recievedOffers).flat().filter(v => v.status == 'accepted')
+        const sentOffer = AppState.offers.filter(v => v.status == 'accepted')
+        return [...recOffer, ...sentOffer]
       }),
       async goTo(id) {
         try {
@@ -237,6 +239,7 @@ export default {
           Pop.toast(error.message, 'error message')
         }
       }
+
     }
   }
 }

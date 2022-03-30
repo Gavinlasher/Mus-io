@@ -73,8 +73,13 @@
             </div>
             <div id="app bg-gradient" v-if="band.creatorId == account.id">
               <div class="bg-dark text-light p-1 mt-3">
-                <button @click="save">save</button>
-                <button @click="showPreview = !showPreview">preview</button>
+                <button class="btn btn-success" @click="save">Save</button>
+                <button
+                  class="btn btn-success"
+                  @click="showPreview = !showPreview"
+                >
+                  Preview
+                </button>
               </div>
               <div v-if="!showPreview">
                 <editor
