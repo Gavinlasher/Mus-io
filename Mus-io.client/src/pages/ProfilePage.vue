@@ -126,6 +126,10 @@
           <div class="col-8" v-for="v in myVenues" :key="v.id">
             <VenueReceived :venue="v" />
           </div>
+          <h2>Messages</h2>
+          <div class="col-8" v-for="a in accepted" :key="a.id">
+            <Accepted :accept="a" />
+          </div>
         </div>
       </template>
     </OffCanvas>
@@ -161,16 +165,8 @@ export default {
   name: 'Account',
   setup() {
     const route = useRoute()
-    // onMounted(async () => {
-    //   try {
-
-    //   } catch (error) {
-    //     logger.log(error)
-    //   }
-    // })
     onMounted(async () => {
       try {
-        // await bandsService.getBandById()
       } catch (error) {
         logger.error(error)
       }
@@ -188,9 +184,7 @@ export default {
       try {
         if (route.name == "Profile") {
           AppState.profile = {}
-
           await profilesService.getProfile(route.params.id)
-
         }
       } catch (error) {
         logger.error(error)
@@ -205,21 +199,7 @@ export default {
       offers: computed(() => AppState.offers),
       offersBand: computed(() => AppState.activeBand),
       sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
-      // recievedOffers: computed(() => AppState.recievedOffers)
       rOffers: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
-      // console.log('papapapapapap', offerBands)
-      // for (let i = 0; i < offerBands.length; i++) {
-      //   await bandsService.getOffersBand(offerBands[i].id)
-      //   // let myOffers = offerBands[i].id
-      //   logger.log('our offer iteration')
-      // }
-      // console.log("this is r o", AppState.recievedOffers)
-      // return myOffers
-      // return AppState.recievedOffers
-
-      // setActive() {
-      //   bandsService.setActive()
-      // },
     }
   }
 }

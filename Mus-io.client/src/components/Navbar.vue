@@ -20,6 +20,7 @@
             text-success
             px-4
             my-0
+            mx-3
             p-2
             fa fa-apple
             border border-secondary

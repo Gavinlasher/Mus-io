@@ -121,6 +121,7 @@ export default {
         try {
           await bandsService.editBand(editable.value, AppState.activeBand.id)
         } catch (error) {
+          Pop.toast("Band Edited!", 'sucess')
           logger.error(error)
           Pop.toast(error.message, 'error message')
         }

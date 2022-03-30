@@ -59,6 +59,7 @@ import { onMounted, watchEffect } from "@vue/runtime-core"
 import { useRoute } from "vue-router"
 import { logger } from "../utils/Logger"
 import { bandsService } from "../services/BandsService"
+import Pop from '../utils/Pop'
 export default {
   setup() {
     const route = useRoute()
@@ -67,6 +68,7 @@ export default {
         try {
           await bandsService.getOffersBand(AppState.activeBand.id)
         } catch (error) {
+          Pop.toast(error.message, 'error')
           logger.error(error)
         }
 
