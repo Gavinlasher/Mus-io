@@ -64,13 +64,23 @@
       />
     </div>
     <div class="col-md-12 mb-2">
-      <label for="" class="form-label">Spotify: </label>
+      <label for="" class="form-label">Spotify Link: </label>
       <input
         v-model="editable.spotify"
         type="text"
         class="form-control"
         aria-describedby="helpId"
         placeholder="picture url....."
+      />
+    </div>
+    <div class="col-md-12 mb-2">
+      <label for="" class="form-label">Spotify Playlist: </label>
+      <input
+        v-model="editable.spotifyPlaylist"
+        type="text"
+        class="form-control"
+        aria-describedby="helpId"
+        placeholder="<your playlist link>"
       />
     </div>
     <div class="col-md-12 mb-2">

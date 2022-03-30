@@ -190,12 +190,7 @@ export default {
     editor: Editor,
   },
   setup() {
-
-
-
-
     const editable = ref({})
-
     const showPreview = ref(false);
     const route = useRoute()
     const router = useRouter()
