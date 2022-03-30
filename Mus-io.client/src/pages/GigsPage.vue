@@ -1,12 +1,18 @@
 <template>
-  <div class="container-fluid">Fuck</div>
+  <div
+    class="calendly-inline-widget"
+    style="min-width: 320px; height: 580px"
+    data-auto-load="false"
+  ></div>
 </template>
 
 
 <script>
 export default {
   setup() {
-    return {}
+    return {
+
+    }
   }
 }
 </script>
