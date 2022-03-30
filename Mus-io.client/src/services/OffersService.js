@@ -42,14 +42,17 @@ class OffersService {
     async acceptBandOffer(body) {
         const res = await api.put('api/offers/' + body.id, body)
         logger.log('accept band offer', res.data)
-        AppState.accepted.push(res.data)
     }
 
     async acceptVenueOffer(body) {
         const res = await api.put('api/offers/' + body.id, body)
         logger.log('accept venue offer', res.data)
-        AppState.accepted.push(res.data)
-        logger.log(AppState.accepted)
+    }
+
+    async getOfferById(id) {
+        const res = await api.get('api/offers/' + id)
+        logger.log('getoffersbyId', res.data)
+        AppState.activeOffer = res.data
     }
 }
 

@@ -50,7 +50,6 @@
                   class="btn btn-primary rounded-pill hoverable"
                   data-bs-toggle="modal"
                   data-bs-target="#create-offer"
-                  v-if="myVenues"
                 >
                   Send Offer
                 </button>

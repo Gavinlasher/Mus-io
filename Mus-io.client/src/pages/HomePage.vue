@@ -1,7 +1,8 @@
 <template>
-  <div class="container-fluid bg-gradient">
+  <div class="container-fluid bg-gradient parallax">
     <div class="row justify-content-center p-1">
       <div class="p-5"></div>
+
       <form @submit.prevent="search" class="d-flex justify-content-center mt-3">
         <input
           placeholder="Search......."
@@ -10,13 +11,13 @@
         />
       </form>
     </div>
-    <div class="mt-5 justify-content-between mx-5 row">
+    <div class="mt-5 justify-content-around mx-5 row">
       <div
         @click="getAllPerformers"
         class="
           p-3
-          col-lg-4 col-md-4 col-sm-12
-          rounded-pill
+          col-lg-3 col-md-3 col-sm-12
+          rounded
           text-center
           shadow
           fs-4
@@ -33,8 +34,8 @@
         @click="getAllVenues"
         class="
           p-3
-          col-lg-4 col-md-4 col-sm-12
-          rounded-pill
+          col-lg-3 col-md-3 col-sm-12
+          rounded
           text-center
           shadow
           fs-4
@@ -48,9 +49,11 @@
         Venues
       </div>
     </div>
-    <div class="row justify-content-center p-3 mt-5">
+    <div class="row justify-content-center p-3 mt-3">
       <div v-if="bands.length > 0" class="d-flex justify-content-center p-3">
-        <h2 class="text-light col-12 border-bottom text-center">Performers</h2>
+        <h2 class="text-light col-10 border-bottom text-center fs-1 main-font">
+          Performers
+        </h2>
       </div>
       <div
         class="col-md-3 bg-dark card p-0 m-3 shadow hoverable rounded"
@@ -61,7 +64,9 @@
         <PerformerCard :band="b" />
       </div>
       <div v-if="venues.length > 0" class="d-flex justify-content-center p-3">
-        <h2 class="text-light col-12 border-bottom text-center">Venues</h2>
+        <h2 class="text-light col-10 border-bottom text-center fs-1 main-font">
+          Venues
+        </h2>
       </div>
       <div
         class="col-md-3 bg-dark p-0 card m-3 shadow hoverable rounded"
@@ -192,7 +197,6 @@ export default {
 
 .hoverable:hover {
   transform: scale(1.03);
-  box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.3);
   transition: 0.2s ease-in-out;
   cursor: pointer;
   user-select: none;
@@ -204,6 +208,19 @@ export default {
 
 .main-font {
   font-family: "Chakra Petch", sans-serif;
+}
+.parallax {
+  /* The image used */
+  background-image: url("");
+
+  /* Set a specific height */
+  min-height: 500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch&family=Teko:wght@300&display=swap");
 </style>
