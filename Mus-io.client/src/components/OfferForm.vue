@@ -53,6 +53,7 @@ import Pop from "../utils/Pop"
 import { venuesService } from "../services/VenuesService"
 import { bandsService } from "../services/BandsService"
 import { useRoute } from "vue-router"
+import { Modal } from 'bootstrap'
 export default {
   setup() {
     const editable = ref({})
@@ -72,18 +73,24 @@ export default {
       creator: computed(() => AppState.activeBand.creator),
       editable,
       async sendOffer() {
-        if (route.name == "Venue") {
-          logger.log(AppState.activeVenue.creatorId)
-          editable.value.venueId = AppState.activeVenue.id
-          editable.value.recipientId = AppState.activeVenue.creatorId
-          await offersService.createOffer(editable.value)
+        try {
+          if (route.name == "Venue") {
+            logger.log(AppState.activeVenue.creatorId)
+            editable.value.venueId = AppState.activeVenue.id
+            editable.value.recipientId = AppState.activeVenue.creatorId
+            await offersService.createOffer(editable.value)
+          }
+          if (await route.name == "Band") {
+            editable.value.bandId = AppState.activeBand.id
+            editable.value.recipientId = AppState.activeBand.creatorId
+            await offersService.createOffer(editable.value)
+          }
+          Modal.getOrCreateInstance(document.getElementById('create-offer')).hide()
+          Pop.toast("Offer Sent!", 'success')
+        } catch (error) {
+          Pop.toast(error.message, 'error')
         }
 
-        if (await route.name == "Band") {
-          editable.value.bandId = AppState.activeBand.id
-          editable.value.recipientId = AppState.activeBand.creatorId
-          await offersService.createOffer(editable.value)
-        }
 
       }
     }

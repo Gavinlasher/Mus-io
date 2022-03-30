@@ -48,6 +48,7 @@ import { logger } from "../utils/Logger"
 import { accountService } from "../services/AccountService"
 import { watchEffect } from "@vue/runtime-core"
 import { Modal } from "bootstrap"
+import Pop from '../utils/Pop'
 export default {
   props: {
     accountData: {
@@ -65,10 +66,11 @@ export default {
       editable,
       async editAccount() {
         try {
-          Modal.getOrCreateInstance(document.getElementById('edit-account')).hide()
           await accountService.editAccount(editable.value)
-
+          Modal.getOrCreateInstance(document.getElementById('edit-account')).hide()
+          Pop.toast('Account Edited', 'success')
         } catch (error) {
+          Pop.toast(error.message, 'error')
           logger.error(error)
         }
       }

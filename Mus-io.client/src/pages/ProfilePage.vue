@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid bg-gradient">
-    <div class="row justify-content-start">
+    <div class="row d-flex justify-content-start">
       <div class="p-5"></div>
 
       <div class="col-12 mt-3">
@@ -48,7 +48,7 @@
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#request"
-          aria-controls="offcanvasExample"
+          aria-controls="offCanvasExample"
         >
           See Offers
         </button>
@@ -128,6 +128,8 @@
           <div class="col-8" v-for="v in myVenues" :key="v.id">
             <VenueReceived :venue="v" />
           </div>
+          <h2>Messages</h2>
+          <Accepted />
         </div>
       </template>
     </OffCanvas>
@@ -173,7 +175,6 @@ export default {
     // })
     onMounted(async () => {
       try {
-        // await bandsService.getBandById()
       } catch (error) {
         logger.error(error)
       }
@@ -191,9 +192,7 @@ export default {
       try {
         if (route.name == "Profile") {
           AppState.profile = {}
-
           await profilesService.getProfile(route.params.id)
-
         }
       } catch (error) {
         logger.error(error)
@@ -208,8 +207,8 @@ export default {
       offers: computed(() => AppState.offers),
       offersBand: computed(() => AppState.activeBand),
       sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
-      // recievedOffers: computed(() => AppState.recievedOffers)
       rOffers: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
+<<<<<<< HEAD
        async goTo(id) {
         try {
           await bandsService.getBandById(id)
@@ -247,6 +246,8 @@ export default {
       // setActive() {
       //   bandsService.setActive()
       // },
+=======
+>>>>>>> 446a815a9ebe8bb86daa3454291b8cf80cc2732f
     }
   }
 }

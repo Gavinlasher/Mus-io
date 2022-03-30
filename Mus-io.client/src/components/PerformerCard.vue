@@ -1,21 +1,19 @@
 <template>
-  <div class="col-12 align-items-stretch">
+  <img
+    class="img-fluid rounded-bottom shadow mt-3"
+    :src="band.bannerImg"
+    alt=""
+  />
+  <div class="col-12">
     <h1 class="mx-1 px-2 py-2 text-start col-12 main-font p-1">
       {{ band.name }}
     </h1>
+    <div class="d-flex"></div>
     <h5 class="mx-4 px-5 text-end col-12 mt-4 main-font">{{ band.genre }}</h5>
-    <!-- <div class="d-flex align-items-stretch align-items-end">
-      <img
-        class="img-fluid rounded-bottom shadow align-items-stretch mt-3"
-        :src="band.bannerImg"
-        alt=""
-      />
-    </div> -->
   </div>
 </template>
 
 <script>
-
 import { useRoute } from "vue-router"
 export default {
   props: {
@@ -24,18 +22,9 @@ export default {
       required: true
     }
   },
-  setup(props) {
+  setup() {
     const route = useRoute()
-    // watchEffect(async () => {
-    //   try {
-    //     await bandsService.getOffersBand(props.band.id)
-    //   } catch (error) {
-    //     logger.error(error)
-    //   }
-
-    // })
     return {
-      // offerBand: computed(() => AppState.offers)
 
     }
   }
@@ -55,8 +44,7 @@ export default {
 }
 img {
   width: 50vh;
-  height: 40vh;
-  background-size: cover;
+  height: 26vh;
 }
 h1 {
   text-overflow: hidden;

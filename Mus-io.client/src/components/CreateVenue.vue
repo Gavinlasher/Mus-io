@@ -106,6 +106,7 @@ import { useRoute } from "vue-router"
 import { logger } from "../utils/Logger"
 import { venuesService } from "../services/VenuesService"
 import { Modal } from "bootstrap"
+import Pop from '../utils/Pop'
 export default {
   props: {
     venueData: {
@@ -120,10 +121,12 @@ export default {
       editable,
       async createVenue() {
         try {
-          Modal.getOrCreateInstance(document.getElementById('create-venue')).hide()
           await venuesService.createVenue(editable.value)
           editable.value = {}
+          Modal.getOrCreateInstance(document.getElementById('create-venue')).hide()
+          Pop.toast('Venue Created!', 'success')
         } catch (error) {
+          Pop.toast(error.message, 'error')
           logger.error(error)
         }
       }

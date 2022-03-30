@@ -4,6 +4,7 @@
 
     <div class="row">
       <div class="col-10" v-for="r in recieved" :key="r.id">
+        <h4>{{ r.creator.name }}</h4>
         <h5>{{ r.body }}</h5>
         <div
           class="btn-group"
@@ -13,7 +14,9 @@
           <button @click="declineVenue(r)" type="button" class="btn btn-danger">
             Decline
           </button>
-          <button type="button" class="btn btn-success">Accept</button>
+          <button @click="acceptVenue(r)" type="button" class="btn btn-success">
+            Accept
+          </button>
         </div>
       </div>
     </div>
@@ -51,6 +54,16 @@ export default {
           logger.log(r)
           r.status = 'declined'
           await offersService.declineVenueOffer(r)
+          Pop.toast("Offer Declined", 'info')
+        } catch (error) {
+          Pop.toast(error.message, 'error message')
+          logger.error(error)
+        }
+      },
+      async acceptVenue(r) {
+        try {
+          r.status = 'accepted'
+          await offersService.acceptVenueOffer(r)
         } catch (error) {
           logger.error(error)
         }

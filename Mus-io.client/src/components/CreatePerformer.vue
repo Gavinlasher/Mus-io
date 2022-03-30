@@ -134,6 +134,7 @@ import { useRoute, useRouter } from "vue-router"
 import { logger } from "../utils/Logger"
 import { Modal } from "bootstrap"
 import { bandsService } from "../services/BandsService"
+import Pop from '../utils/Pop'
 export default {
   setup() {
     const editable = ref({})
@@ -143,10 +144,12 @@ export default {
       editable,
       async createPerformer() {
         try {
-          Modal.getOrCreateInstance(document.getElementById('create-performer')).hide()
           await bandsService.createBand(editable.value)
+          Pop.toast('Performer Created!', 'sucess')
           editable.value = {}
+          Modal.getOrCreateInstance(document.getElementById('create-performer')).hide()
         } catch (error) {
+          Pop.toast(error.message, 'error')
           logger.error(error)
         }
       }

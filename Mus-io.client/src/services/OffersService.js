@@ -38,6 +38,16 @@ class OffersService {
         const res = await api.put('api/offers/' + body.id, body)
         logger.log('edit venue offer', res.data)
     }
+
+    async acceptBandOffer(body) {
+        const res = await api.put('api/offers/' + body.id, body)
+        logger.log('accept band offer', res.data)
+    }
+
+    async acceptVenueOffer(body) {
+        const res = await api.put('api/offers/' + body.id, body)
+        logger.log('accept venue offer', res.data)
+    }
 }
 
 
