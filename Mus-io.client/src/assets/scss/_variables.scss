@@ -6,12 +6,12 @@ $info: rgb(0, 152, 163);
 $warning: #fbcf33;
 $danger: #ea0606;
 $light: #e9ecef;
-$dark: rgba(14, 14, 14, 1);
+$dark: rgb(0, 0, 0);
 $grey: rgba(105, 105, 105, 1);
 
 $font-sans-serif: Open Sans;
 $font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-$gradient: linear-gradient(180deg, rgb(0, 133, 143), rgba(14, 14, 14, 1));
+$gradient: linear-gradient(180deg, rgba(0, 134, 143, 0.904),rgba(14, 14, 14, 0.897));
 
 
 $colors: (

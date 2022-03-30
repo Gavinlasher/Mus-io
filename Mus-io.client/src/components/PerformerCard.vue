@@ -1,15 +1,14 @@
 <template>
+  <img
+    class="img-fluid rounded-bottom shadow mt-3"
+    :src="band.bannerImg"
+    alt=""
+  />
   <div class="col-12">
     <h1 class="mx-1 px-2 py-2 text-start col-12 main-font p-1">
       {{ band.name }}
     </h1>
-    <div class="d-flex">
-      <!-- <img
-        class="img-fluid rounded-bottom shadow mt-3"
-        :src="band.bannerImg"
-        alt=""
-      /> -->
-    </div>
+    <div class="d-flex"></div>
     <h5 class="mx-4 px-5 text-end col-12 mt-4 main-font">{{ band.genre }}</h5>
   </div>
 </template>
@@ -46,7 +45,7 @@ export default {
 }
 img {
   width: 50vh;
-  height: 10vh;
+  height: 26vh;
 }
 h1 {
   text-overflow: hidden;
