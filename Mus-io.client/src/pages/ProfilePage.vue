@@ -127,9 +127,7 @@
             <VenueReceived :venue="v" />
           </div>
           <h2>Messages</h2>
-          <div class="col-8" v-for="a in accepted" :key="a.id">
-            <Accepted :accept="a" />
-          </div>
+          <Accepted />
         </div>
       </template>
     </OffCanvas>
