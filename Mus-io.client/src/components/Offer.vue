@@ -4,6 +4,7 @@
 
     <div class="row">
       <div class="col-10" v-for="r in recieved" :key="r.id">
+        <h4>{{ r.creator.name }}</h4>
         <h5>{{ r.body }}</h5>
         <div
           class="btn-group"
