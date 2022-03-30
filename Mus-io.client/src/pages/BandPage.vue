@@ -67,15 +67,28 @@
             </div>
           </div>
           <div class="col-9 text-light">
-            <h3 class="ps-4 pb-3 main-font">About</h3>
+            <h3 class="ps-4 pb-2 border-bottom main-font">About</h3>
             <div class="div" v-if="band.creatorId !== account.id">
               <div v-html="editable.bio"></div>
             </div>
-            <div id="app bg-gradient" v-if="band.creatorId == account.id">
-              <div class="bg-dark text-light p-1 mt-3">
-                <button class="btn btn-success" @click="save">Save</button>
+            <div id="app row bg-gradient" v-if="band.creatorId == account.id">
+              <div
+                class="
+                  bg-gradient
+                  d-flex
+                  justify-content-end
+                  rounded
+                  col-12
+                  text-light
+                  p-1
+                  mt-3
+                "
+              >
+                <button class="btn hoverable btn-success mx-2" @click="save">
+                  Save
+                </button>
                 <button
-                  class="btn btn-success"
+                  class="btn hoverable btn-success"
                   @click="showPreview = !showPreview"
                 >
                   Preview
@@ -84,8 +97,6 @@
               <div v-if="!showPreview">
                 <editor
                   v-model="editable.bio"
-                  @selectionChange="saveContent"
-                  api-key="8cbcxix5kfgyb4dxa8i4jxkjudi7il8b7becshh9yq5218kv"
                   :init="{
                     height: 500,
                     menubar: true,
@@ -96,8 +107,8 @@
                     ],
                     toolbar:
                       'undo redo | formatselect | bold italic backcolor | \
-           alignleft aligncenter alignright alignjustify | \
-           bullist numlist outdent indent | removeformat | help',
+                       alignleft aligncenter alignright alignjustify | \
+                       bullist numlist outdent indent | removeformat | help',
                   }"
                 />
               </div>
@@ -131,15 +142,15 @@
           <div class="col-12">
             <img
               class="img-fluid pp mt-4"
-              :src="band.creator.picture"
+              :src="band.creator?.picture"
               alt=""
               srcset=""
-              :title="band.creator.name"
+              :title="band.creator?.name"
             />
           </div>
           <div class="col-12 mt-4">
             <h6>
-              <i class="mdi mdi-email main-font"></i> {{ band.creator.email }}
+              <i class="mdi mdi-email main-font"></i> {{ band.creator?.email }}
             </h6>
           </div>
         </div>
@@ -160,8 +171,7 @@
 <script>
 import { computed, ref } from "@vue/reactivity"
 import { AppState } from "../AppState"
-import Modal from "../components/Modal.vue"
-import { onMounted, watchEffect } from "@vue/runtime-core"
+import { watchEffect } from "@vue/runtime-core"
 import { bandsService } from "../services/BandsService"
 import { useRoute, useRouter } from "vue-router"
 import { venuesService } from "../services/VenuesService"
