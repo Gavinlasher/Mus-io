@@ -28,6 +28,7 @@ class BandsService {
     }
     async editBand(body, id) {
         const res = await api.put('api/bands/' + id, body)
+        logger.log(res.data)
     }
 
     async getOffersBand(bandId) {
