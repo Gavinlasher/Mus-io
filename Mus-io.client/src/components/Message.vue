@@ -1,8 +1,8 @@
 <template>
-  <div class="col-12 d-flex justify-content-start">
+  <div class="col-12 d-flex bg-light rounded justify-content-start">
     <img
       class="img-fluid mt-4 mb-4 rounded-circle"
-      style="height: 10vh; width: auto"
+      style="height: 10vh; width: 10vh"
       :src="message.creator.picture"
       alt=""
     />

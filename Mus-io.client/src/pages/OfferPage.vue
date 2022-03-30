@@ -1,6 +1,6 @@
 <template>
-  <div class="p-5"></div>
-  <div class="container bg-light">
+  <div class="container-fluid bg-gradient">
+    <div class="p-5"></div>
     <div v-for="m in messages" :key="m.id" class="row mx-4 mt-2 rounded shadow">
       <Message :message="m" />
     </div>
@@ -18,6 +18,11 @@
         </div>
       </form>
     </div>
+    <div class="p-5"></div>
+    <div class="p-5"></div>
+    <div class="p-5"></div>
+    <div class="p-5"></div>
+    <div class="p-5"></div>
   </div>
 </template>
 
