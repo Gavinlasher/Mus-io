@@ -31,6 +31,28 @@
         </h2>
       </div>
     </router-link>
+    <router-link class="navbar-brand d-flex" :to="{ name: 'Gigs' }">
+      <span class="mx-1"> </span>
+      <div class="d-flex flex-column align-items-center">
+        <h2
+          class="
+            text-success
+            glow
+            main-font
+            text-success
+            px-4
+            my-0
+            mx-3
+            p-2
+            fa fa-apple
+            border border-secondary
+          "
+          id="apple"
+        >
+          <b>My Gigs</b>
+        </h2>
+      </div>
+    </router-link>
     <button
       class="navbar-toggler"
       type="button"
