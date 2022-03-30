@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-gradient">
+  <div class="container-fluid bg-gradient pic-hide">
     <div class="row">
       <div class="mt-5"></div>
       <div class="col-12 p-4 mt-5">
@@ -240,6 +240,9 @@ export default {
 
 
 <style lang="scss" scoped>
+.pic-hide {
+  overflow: hidden;
+}
 .img-banner {
   height: 50vh;
   width: 100%;
