@@ -32,7 +32,6 @@
               </div>
               <div class="col-12 ps-4 pb-3">
                 <button
-                  v-if=""
                   class="btn btn-primary rounded-pill"
                   data-bs-toggle="modal"
                   data-bs-target="#edit-venue"

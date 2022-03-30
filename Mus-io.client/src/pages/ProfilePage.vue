@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid bg-gradient">
-    <div class="row justify-content-start">
+    <div class="row d-flex justify-content-start">
       <div class="p-5"></div>
 
       <div class="col-12 mt-3">
@@ -48,7 +48,7 @@
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#request"
-          aria-controls="offcanvasExample"
+          aria-controls="offCanvasExample"
         >
           See Offers
         </button>
