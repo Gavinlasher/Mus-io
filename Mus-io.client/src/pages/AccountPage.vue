@@ -40,7 +40,7 @@
       </div>
     </div>
     <h1 class="text-center text-light custom-text p-3 main-font">
-      My Preformers
+      My Performers
     </h1>
     <div class="row justify-content-center p-0 mt-5">
       <div
