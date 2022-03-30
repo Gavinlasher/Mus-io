@@ -4,27 +4,37 @@
       {{ acceptedOffers }}
     </h4> -->
     <div
-      class="col-8 m-4"
-      v-for="accepted in acceptedOffers"
-      :key="accepted.id"
+      @click="goTo('Offer')"
+      class="col-10 m-4 bg-primary shadow rounded hoverable p-3"
     >
-      <h5>{{ accepted.creator.name }}: {{ accepted.body }}</h5>
+      <h5>{{ acceptedOffer.creator.name }}: {{ acceptedOffer.body }}</h5>
     </div>
   </div>
 </template>
 
 
 <script>
-import { computed, onMounted } from "@vue/runtime-core"
-import { logger } from "../utils/Logger"
-import { venuesService } from "../services/VenuesService"
+import { computed } from "@vue/runtime-core"
 import { AppState } from "../AppState"
+import { logger } from "../utils/Logger"
+import { useRouter } from "vue-router"
 export default {
-  setup() {
+  props: {
+    acceptedOffer: {
+      type: Object,
+      required: true
+    }
+  },
+  setup(props) {
+    const router = useRouter();
     return {
-      acceptedOffers: computed(() => {
-        return Object.values(AppState.recievedOffers).flat().filter(v => v.status == 'accepted')
-      })
+      goTo(page) {
+        router.push({
+          name: page,
+          params: { id: props.acceptedOffer.id },
+        })
+
+      }
     }
   }
 }
@@ -32,4 +42,14 @@ export default {
 
 
 <style lang="scss" scoped>
+.hoverable:hover {
+  transform: scale(1.03);
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  user-select: none;
+}
+.hoverable:active {
+  transform: scale(0.98);
+  transition: 50ms ease-in-out;
+}
 </style>

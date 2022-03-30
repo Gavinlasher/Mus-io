@@ -127,7 +127,9 @@
             <VenueReceived :venue="v" />
           </div>
           <h2>Messages</h2>
-          <Accepted />
+          <span v-for="a in acceptedOffers" :key="a.id">
+            <Accepted :acceptedOffer="a" />
+          </span>
         </div>
       </template>
     </OffCanvas>
@@ -198,6 +200,9 @@ export default {
       offersBand: computed(() => AppState.activeBand),
       sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
       rOffers: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
+      acceptedOffers: computed(() => {
+        return Object.values(AppState.recievedOffers).flat().filter(v => v.status == 'accepted')
+      })
     }
   }
 }
