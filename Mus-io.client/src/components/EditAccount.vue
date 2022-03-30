@@ -66,8 +66,8 @@ export default {
       editable,
       async editAccount() {
         try {
-          Modal.getOrCreateInstance(document.getElementById('edit-account')).hide()
           await accountService.editAccount(editable.value)
+          Modal.getOrCreateInstance(document.getElementById('edit-account')).hide()
           Pop.toast('Account Edited', 'success')
         } catch (error) {
           Pop.toast(error.message, 'error')

@@ -52,7 +52,6 @@ export default {
       async decline(r) {
         try {
           r.status = 'declined'
-          // logger.log('this is an decline id', id)
           await offersService.declineOffer(r)
           Pop.toast('Offer Declined', 'info')
         } catch (error) {

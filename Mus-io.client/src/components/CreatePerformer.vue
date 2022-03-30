@@ -144,10 +144,10 @@ export default {
       editable,
       async createPerformer() {
         try {
-          Modal.getOrCreateInstance(document.getElementById('create-performer')).hide()
           await bandsService.createBand(editable.value)
           Pop.toast('Performer Created!', 'sucess')
           editable.value = {}
+          Modal.getOrCreateInstance(document.getElementById('create-performer')).hide()
         } catch (error) {
           Pop.toast(error.message, 'error')
           logger.error(error)

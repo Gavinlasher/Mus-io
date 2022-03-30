@@ -86,6 +86,7 @@ import { ref } from "@vue/reactivity"
 import { AppState } from "../AppState"
 import Pop from '../utils/Pop'
 import { logger } from '../utils/Logger'
+import { venuesService } from '../services/VenuesService'
 export default {
   setup() {
     const editable = ref({})
