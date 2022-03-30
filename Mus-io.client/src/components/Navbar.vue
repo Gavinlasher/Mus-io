@@ -18,10 +18,11 @@
             glow
             main-font
             text-success
-            px-3
+            px-4
             my-0
             p-2
             fa fa-apple
+            border border-secondary
           "
           id="apple"
         >
@@ -85,7 +86,6 @@ a:hover {
   background-color: #18191f;
   color: #fff;
   border-radius: 6px;
-
   animation: animate 3s linear infinite;
   text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
     0 0 200px #0072ff;
