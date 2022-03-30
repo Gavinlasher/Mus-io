@@ -22,9 +22,15 @@ class BandsService {
     }
 
     async getAllBands(query = {}) {
-        const searchReg = new RegExp(query.search, 'ig')
-        const bands = await dbContext.Bands.find({ name: { $regex: searchReg } }).populate('creator')
-        return bands
+        if (query.search != undefined) {
+            const searchReg = new RegExp(query.search, 'ig')
+            const bands = await dbContext.Bands.find({ name: { $regex: searchReg } }).populate('creator')
+            return bands
+        }
+        else {
+            const bands = await dbContext.Bands.find(query).populate('creator')
+            return bands
+        }
     }
 
     async getBandById(id) {

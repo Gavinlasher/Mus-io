@@ -68,7 +68,10 @@
           </div>
           <div class="col-9 text-light">
             <h3 class="ps-4 pb-3 main-font">About</h3>
-            <div id="app">
+            <div class="div" v-if="band.creatorId !== account.id">
+              <div v-html="editable.bio"></div>
+            </div>
+            <div id="app bg-gradient" v-if="band.creatorId == account.id">
               <div class="bg-dark text-light p-1 mt-3">
                 <button @click="save">save</button>
                 <button @click="showPreview = !showPreview">preview</button>
@@ -160,28 +163,30 @@ import { venuesService } from "../services/VenuesService"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { profilesService } from '../services/ProfilesService'
+import Editor from "@tinymce/tinymce-vue";
+
 
 
 
 
 export default {
   name: 'app',
-
+  components: {
+    editor: Editor,
+  },
   setup() {
 
 
 
 
-    const editable = ref({
-      bio: `
-    <h1>This is a heading...</h1>
-    this is a test
-    
-    `,
-    });
+    const editable = ref({})
+
     const showPreview = ref(false);
     const route = useRoute()
     const router = useRouter()
+    watchEffect(() => {
+      editable.value.bio = AppState.activeBand.bio
+    })
     watchEffect(async () => {
       if (route.name == "Band") {
         await venuesService.getAll()
@@ -195,6 +200,16 @@ export default {
       writer: computed(() => AppState.activeBand.writer),
       band: computed(() => AppState.activeBand),
       myVenues: computed(() => AppState.venues.find(v => v.creatorId == AppState.account.id)),
+      async save() {
+        try {
+          logger.log(editable.value)
+          await bandsService.editBand(editable.value, AppState.activeBand.id)
+        } catch (error) {
+          Pop.toast("Band Edited!", 'sucess')
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      },
       async goTo(id) {
         try {
           await profilesService.getProfile(id)
