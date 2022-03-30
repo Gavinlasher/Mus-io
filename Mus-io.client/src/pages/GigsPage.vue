@@ -1,17 +1,20 @@
 <template>
-  <div
-    class="calendly-inline-widget"
-    style="min-width: 320px; height: 580px"
-    data-auto-load="false"
-  ></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2" v-for="o in offers" :key="o.id">
+        <OfferPic :offer="o" />
+      </div>
+    </div>
+  </div>
 </template>
 
 
 <script>
+import { computed } from '@vue/reactivity'
 export default {
   setup() {
     return {
-
+      // offers: computed(() => )
     }
   }
 }
