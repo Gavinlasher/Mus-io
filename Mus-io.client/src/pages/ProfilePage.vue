@@ -74,6 +74,7 @@
         class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
         v-for="b in myBands"
         :key="b.id"
+        @click="goTo(b.id)"
       >
         <PerformerCard :band="b" />
 
@@ -94,6 +95,7 @@
         class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
         v-for="v in myVenues"
         :key="v.id"
+        @click="goTo2(v.id)"
       >
         <VenueCard :venue="v" />
       </div>
@@ -127,7 +129,9 @@
             <VenueReceived :venue="v" />
           </div>
           <h2>Messages</h2>
-          <Accepted />
+          <span v-for="a in acceptedOffers" :key="a.id">
+            <Accepted :acceptedOffer="a" />
+          </span>
         </div>
       </template>
     </OffCanvas>
@@ -157,12 +161,20 @@ import { bandsService } from "../services/BandsService"
 import { venuesService } from "../services/VenuesService"
 import { offersService } from "../services/OffersService"
 import { profilesService } from '../services/ProfilesService'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import Pop from "../utils/Pop"
 export default {
   name: 'Account',
   setup() {
     const route = useRoute()
+    const router = useRouter()
+    // onMounted(async () => {
+    //   try {
+
+    //   } catch (error) {
+    //     logger.log(error)
+    //   }
+    // })
     onMounted(async () => {
       try {
       } catch (error) {
@@ -198,6 +210,9 @@ export default {
       offersBand: computed(() => AppState.activeBand),
       sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
       rOffers: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
+      acceptedOffers: computed(() => {
+        return Object.values(AppState.recievedOffers).flat().filter(v => v.status == 'accepted')
+      })
     }
   }
 }

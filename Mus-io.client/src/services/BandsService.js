@@ -41,11 +41,12 @@ class BandsService {
         // AppState.recievedOffers.push(res.data)
     }
 
-    // setActive(band) {
-    //     logger.log(band)
-    //     // const res = await api.get('api/bands/' + band.id + '/offers')
-    //     AppState.activeBand = band
-    // }
+    async filter(genre) {
+        logger.log("genre is...", genre)
+        const res = await api.get('api/bands/' + genre)
+        logger.log("res.data is...", res.data)
+        AppState.bands = res.data
+    }
 
 }
 

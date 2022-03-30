@@ -48,6 +48,12 @@ class OffersService {
         const res = await api.put('api/offers/' + body.id, body)
         logger.log('accept venue offer', res.data)
     }
+
+    async getOfferById(id) {
+        const res = await api.get('api/offers/' + id)
+        logger.log('getoffersbyId', res.data)
+        AppState.activeOffer = res.data
+    }
 }
 
 

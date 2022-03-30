@@ -2,7 +2,6 @@
   <div class="container-fluid bg-gradient parallax">
     <div class="row justify-content-center p-1">
       <div class="p-5"></div>
-
       <form @submit.prevent="search" class="d-flex justify-content-center mt-3">
         <input
           placeholder="Search......."
@@ -10,6 +9,19 @@
           v-model="query"
         />
       </form>
+    </div>
+    <div class="row justify-content-around mt-4">
+      <button @click="filter('country')" class="col-2 btn btn-primary">
+        Country
+      </button>
+      <button @click="filter('rock')" class="col-2 btn btn-primary">
+        Rock
+      </button>
+      <button @click="filter('pop')" class="col-2 btn btn-primary">Pop</button>
+      <button @click="filter('rap')" class="col-2 btn btn-primary">Rap</button>
+      <button @click="filter('electronic')" class="col-2 btn btn-primary">
+        Electronic
+      </button>
     </div>
     <div class="mt-5 justify-content-around mx-5 row">
       <div
@@ -161,6 +173,15 @@ export default {
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message)
+        }
+      },
+      async filter(genre) {
+        try {
+          logger.log("genre is...", genre)
+          await bandsService.filter('?genre=' + genre)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
         }
       }
     }
