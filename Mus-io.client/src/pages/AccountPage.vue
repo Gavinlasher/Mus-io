@@ -100,6 +100,7 @@ import { logger } from "../utils/Logger"
 import { bandsService } from "../services/BandsService"
 import { venuesService } from "../services/VenuesService"
 import { offersService } from "../services/OffersService"
+import { profilesService } from "../services/ProfilesService"
 export default {
   name: 'Account',
   setup() {
@@ -119,6 +120,30 @@ export default {
       offers: computed(() => AppState.offers),
       offersBand: computed(() => AppState.activeBand),
       sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
+      async goTo(id) {
+        try {
+          await bandsService.getBandById(id)
+          router.push({
+            name: 'Band',
+            params: { id: AppState.activeBand.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      },
+      async goTo2(id) {
+        try {
+          await venuesService.getVenueById(id)
+          router.push({
+            name: 'Venue',
+            params: { id: AppState.activeBand.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      }
 
     }
   }

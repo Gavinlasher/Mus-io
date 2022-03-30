@@ -212,7 +212,31 @@ export default {
       rOffers: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
       acceptedOffers: computed(() => {
         return Object.values(AppState.recievedOffers).flat().filter(v => v.status == 'accepted')
-      })
+      }),
+      async goTo(id) {
+        try {
+          await bandsService.getBandById(id)
+          router.push({
+            name: 'Band',
+            params: { id: AppState.activeBand.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      },
+      async goTo2(id) {
+        try {
+          await venuesService.getVenueById(id)
+          router.push({
+            name: 'Venue',
+            params: { id: AppState.activeBand.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      }
     }
   }
 }
