@@ -110,7 +110,7 @@
     </Modal>
     <Modal id="edit-account">
       <template #title> Edit Account </template>
-      <template #body><EditAccount :accountData="account" /></template>
+      <template #body><EditAccount :accountData="profile" /></template>
     </Modal>
     <OffCanvas id="request">
       <template #requests>
