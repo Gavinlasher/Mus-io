@@ -6,11 +6,6 @@
         <OfferPic :offer="o" />
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <Calendar />
-      </div>
-    </div>
   </div>
 </template>
 
