@@ -243,14 +243,18 @@ export default {
       }),
       async deleteBand(id) {
         try {
-          await bandsService.deleteBand(id)
+          if (await Pop.confirm()) {
+            await bandsService.deleteBand(id)
+          }
         } catch (error) {
           logger.error(error)
         }
       },
       async deleteVenue(id) {
         try {
-          await venuesService.deleteVenue(id)
+          if (await Pop.confirm()) {
+            await venuesService.deleteVenue(id)
+          }
         } catch (error) {
           logger.error(error)
         }
