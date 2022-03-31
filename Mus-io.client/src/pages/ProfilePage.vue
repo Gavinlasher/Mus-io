@@ -1,10 +1,10 @@
 <template>
   <div class="container-fluid parallax">
     <div class="row d-flex justify-content-start">
-      <div class="col-md-12">
+      <!-- <div class="col-md-12">
         <Calendar />
-      </div>
-      <div class="p-5"></div>
+      </div> -->
+      <!-- <div class="p-5"></div> -->
 
       <div class="col-12 mt-3">
         <div class="border-bottom">
