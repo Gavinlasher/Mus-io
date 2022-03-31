@@ -1,17 +1,17 @@
 <template>
-  <div class="container-fluid bg-gradient parallax">
+  <div class="container-fluid parallax">
     <div class="row justify-content-center p-1">
       <div class="p-5"></div>
       <form @submit.prevent="search" class="d-flex justify-content-center mt-3">
         <input
           placeholder="Search......."
-          class="bg-primary border-primary rounded-pill p-1 col-6"
+          class="bg-primary border-primary rounded-pill p-1 col-md-6 col-12"
           v-model="query"
         />
       </form>
     </div>
     <div class="row justify-content-around mt-4">
-      <button @click="filter('country')" class="col-2 btn btn-primary">
+      <button @click="filter('country')" class="col-3 btn btn-primary">
         Country
       </button>
       <button @click="filter('rock')" class="col-2 btn btn-primary">
@@ -20,7 +20,7 @@
       <button @click="filter('pop')" class="col-2 btn btn-primary">Pop</button>
       <button @click="filter('rap')" class="col-2 btn btn-primary">Rap</button>
       <button @click="filter('electronic')" class="col-2 btn btn-primary">
-        Electronic
+        Elec
       </button>
     </div>
     <div class="mt-5 justify-content-around mx-5 row">

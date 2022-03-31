@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-gradient pic-hide">
+  <div class="container-fluid pic-hide">
     <div class="row">
       <div class="mt-5"></div>
       <div class="col-12 p-4 mt-5">

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-gradient">
+  <div class="container-fluid">
     <div class="p-5"></div>
     <div v-for="m in messages" :key="m.id" class="row mx-4 mt-2 rounded shadow">
       <Message :message="m" />

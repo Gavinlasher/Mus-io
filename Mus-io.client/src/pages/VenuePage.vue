@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-gradient">
+  <div class="container-fluid">
     <div class="row">
       <div class="div mt-5"></div>
       <div class="col-12 p-4 mt-4">

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-gradient">
+  <div class="container-fluid parallax">
     <div class="row d-flex justify-content-start">
       <div class="p-5"></div>
 
