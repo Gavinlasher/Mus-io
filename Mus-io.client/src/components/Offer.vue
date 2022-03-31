@@ -1,11 +1,10 @@
 <template>
   <div>
-    <h4 class="text-info">{{ band.name }}</h4>
+    <h3 class="text-info">{{ band.name }}</h3>
 
     <div class="row">
-      <div class="col-10" v-for="r in recieved" :key="r.id">
-        <h4>{{ r.creator.name }}</h4>
-        <h5>{{ r.body }}</h5>
+      <div class="col-10 pb-2" v-for="r in recieved" :key="r.id">
+        <h2 class="fw-bold">{{ r.creator.name }}: {{ r.body }}</h2>
         <div
           class="btn-group"
           role="group"
@@ -52,8 +51,10 @@ export default {
       recieved: computed(() => AppState.recievedOffers[props.band.id]?.filter(r => r.status == 'pending')),
       async decline(r) {
         try {
-          r.status = 'declined'
-          await offersService.declineOffer(r)
+          if (await Pop.confirm()) {
+            r.status = 'declined'
+            await offersService.declineOffer(r)
+          }
           Pop.toast('Offer Declined', 'info')
         } catch (error) {
           Pop.toast(error.message, 'error')
