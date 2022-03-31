@@ -1,6 +1,5 @@
 <template>
-  <div class="container-fluid bg-gradient">
-    <div class="col-md-12"></div>
+  <div class="container-fluid parallax">
     <div class="row d-flex justify-content-start">
       <div class="p-5"></div>
 
@@ -155,20 +154,20 @@
 </template>
 
 <script>
-import { computed, onMounted, watchEffect } from 'vue'
-import { AppState } from '../AppState'
-import { logger } from "../utils/Logger"
-import { bandsService } from "../services/BandsService"
-import { venuesService } from "../services/VenuesService"
-import { offersService } from "../services/OffersService"
-import { profilesService } from '../services/ProfilesService'
-import { useRoute, useRouter } from 'vue-router'
-import Pop from "../utils/Pop"
+import { computed, onMounted, watchEffect } from "vue";
+import { AppState } from "../AppState";
+import { logger } from "../utils/Logger";
+import { bandsService } from "../services/BandsService";
+import { venuesService } from "../services/VenuesService";
+import { offersService } from "../services/OffersService";
+import { profilesService } from "../services/ProfilesService";
+import { useRoute, useRouter } from "vue-router";
+import Pop from "../utils/Pop";
 export default {
-  name: 'Account',
+  name: "Account",
   setup() {
-    const route = useRoute()
-    const router = useRouter()
+    const route = useRoute();
+    const router = useRouter();
     // onMounted(async () => {
     //   try {
 
@@ -179,71 +178,82 @@ export default {
     onMounted(async () => {
       try {
       } catch (error) {
-        logger.error(error)
+        logger.error(error);
       }
-    })
+    });
     watchEffect(async () => {
       try {
-        await bandsService.getAll()
-        await offersService.getMyOffers()
-        await venuesService.getAll()
+        await bandsService.getAll();
+        await offersService.getMyOffers();
+        await venuesService.getAll();
       } catch (error) {
-        logger.error(error)
+        logger.error(error);
       }
-    })
+    });
     watchEffect(async () => {
       try {
         if (route.name == "Profile") {
-          AppState.profile = {}
-          await profilesService.getProfile(route.params.id)
+          AppState.profile = {};
+          await profilesService.getProfile(route.params.id);
         }
       } catch (error) {
-        logger.error(error)
-        Pop.toast(error.message, "error")
+        logger.error(error);
+        Pop.toast(error.message, "error");
       }
-    })
+    });
     return {
       account: computed(() => AppState.account),
       profile: computed(() => AppState.profile),
-      myBands: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
-      myVenues: computed(() => AppState.venues.filter(v => v.creatorId == AppState.profile.id)),
-      offers: computed(() => AppState.offers.filter(v => v.status == 'pending')),
+      myBands: computed(() =>
+        AppState.bands.filter((b) => b.creatorId == AppState.profile.id)
+      ),
+      myVenues: computed(() =>
+        AppState.venues.filter((v) => v.creatorId == AppState.profile.id)
+      ),
+      offers: computed(() =>
+        AppState.offers.filter((v) => v.status == "pending")
+      ),
       offersBand: computed(() => AppState.activeBand),
-      sentBand: computed(() => AppState.offers.filter(o => o.band.creatorId !== AppState.account.id)),
-      rOffers: computed(() => AppState.bands.filter(b => b.creatorId == AppState.profile.id)),
+      sentBand: computed(() =>
+        AppState.offers.filter((o) => o.band.creatorId !== AppState.account.id)
+      ),
+      rOffers: computed(() =>
+        AppState.bands.filter((b) => b.creatorId == AppState.profile.id)
+      ),
       acceptedOffers: computed(() => {
-        const recOffer = Object.values(AppState.recievedOffers).flat().filter(v => v.status == 'accepted')
-        const sentOffer = AppState.offers.filter(v => v.status == 'accepted')
-        return [...recOffer, ...sentOffer]
+        const recOffer = Object.values(AppState.recievedOffers)
+          .flat()
+          .filter((v) => v.status == "accepted");
+        const sentOffer = AppState.offers.filter((v) => v.status == "accepted");
+        return [...recOffer, ...sentOffer];
       }),
       async goTo(id) {
         try {
-          await bandsService.getBandById(id)
+          await bandsService.getBandById(id);
           router.push({
-            name: 'Band',
-            params: { id: AppState.activeBand.id }
-          })
+            name: "Band",
+            params: { id: AppState.activeBand.id },
+          });
         } catch (error) {
-          logger.error(error)
-          Pop.toast(error.message, 'error message')
+          logger.error(error);
+          Pop.toast(error.message, "error message");
         }
       },
       async goTo2(id) {
         try {
-          await venuesService.getVenueById(id)
+          await venuesService.getVenueById(id);
           router.push({
-            name: 'Venue',
-            params: { id: AppState.activeBand.id }
-          })
+            name: "Venue",
+            params: { id: AppState.activeBand.id },
+          });
         } catch (error) {
-          logger.error(error)
-          Pop.toast(error.message, 'error message')
+          logger.error(error);
+          Pop.toast(error.message, "error message");
         }
-      }
-
-    }
-  }
-}
+      },
+    };
+  },
+};
 </script>
 
 <style scoped>

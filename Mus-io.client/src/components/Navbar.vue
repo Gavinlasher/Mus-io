@@ -18,7 +18,7 @@
             glow
             main-font
             text-success
-            px-4
+            px-md-4
             my-0
             mx-3
             p-2
@@ -40,7 +40,7 @@
             glow
             main-font
             text-success
-            px-4
+            px-md-4
             my-0
             mx-3
             p-2
