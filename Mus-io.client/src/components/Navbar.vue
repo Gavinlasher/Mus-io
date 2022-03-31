@@ -1,75 +1,68 @@
 <template>
-  <nav
-    class="
-      navbar
-      fixed-top
-      navbar-expand-lg navbar-dark
-      bg-dark
-      px-0
-      container-fluid
-    "
-  >
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <span class="mx-1"> </span>
-      <div class="d-flex flex-column align-items-center">
-        <h2
-          class="
-            text-success
-            glow
-            main-font
-            text-success
-            px-md-4
-            my-0
-            mx-3
-            p-2
-            fa fa-apple
-            border border-secondary
-          "
-          id="apple"
-        >
-          <b>Mus.io</b>
-        </h2>
-      </div>
-    </router-link>
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Gigs' }">
-      <span class="mx-1"> </span>
-      <div class="d-flex flex-column align-items-center">
-        <h2
-          class="
-            text-success
-            glow
-            main-font
-            text-success
-            px-md-4
-            my-0
-            mx-3
-            p-2
-            fa fa-apple
-            border border-secondary
-          "
-          id="apple"
-        >
-          <b>Gigs</b>
-        </h2>
-      </div>
-    </router-link>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark px-0">
+    <div class="d-flex w-100 justify-content-between flex-wrap">
+      <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+        <span class="mx-1"> </span>
+        <div class="d-flex flex-column align-items-center">
+          <h2
+            class="
+              text-success
+              glow
+              main-font
+              text-success
+              px-md-4
+              my-0
+              mx-md-3
+              p-2
+              fa fa-apple
+              border border-secondary
+            "
+            id="apple"
+          >
+            <b>Mus.io</b>
+          </h2>
+        </div>
+      </router-link>
+      <router-link class="navbar-brand d-flex" :to="{ name: 'Gigs' }">
+        <span class="mx-1"> </span>
+        <div class="d-flex flex-column align-items-center">
+          <h2
+            class="
+              text-success
+              glow
+              main-font
+              text-success
+              px-md-4
+              my-0
+              mx-md-3
+              p-2
+              fa fa-apple
+              border border-secondary
+            "
+            id="apple"
+          >
+            <b>Gigs</b>
+          </h2>
+        </div>
+      </router-link>
 
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon" />
-    </button>
-    <div
-      class="collapse navbar-collapse row justify-content-end"
-      id="navbarText"
-    >
-      <span class="col-3 text-end"><Login /></span>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon" />
+      </button>
+      <div
+        class="collapse navbar-collapse row justify-content-end"
+        id="navbarText"
+      >
+        <span class="text-end"><Login /></span>
+      </div>
     </div>
   </nav>
 </template>
@@ -88,6 +81,9 @@ a:hover {
 }
 .nav-link {
   text-transform: uppercase;
+}
+.navbar {
+  width: 100vw;
 }
 .navbar-nav .router-link-exact-active {
   border-bottom: 2px solid var(--bs-success);

@@ -3,6 +3,7 @@
     <img
       class="img-fluid rounded-bottom shadow mt-3"
       :src="band.bannerImg"
+      @error="setAltImg"
       alt=""
     />
     <div class="col-12">
@@ -31,6 +32,9 @@ export default {
     const route = useRoute()
     const router = useRouter()
     return {
+      setAltImg(event) {
+        event.target.src = "https://picsum.photos/200"
+      },
       async goTo() {
         try {
           await bandsService.getBandById(props.band.id)
