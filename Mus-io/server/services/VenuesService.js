@@ -17,8 +17,9 @@ class VenuesService {
     return original
   }
 
-  async deleteVenue(venueId, userId) {
-    const venue = await dbContext.Venues.findById(venueId)
+  async deleteVenue(v, userId) {
+    const venue = await dbContext.Venues.findById(v)
+    const allOffers = await dbContext.Offers.deleteMany({ venueId: v })
     if (venue.creatorId.toString() !== userId) {
       throw new BadRequest('not your venue to update')
     }

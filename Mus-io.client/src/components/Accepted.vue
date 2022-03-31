@@ -7,7 +7,7 @@
       @click="goTo('Offer')"
       class="col-10 m-4 bg-primary shadow rounded hoverable p-3"
     >
-      <h5>{{ acceptedOffer.creator.name }}: {{ acceptedOffer.body }}</h5>
+      <h3>{{ acceptedOffer.creator.name }}: {{ acceptedOffer.body }}</h3>
     </div>
   </div>
 </template>
