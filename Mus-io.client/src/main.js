@@ -13,5 +13,5 @@ registerGlobalComponents(root)
 
 root
   .use(router)
-  .use(@FullCalendar)
+
   .mount('#app')

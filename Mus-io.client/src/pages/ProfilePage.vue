@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid bg-gradient">
+    <div class="col-md-12"></div>
     <div class="row d-flex justify-content-start">
       <div class="p-5"></div>
 

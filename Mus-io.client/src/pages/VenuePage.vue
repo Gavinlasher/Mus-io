@@ -78,6 +78,7 @@
       </div>
     </div>
   </div>
+
   <Modal id="edit-venue">
     <template #title> Edit Venue</template>
     <template #body><VenueForm /></template>
@@ -90,15 +91,19 @@
 
 
 <script>
-import { computed, popScopeId, watchEffect } from "@vue/runtime-core"
+import { computed, popScopeId, reactive, watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import Pop from "../utils/Pop"
 import { venuesService } from "../services/VenuesService"
 import { useRoute, useRouter } from "vue-router"
 import { AppState } from "../AppState"
 import { profilesService } from "../services/ProfilesService"
+import Calendar from "../components/Calendar.vue"
+
 export default {
+  components: { Calendar },
   setup() {
+
     const route = useRoute()
     const router = useRouter()
     watchEffect(async () => {

@@ -164,6 +164,7 @@
     <template #title> Edit Band</template>
     <template #body><EditBand /></template>
   </Modal>
+  <Calendar />
 </template>
 
 
