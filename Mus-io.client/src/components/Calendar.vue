@@ -11,6 +11,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { INITIAL_EVENTS, createEventId } from "../utils/event-utlis";
+import { logger } from "../utils/Logger";
 const Demo = defineComponent({
   components: {
     FullCalendar,
