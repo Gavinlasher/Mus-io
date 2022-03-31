@@ -1,20 +1,25 @@
 <template>
-  <img
-    class="img-fluid rounded-bottom shadow mt-3"
-    :src="band.bannerImg"
-    alt=""
-  />
-  <div class="col-12">
-    <h1 class="mx-1 px-2 py-2 text-start col-12 main-font p-1">
-      {{ band.name }}
-    </h1>
-    <div class="d-flex"></div>
-    <h5 class="mx-4 px-5 text-end col-12 mt-4 main-font">{{ band.genre }}</h5>
+  <div @click="goTo">
+    <img
+      class="img-fluid rounded-bottom shadow mt-3"
+      :src="band.bannerImg"
+      alt=""
+    />
+    <div class="col-12">
+      <h1 class="mx-1 px-2 py-2 text-start col-12 main-font p-1">
+        {{ band.name }}
+      </h1>
+      <div class="d-flex"></div>
+      <h5 class="mx-4 px-5 text-end col-12 mt-4 main-font">{{ band.genre }}</h5>
+    </div>
   </div>
 </template>
 
 <script>
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
+import { AppState } from "../AppState"
+import { bandsService } from "../services/BandsService"
+import { logger } from "../utils/Logger"
 export default {
   props: {
     band: {
@@ -22,10 +27,22 @@ export default {
       required: true
     }
   },
-  setup() {
+  setup(props) {
     const route = useRoute()
+    const router = useRouter()
     return {
-
+      async goTo() {
+        try {
+          await bandsService.getBandById(props.band.id)
+          router.push({
+            name: 'Band',
+            params: { id: AppState.activeBand.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      },
     }
   }
 }

@@ -74,8 +74,15 @@
         class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
         v-for="b in myBands"
         :key="b.id"
-        @click="goTo(b.id)"
       >
+        <button
+          v-if="account.id == b.creatorId"
+          @click="deleteBand(b.id)"
+          type="button"
+          title="Delete Comment"
+          class="btn-close btn-close-white me-4 mt-3"
+          aria-label="Close"
+        ></button>
         <PerformerCard :band="b" />
 
         <!-- <OffCanvas /> -->
@@ -95,8 +102,15 @@
         class="col-md-3 bg-dark p-0 m-3 shadow hoverable rounded"
         v-for="v in myVenues"
         :key="v.id"
-        @click="goTo2(v.id)"
       >
+        <button
+          v-if="account.id == v.creatorId"
+          @click="deleteVenue(v.id)"
+          type="button"
+          title="Delete Comment"
+          class="btn-close btn-close-white me-4 mt-3"
+          aria-label="Close"
+        ></button>
         <VenueCard :venue="v" />
       </div>
     </div>
@@ -215,30 +229,21 @@ export default {
         const sentOffer = AppState.offers.filter(v => v.status == 'accepted')
         return [...recOffer, ...sentOffer]
       }),
-      async goTo(id) {
+      async deleteBand(id) {
         try {
-          await bandsService.getBandById(id)
-          router.push({
-            name: 'Band',
-            params: { id: AppState.activeBand.id }
-          })
+          await bandsService.deleteBand(id)
         } catch (error) {
           logger.error(error)
-          Pop.toast(error.message, 'error message')
         }
       },
-      async goTo2(id) {
+      async deleteVenue(id) {
         try {
-          await venuesService.getVenueById(id)
-          router.push({
-            name: 'Venue',
-            params: { id: AppState.activeBand.id }
-          })
+          await venuesService.deleteVenue(id)
         } catch (error) {
           logger.error(error)
-          Pop.toast(error.message, 'error message')
         }
       }
+
 
     }
   }

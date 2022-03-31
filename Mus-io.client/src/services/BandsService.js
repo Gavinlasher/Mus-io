@@ -24,6 +24,7 @@ class BandsService {
     }
     async deleteBand(id) {
         const res = await api.delete('api/bands/' + id)
+        logger.log('delete band', res.data)
         AppState.bands = AppState.bands.filter(b => b.id !== id)
     }
     async editBand(body, id) {
