@@ -23,6 +23,7 @@ class VenuesService {
     }
     async deleteVenue(id) {
         const res = await api.delete('api/venues/' + id)
+        logger.log('delete venues', res.data)
         AppState.venues = AppState.venues.filter(b => b.id !== id)
     }
     async editVenue(body, id) {

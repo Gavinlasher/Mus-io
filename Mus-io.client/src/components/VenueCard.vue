@@ -1,21 +1,26 @@
 <template>
-  <img
-    class="img-fluid rounded-bottom shadow mt-3"
-    :src="venue.bannerImg"
-    alt=""
-  />
-  <div class="col-12">
-    <h1 class="mx-1 px-2 py-2 text-start col-12 main-font p-1">
-      {{ venue.name }}
-    </h1>
-    <h5 class="mx-4 px-5 text-end col-12 mt-4 main-font">
-      {{ venue.location }}
-    </h5>
-    <div class="d-flex align-items-end"></div>
+  <div @click="goTo2">
+    <img
+      class="img-fluid rounded-bottom shadow mt-3"
+      :src="venue.bannerImg"
+      alt=""
+    />
+    <div class="col-12">
+      <h1 class="mx-1 px-2 py-2 text-start col-12 main-font p-1">
+        {{ venue.name }}
+      </h1>
+      <h5 class="mx-4 px-5 text-end col-12 mt-4 main-font">
+        {{ venue.location }}
+      </h5>
+      <div class="d-flex align-items-end"></div>
+    </div>
   </div>
 </template>
 
 <script>
+import { useRouter } from "vue-router"
+import { AppState } from "../AppState"
+import { venuesService } from "../services/VenuesService"
 export default {
   props: {
     venue: {
@@ -23,8 +28,22 @@ export default {
       required: true
     }
   },
-  setup() {
-    return {}
+  setup(props) {
+    const router = useRouter()
+    return {
+      async goTo2() {
+        try {
+          await venuesService.getVenueById(props.venue.id)
+          router.push({
+            name: 'Venue',
+            params: { id: AppState.activeVenue.id }
+          })
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error message')
+        }
+      },
+    }
   }
 }
 </script>
