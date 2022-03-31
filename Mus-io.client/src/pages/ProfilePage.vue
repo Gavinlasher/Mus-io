@@ -132,20 +132,20 @@
     <OffCanvas id="request">
       <template #requests>
         <div class="row">
-          <h2>My Sent offers</h2>
+          <h1>My Sent offers</h1>
           <div class="col-8" v-for="offer in offers" :key="offer.id">
-            <h4 class="text-info">{{ offer.band.name }}</h4>
-            <h5>{{ offer.body }}</h5>
+            <h2 class="text-info">{{ offer.band.name }}</h2>
+            <h3>{{ offer.body }}</h3>
           </div>
           <!-- add a prop to the recived offers and pass it to the get service -->
-          <h2>My recieved offers</h2>
+          <h1>My recieved offers</h1>
           <div class="col-8" v-for="b in myBands" :key="b.id">
             <Offer :band="b" />
           </div>
           <div class="col-8" v-for="v in myVenues" :key="v.id">
             <VenueReceived :venue="v" />
           </div>
-          <h2>Messages</h2>
+          <h1>Messages</h1>
           <span v-for="a in acceptedOffers" :key="a.id">
             <Accepted :acceptedOffer="a" />
           </span>

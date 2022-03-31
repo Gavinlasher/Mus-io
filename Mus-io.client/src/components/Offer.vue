@@ -1,11 +1,11 @@
 <template>
   <div>
-    <h4 class="text-info">{{ band.name }}</h4>
+    <h2 class="text-info">{{ band.name }}</h2>
 
     <div class="row">
       <div class="col-10" v-for="r in recieved" :key="r.id">
-        <h4>{{ r.creator.name }}</h4>
-        <h5>{{ r.body }}</h5>
+        <h3>{{ r.creator.name }}</h3>
+        <h4>{{ r.body }}</h4>
         <div
           class="btn-group"
           role="group"
