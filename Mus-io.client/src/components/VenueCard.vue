@@ -3,6 +3,7 @@
     <img
       class="img-fluid rounded-bottom shadow mt-3"
       :src="venue.bannerImg"
+      @error="setAltImg"
       alt=""
     />
     <div class="col-12">
@@ -31,6 +32,9 @@ export default {
   setup(props) {
     const router = useRouter()
     return {
+      setAltImg(event) {
+        event.target.src = "https://picsum.photos/200"
+      },
       async goTo2() {
         try {
           await venuesService.getVenueById(props.venue.id)
