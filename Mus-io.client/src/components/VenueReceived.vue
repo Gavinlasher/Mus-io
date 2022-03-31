@@ -1,11 +1,10 @@
 <template>
   <div>
-    <h4 class="text-info">{{ venue.name }}</h4>
+    <h3 class="text-info">{{ venue.name }}</h3>
 
     <div class="row">
-      <div class="col-10" v-for="r in recieved" :key="r.id">
-        <h3>{{ r.creator.name }}</h3>
-        <h4>{{ r.body }}</h4>
+      <div class="col-10 pb-2 pt-3" v-for="r in recieved" :key="r.id">
+        <h2 class="fw-bold">{{ r.creator.name }}: {{ r.body }}</h2>
         <div
           class="btn-group"
           role="group"
@@ -52,8 +51,10 @@ export default {
       async declineVenue(r) {
         try {
           logger.log(r)
-          r.status = 'declined'
-          await offersService.declineVenueOffer(r)
+          if (await Pop.confirm()) {
+            r.status = 'declined'
+            await offersService.declineVenueOffer(r)
+          }
           Pop.toast("Offer Declined", 'info')
         } catch (error) {
           Pop.toast(error.message, 'error message')
