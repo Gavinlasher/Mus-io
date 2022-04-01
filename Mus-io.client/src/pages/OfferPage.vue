@@ -27,17 +27,27 @@
 </template>
 
 <script>
-import { computed, ref, watchEffect } from "@vue/runtime-core"
+import { computed, onMounted, ref, watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import { offersService } from "../services/OffersService"
 import { messagesService } from "../services/MessagesService"
 import { useRoute } from "vue-router"
 import { AppState } from "../AppState"
+import Pop from "../utils/Pop"
+import { socketService } from "../services/SocketService"
 export default {
   name: 'Offer',
   setup() {
     const route = useRoute();
     const editable = ref({});
+    onMounted(async () => {
+      try {
+        socketService.joinRoom('offer-' + route.params.id)
+      } catch (error) {
+        logger.error(error)
+        Pop.toast(error.massage, 'error')
+      }
+    })
     watchEffect(async () => {
       try {
         await offersService.getOfferById(route.params.id)
