@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark px-0">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-0">
     <div class="d-flex w-100 justify-content-between flex-wrap">
       <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
         <span class="mx-1"> </span>
