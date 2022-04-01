@@ -123,7 +123,6 @@ export default {
     watchEffect(() => {
       editable.value = AppState.activeBand;
     });
-    // editable = AppState.activeBand
 
     return {
       editable,
@@ -140,7 +139,6 @@ export default {
       },
       addToWriter(string) {
         string.toString()
-        logger.log(string)
         editable.value.writer.push(string)
         writerEditable = ''
       }

@@ -22,6 +22,8 @@
 import { useRouter } from "vue-router"
 import { AppState } from "../AppState"
 import { venuesService } from "../services/VenuesService"
+import { logger } from '../utils/Logger'
+import Pop from '../utils/Pop'
 export default {
   props: {
     venue: {

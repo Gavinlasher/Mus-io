@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-12">
-      {{ venueOffer.body }}
+      {{ bandOffer.body }}
     </div>
     <div class="col-12 mt-5">
       <label for="date">Start Date:</label>
@@ -9,7 +9,7 @@
     </div>
 
     <button
-      @click="createGig(venueOffer)"
+      @click="createGig(bandOffer)"
       type="button"
       class="btn btn-success mt-5"
     >
@@ -21,17 +21,16 @@
 
 <script>
 import { computed, ref, watchEffect } from '@vue/runtime-core'
-import { venuesService } from '../services/VenuesService'
 import { gigsService } from '../services/GigsService'
-
 import { bandsService } from '../services/BandsService'
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { Modal } from 'bootstrap'
+import { venuesService } from '../services/VenuesService'
 export default {
   props: {
-    venueOffer: {
+    bandOffer: {
       type: Object,
       required: true
     }
@@ -50,13 +49,13 @@ export default {
     })
     return {
       editable,
-      myBands: computed(() => AppState.bands.filter(b => b.creatorId == AppState.account.id)),
+      myVenues: computed(() => AppState.venues.filter(b => b.creatorId == AppState.account.id)),
       async createGig(r) {
         try {
           r.status = 'accepted'
           r.startDate = editable.value.startDate
           await gigsService.createGig(r)
-          Modal.getOrCreateInstance(document.getElementById('band-a-offer' + props.venueOffer.id)).hide()
+          Modal.getOrCreateInstance(document.getElementById('band-a-offer' + props.bandOffer.id)).hide()
         } catch (error) {
           logger.error(error)
         }

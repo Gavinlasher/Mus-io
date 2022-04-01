@@ -77,7 +77,6 @@ export default {
     })
     return {
       account: computed(() => AppState.account),
-      // offersBand: computed(() => AppState.offers)
     }
   }
 }

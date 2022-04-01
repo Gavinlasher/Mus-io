@@ -40,7 +40,6 @@ export default {
   setup(props) {
     onMounted(async () => {
       try {
-        logger.log("this is props", props.band)
         await bandsService.getOffersBand(props.band.id)
       } catch (error) {
         logger.error(error)

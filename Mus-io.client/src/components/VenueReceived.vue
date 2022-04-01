@@ -50,7 +50,6 @@ export default {
       recieved: computed(() => AppState.recievedOffers[props.venue.id]?.filter(v => v.status == 'pending')),
       async declineVenue(r) {
         try {
-          logger.log(r)
           if (await Pop.confirm()) {
             r.status = 'declined'
             await offersService.declineVenueOffer(r)

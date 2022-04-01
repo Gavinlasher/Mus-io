@@ -6,7 +6,6 @@ class BandsService {
     async getAll(query = "") {
         logger.log(query)
         const res = await api.get('api/bands' + query)
-        logger.log("Bands are...", res.data)
         AppState.bands = res.data
 
     }
@@ -33,13 +32,9 @@ class BandsService {
     }
 
     async getOffersBand(bandId) {
-        // logger.log("this is offersband", id)
         const res = await api.get('api/bands/' + bandId + '/offers')
         logger.log("getting offers for the band", res.data)
-        // AppState.offers = res.data
         AppState.recievedOffers[bandId] = res.data
-        logger.log(AppState.recievedOffers, 'hell world this is offers')
-        // AppState.recievedOffers.push(res.data)
     }
 
     async filter(genre) {

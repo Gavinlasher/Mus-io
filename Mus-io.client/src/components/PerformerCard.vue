@@ -21,6 +21,7 @@ import { useRoute, useRouter } from "vue-router"
 import { AppState } from "../AppState"
 import { bandsService } from "../services/BandsService"
 import { logger } from "../utils/Logger"
+import Pop from '../utils/Pop'
 export default {
   props: {
     band: {

@@ -1,22 +1,32 @@
 <template>
-  
-
-   <div class="row" v-if="recieved?.length > 0">
+  <div class="row" v-if="recieved?.length > 0">
     <h4 class="text-light">{{ venue.name }}</h4>
-
-      
-      <div class="col-2" v-for="r in recieved" :key="r.id">
-        
-       
-          <img :src="r.band.bannerImg" alt="" class="img-fluid offer-pp selectable"  data-bs-toggle="modal"
-          :data-bs-target="'#venue-offer' + r.id">
-     
+    <div class="col-2" v-for="r in recieved" :key="r.id">
+      <img
+        :src="r.band.bannerImg"
+        alt=""
+        class="img-fluid offer-pp selectable"
+        data-bs-toggle="modal"
+        :data-bs-target="'#venue-offer' + r.id"
+        v-if="r.status == 'pending'"
+      />
+      <img
+        :src="r.band.bannerImg"
+        alt=""
+        class="img-fluid offer-pp selectable"
+        data-bs-toggle="modal"
+        :data-bs-target="'#venue-a-offer' + r.id"
+        v-if="r.status == 'accepted'"
+      />
       <Modal :id="'venue-offer' + r.id">
-        <template #title> {{r.band.name}} </template>
-      <template #body><BandOfferDetails :bandOffer="r" /></template>
-        </Modal>
-      </div>
-    
+        <template #title> {{ r.band.name }} </template>
+        <template #body><BandOfferDetails :bandOffer="r" /></template>
+      </Modal>
+      <Modal :id="'venue-a-offer' + r.id">
+        <template #title> {{ r.band.name }} </template>
+        <template #body><CreateBandGig :bandOffer="r" /></template>
+      </Modal>
+    </div>
   </div>
 </template>
 
@@ -43,19 +53,16 @@ export default {
     onMounted(async () => {
       try {
         await venuesService.getOffersVenue(props.venue.id)
-        logger.log("[This is received offer bitch]", AppState.recievedOffers)
       } catch (error) {
         logger.error(error)
         Pop.toast(error.message, 'error message')
       }
     })
     return {
-            recieved: computed(() => AppState.recievedOffers[props.venue.id]?.filter(r => r.status == props.filter)),
+      recieved: computed(() => AppState.recievedOffers[props.venue.id]?.filter(r => r.status == props.filter)),
 
-      // recieved: computed(() => AppState.recievedOffers[props.venue.id]?.filter(v => v.status == 'pending')),
       async declineVenue(r) {
         try {
-          logger.log(r)
           r.status = 'declined'
           await offersService.declineVenueOffer(r)
           Pop.toast("Offer Declined", 'info')
@@ -84,6 +91,5 @@ export default {
   width: 10vh;
   height: 10vh;
   border-radius: 50%;
-  
 }
 </style>

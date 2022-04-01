@@ -23,7 +23,6 @@ export default {
   setup(props) {
     onMounted(async () => {
       await gigsService.getGigsByBand(props.band.id)
-      logger.log('gigs are...', AppState.gigs)
     })
     return {
       gigs: computed(() => AppState.gigs[props.band.id])
