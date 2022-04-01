@@ -10,6 +10,7 @@ class SocketService extends SocketHandler {
       .on('error', this.onError)
       .on('joined:room', this.joinedRoom)
       .on('new:message', this.newMessage)
+      .on('new:notify', this.notification)
   }
 
   // OUTS
@@ -25,6 +26,11 @@ class SocketService extends SocketHandler {
   newMessage(payload) {
     logger.log('[newMessage]', payload)
     AppState.messages.push(payload)
+  }
+
+  notification(payload) {
+    logger.log('[notify]', payload)
+    Pop.toast(`${payload.message}. <a href="/#/offers/${payload.offer.id}">Go check it out</a>`, 'info', 'top-end', 9000)
   }
 
   onError(e) {

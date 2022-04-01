@@ -12,6 +12,8 @@ class MessagessService {
     await comment.populate('creator')
     await comment.populate('offer')
     socketProvider.messageRoom('offer-' + body.offerId, 'new:message', comment)
+    const offerNotify = await dbContext.Offers.findById(body.offerId)
+    socketProvider.messageUser(offerNotify.creatorId.toString(), 'new:notify', { message: `${comment.creator.name}} just messaged you`, offerNotify })
     return comment
   }
 }
