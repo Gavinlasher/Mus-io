@@ -18,6 +18,15 @@ class GigsService {
         logger.log("gigs for this band...", res.data)
         AppState.gigs[id] = res.data
     }
+    async deleteGig(id) {
+        await api.delete('api/gigs/' + id)
+        // AppState.gigs.filter(g => g.id !== id) TODO HOW TO DELETE SOMETHING FROM AN OBJECT
+    }
+    async editGig(id, body) {
+        const res = await api.put('api/gigs/' + id, body)
+        // AppState.gigs.filter(g => g.id !== id) TODO HOW TO DELETE SOMETHING FROM AN OBJECT
+        AppState.gigs = [...AppState.gigs, res.data]
+    }
 }
 
 
