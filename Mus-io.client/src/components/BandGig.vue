@@ -14,11 +14,20 @@
         Edit
       </button>
       <Modal :id="'edit-band-gig' + g.id">
-        <template #title>Gig - {{ band.name }} </template>
+        <template #title>Gig - {{ venue.name }} </template>
         <template #body>
-          <p>Performer - {{ band.name }}</p>
-          <p>Playing at - {{ g.venue.name }}</p>
-          <p>Date - {{ g.startDate }}</p>
+          <label for="bands" class="">Change Band:</label>
+          <select v-model="editable.bandId" class="ms-5" required>
+            <option v-for="b in myBands" :key="b.id" :value="b.id">
+              {{ b.name }}
+            </option>
+          </select>
+          <button class="btn btn-outline-info" @click="editGig(g.id)">
+            Edit
+          </button>
+          <button class="btn btn-outline-danger" @click="deleteGig(g.id)">
+            Delete
+          </button>
         </template>
       </Modal>
     </div>
@@ -27,7 +36,7 @@
 
 
 <script>
-import { computed } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import { AppState } from '../AppState'
 import { onMounted } from '@vue/runtime-core'
 import { gigsService } from '../services/GigsService'
@@ -44,7 +53,9 @@ export default {
     onMounted(async () => {
       await gigsService.getGigsByBand(props.band.id)
     })
+    const editable = ref({})
     return {
+      editable,
       async deleteGig(id) {
         try {
           if (await Pop.confirm()) {
@@ -58,7 +69,7 @@ export default {
       async editGig(id) {
         try {
           if (await Pop.confirm()) {
-            await gigsService.editGig(id)
+            await gigsService.editGig(id, editable.value)
           }
         } catch (error) {
           logger.error(error)
