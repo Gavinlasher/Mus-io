@@ -21,9 +21,9 @@
         </div>
       </div>
 
-      <div class="col-12 p-3 d-flex justify-content-around mt-3">
+      <div class="row p-3 d-flex justify-content-around mt-3">
         <button
-          class="btn btn-success rounded-pill m-2 hoverable"
+          class="btn btn-success rounded-pill m-2 hoverable col-4 col-md-1"
           data-bs-toggle="modal"
           data-bs-target="#create-performer"
           v-if="account.id == profile.id"
@@ -31,7 +31,7 @@
           Add New Performer
         </button>
         <button
-          class="btn btn-success rounded-pill m-2 hoverable"
+          class="btn btn-success rounded-pill m-2 hoverable col-4 col-md-1"
           data-bs-toggle="modal"
           data-bs-target="#create-venue"
           v-if="account.id == profile.id"
@@ -39,7 +39,7 @@
           Add New Venue
         </button>
         <button
-          class="btn btn-success rounded-pill m-2 hoverable"
+          class="btn btn-success rounded-pill m-2 hoverable col-4 col-md-1"
           data-bs-toggle="modal"
           data-bs-target="#edit-account"
           v-if="account.id == profile.id"
@@ -47,7 +47,7 @@
           Edit Account
         </button>
         <button
-          class="btn btn-success rounded-pill m-2 hoverable"
+          class="btn btn-success rounded-pill m-2 hoverable col-4 col-md-1"
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#request"
