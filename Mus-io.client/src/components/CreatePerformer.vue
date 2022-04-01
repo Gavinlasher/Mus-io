@@ -64,7 +64,7 @@
         type="number"
         class="form-control"
         aria-describedby="helpId"
-        placeholder="capacity....."
+        placeholder="Base Price....."
       />
     </div>
     <div class="col-md-4 mb-2">
@@ -122,7 +122,7 @@
     </div> -->
 
     <div class="col-12 d-flex justify-content-end">
-      <button class="btn btn-primary">create</button>
+      <button class="btn btn-primary">Create</button>
     </div>
   </form>
 </template>
