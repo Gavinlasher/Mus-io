@@ -42,7 +42,6 @@ import { AppState } from '../AppState'
 import { watchEffect } from '@vue/runtime-core'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
-import { offersService } from '../services/OffersService'
 import { bandsService } from '../services/BandsService'
 import { venuesService } from '../services/VenuesService'
 export default {
@@ -50,10 +49,8 @@ export default {
     const filterBy = ref('pending')
     watchEffect(async () => {
       try {
-
         await bandsService.getAll()
         await venuesService.getAll()
-
       } catch (error) {
         logger.log(error)
         Pop.toast(error.message, "error")
@@ -63,9 +60,6 @@ export default {
       filterBy,
       myBands: computed(() => AppState.bands.filter(b => b.creatorId == AppState.account.id)),
       myVenues: computed(() => AppState.venues.filter(v => v.creatorId == AppState.account.id)),
-      acceptedOffers: computed(() =>
-        AppState.offers.filter((v) => v.status == "accepted")
-      ),
     }
   }
 }

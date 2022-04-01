@@ -1,28 +1,32 @@
 <template>
   <div class="row" v-if="offers?.length > 0">
     <h4 class="text-light">{{ band.name }}</h4>
-
-      
-      <div class="col-2" v-for="r in offers" :key="r.id">
-        
-       
-          <img :src="r.venue.bannerImg" alt="" class="img-fluid offer-pp selectable"
-          data-bs-toggle="modal"
-          :data-bs-target="'#band-offer' + r.id" v-if="r.status == 'pending'">
-          
-          <img :src="r.venue.bannerImg" alt="" class="img-fluid offer-pp selectable"
-          data-bs-toggle="modal"
-          :data-bs-target="'#band-a-offer' + r.id" v-if="r.status == 'accepted'">
+    <div class="col-2" v-for="r in offers" :key="r.id">
+      <img
+        :src="r.venue.bannerImg"
+        alt=""
+        class="img-fluid offer-pp selectable"
+        data-bs-toggle="modal"
+        :data-bs-target="'#band-offer' + r.id"
+        v-if="r.status == 'pending'"
+      />
+      <img
+        :src="r.venue.bannerImg"
+        alt=""
+        class="img-fluid offer-pp selectable"
+        data-bs-toggle="modal"
+        :data-bs-target="'#band-a-offer' + r.id"
+        v-if="r.status == 'accepted'"
+      />
       <Modal :id="'band-offer' + r.id">
-        <template #title> {{r.venue.name}} </template>
-      <template #body><VenueOfferDetails :venueOffer="r" /></template>
-        </Modal>
-        <Modal :id="'band-a-offer' + r.id">
-        <template #title> {{r.venue.name}} </template>
-      <template #body><CreateVenueGig :venueOffer="r" /></template>
-        </Modal>
-      </div>
-    
+        <template #title> {{ r.venue.name }} </template>
+        <template #body><VenueOfferDetails :venueOffer="r" /></template>
+      </Modal>
+      <Modal :id="'band-a-offer' + r.id">
+        <template #title> {{ r.venue.name }} </template>
+        <template #body><CreateVenueGig :venueOffer="r" /></template>
+      </Modal>
+    </div>
   </div>
 </template>
 
@@ -48,7 +52,6 @@ export default {
   setup(props) {
     onMounted(async () => {
       try {
-        logger.log("this is props", props.band)
         await bandsService.getOffersBand(props.band.id)
       } catch (error) {
         logger.error(error)
@@ -57,7 +60,6 @@ export default {
     })
     return {
       offers: computed(() => AppState.recievedOffers[props.band.id]?.filter(r => r.status == props.filter)),
-
       async decline(r) {
         try {
           r.status = 'declined'
@@ -73,6 +75,7 @@ export default {
           r.status = 'accepted'
           await offersService.acceptBandOffer(r)
         } catch (error) {
+          Pop.toast(error.message, 'error')
           logger.error(error)
         }
       }
@@ -87,7 +90,5 @@ export default {
   width: 10vh;
   height: 10vh;
   border-radius: 50%;
-  
 }
-
 </style>
