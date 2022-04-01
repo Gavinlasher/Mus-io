@@ -15,6 +15,7 @@ class SocketService extends SocketHandler {
   // OUTS
   joinRoom(roomName = 'general') {
     this.emit('join:room', { roomName })
+    logger.log('this is emit', roomName)
   }
   //INS
   joinedRoom(payload) {
