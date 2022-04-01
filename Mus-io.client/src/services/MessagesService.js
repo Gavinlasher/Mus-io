@@ -13,7 +13,7 @@ class MessagesService {
   async createMessage(body, id) {
     const res = await api.post('api/offers/' + id + '/messages', body)
     logger.log('createmessage', res.data)
-    AppState.messages = [...AppState.messages, res.data]
+    // AppState.messages = [...AppState.messages, res.data] this handled by sockets
   }
 }
 export const messagesService = new MessagesService()

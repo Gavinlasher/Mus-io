@@ -1,4 +1,5 @@
 import { dbContext } from "../db/DbContext"
+import { socketProvider } from "../SocketProvider"
 
 class MessagessService {
 
@@ -10,6 +11,7 @@ class MessagessService {
     const comment = await dbContext.Messages.create(body)
     await comment.populate('creator')
     await comment.populate('offer')
+    socketProvider.messageRoom('offer-' + body.offerId, 'new:message', comment)
     return comment
   }
 }
