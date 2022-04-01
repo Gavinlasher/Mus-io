@@ -1,7 +1,7 @@
 <template>
-  <h2 v-if="gigs">{{ band.name }}</h2>
+  <h2 v-if="gigs">{{ venue.name }}</h2>
   <div v-for="g in gigs" :key="g.id">
-    <p>Playing at - {{ g.venue.name }}</p>
+    <p>Performer - {{ g.band.name }}</p>
     <p>Date - {{ g.startDate }}</p>
   </div>
 </template>
@@ -15,18 +15,18 @@ import { gigsService } from '../services/GigsService'
 import { logger } from '../utils/Logger'
 export default {
   props: {
-    band: {
+    venue: {
       type: Object,
       required: true,
     }
   },
   setup(props) {
     onMounted(async () => {
-      await gigsService.getGigsByBand(props.band.id)
+      await gigsService.getGigsByVenue(props.venue.id)
       logger.log('gigs are...', AppState.gigs)
     })
     return {
-      gigs: computed(() => AppState.gigs[props.band.id])
+      gigs: computed(() => AppState.gigs[props.venue.id])
     }
   }
 }
