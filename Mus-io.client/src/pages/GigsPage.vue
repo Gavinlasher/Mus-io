@@ -12,7 +12,7 @@
             <BandOfferGig :band="b" :filter="filterBy"/>
           </div>
           <div class="col-6" v-for="v in myVenues" :key="v.id">
-            <VenueOfferGig :venue="v" />
+            <VenueOfferGig :venue="v" :filter="filterBy"/>
           </div>
       </div>
     </div>

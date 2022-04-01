@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row" v-if="offers?.length > 0">
     <h4 class="text-light">{{ band.name }}</h4>
 
       

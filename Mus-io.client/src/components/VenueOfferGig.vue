@@ -1,14 +1,14 @@
 <template>
   
 
-   <div class="row">
+   <div class="row" v-if="recieved?.length > 0">
     <h4 class="text-light">{{ venue.name }}</h4>
 
       
       <div class="col-2" v-for="r in recieved" :key="r.id">
         
        
-          <img :src="r.band.bannerImg" alt="" class="img-fluid offer-pp"  data-bs-toggle="modal"
+          <img :src="r.band.bannerImg" alt="" class="img-fluid offer-pp selectable"  data-bs-toggle="modal"
           :data-bs-target="'#venue-offer' + r.id">
      
       <Modal :id="'venue-offer' + r.id">
@@ -33,6 +33,10 @@ export default {
     venue: {
       type: Object,
       required: true,
+    },
+    filter: {
+      type: String,
+      required: true
     }
   },
   setup(props) {
@@ -46,7 +50,9 @@ export default {
       }
     })
     return {
-      recieved: computed(() => AppState.recievedOffers[props.venue.id]?.filter(v => v.status == 'pending')),
+            recieved: computed(() => AppState.recievedOffers[props.venue.id]?.filter(r => r.status == props.filter)),
+
+      // recieved: computed(() => AppState.recievedOffers[props.venue.id]?.filter(v => v.status == 'pending')),
       async declineVenue(r) {
         try {
           logger.log(r)
