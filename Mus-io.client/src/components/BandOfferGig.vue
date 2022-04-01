@@ -8,10 +8,18 @@
        
           <img :src="r.venue.bannerImg" alt="" class="img-fluid offer-pp selectable"
           data-bs-toggle="modal"
-          :data-bs-target="'#band-offer' + r.id">
+          :data-bs-target="'#band-offer' + r.id" v-if="r.status == 'pending'">
+          
+          <img :src="r.venue.bannerImg" alt="" class="img-fluid offer-pp selectable"
+          data-bs-toggle="modal"
+          :data-bs-target="'#band-a-offer' + r.id" v-if="r.status == 'accepted'">
       <Modal :id="'band-offer' + r.id">
         <template #title> {{r.venue.name}} </template>
       <template #body><VenueOfferDetails :venueOffer="r" /></template>
+        </Modal>
+        <Modal :id="'band-a-offer' + r.id">
+        <template #title> {{r.venue.name}} </template>
+      <template #body><CreateVenueGig :venueOffer="r" /></template>
         </Modal>
       </div>
     
