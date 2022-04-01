@@ -17,9 +17,20 @@
       v-if="route.name == 'Venue'"
     >
       <label for="bands" class="">Bands:</label>
-      <select v-model="editable.bandId" class="ms-5">
+      <select v-model="editable.bandId" class="ms-5" required>
         <option v-for="b in myBands" :key="b.id" :value="b.id">
           {{ b.name }}
+        </option>
+      </select>
+    </div>
+    <div
+      class="col-12 d-flex justify-content-start"
+      v-if="route.name == 'Band'"
+    >
+      <label for="venues" class="">Venues:</label>
+      <select v-model="editable.venueId" class="ms-5" required>
+        <option v-for="v in myVenues" :key="v.id" :value="v.id">
+          {{ v.name }}
         </option>
       </select>
     </div>
@@ -70,6 +81,7 @@ export default {
     return {
       route,
       myBands: computed(() => AppState.bands.filter(b => b.creatorId == AppState.account.id)),
+      myVenues: computed(() => AppState.venues.filter(v => v.creatorId == AppState.account.id)),
       creator: computed(() => AppState.activeBand.creator),
       editable,
       async sendOffer() {

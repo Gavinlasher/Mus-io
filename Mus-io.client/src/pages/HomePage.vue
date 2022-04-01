@@ -10,6 +10,7 @@
         />
       </form>
     </div>
+
     <div class="row justify-content-around mt-4">
       <button @click="filter('country')" class="col-3 btn btn-primary">
         Country

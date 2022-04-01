@@ -12,7 +12,7 @@ class OffersService {
     }
 
     async getOfferById(id) {
-        const offer = await dbContext.Offers.findById(id).populate('creator').populate('band')
+        const offer = await dbContext.Offers.findById(id).populate('creator').populate('band').populate('venue')
         if (!offer) {
             throw new NotFound("There is no offer with this id")
         }
@@ -21,7 +21,7 @@ class OffersService {
 
     async getOffersByBandId(id, userId) {
 
-        const offers = await dbContext.Offers.find({ $and: [{ bandId: id }, { creatorId: { $ne: userId } }] }).populate('creator').populate('band')
+        const offers = await dbContext.Offers.find({ $and: [{ bandId: id }, { creatorId: { $ne: userId } }] }).populate('creator').populate('band').populate('venue')
         return offers
     }
 

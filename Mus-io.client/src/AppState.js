@@ -16,6 +16,7 @@ export const AppState = reactive({
   myOffers: [],
   accepted: [],
   messages: [],
-  activeOffer: []
+  activeOffer: [],
+  bool: false
 
 })
