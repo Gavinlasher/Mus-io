@@ -54,7 +54,7 @@
         type="number"
         class="form-control"
         aria-describedby="helpId"
-        placeholder="location....."
+        placeholder="Budget....."
       />
     </div>
     <div class="col-md-4 mb-2">
@@ -65,7 +65,7 @@
         type="number"
         class="form-control"
         aria-describedby="helpId"
-        placeholder="capacity....."
+        placeholder="Capacity....."
       />
     </div>
 
@@ -78,7 +78,7 @@
         min="2022-03-23"
         class="form-control"
         aria-describedby="helpId"
-        placeholder="location....."
+        placeholder="Location....."
       />
     </div>
     <!-- <div class="col-md-4 mb-2">
@@ -94,7 +94,7 @@
     </div> -->
 
     <div class="col-12 d-flex justify-content-end">
-      <button class="btn btn-primary">create</button>
+      <button class="btn btn-primary">Create</button>
     </div>
   </form>
 </template>
