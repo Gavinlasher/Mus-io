@@ -17,6 +17,13 @@
       </div>
     </div>
   </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-4" v-for="b in myBands" :key="b.id">
+        <BandGig :band="b" />
+      </div>
+    </div>
+  </div>
 </template>
 
 
