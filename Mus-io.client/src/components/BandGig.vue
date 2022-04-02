@@ -56,7 +56,7 @@ export default {
       async deleteGig(id) {
         try {
           if (await Pop.confirm()) {
-            await gigsService.deleteGig(id)
+            await gigsService.deleteGig(id, props.band.id)
           }
         } catch (error) {
           logger.error(error)
@@ -65,7 +65,7 @@ export default {
       },
       async editGig(id) {
         try {
-          await gigsService.editGig(id, editable.value)
+          await gigsService.editGig(id, props.band.id, editable.value)
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
@@ -73,8 +73,6 @@ export default {
       },
       myBands: computed(() => AppState.bands.filter(b => b.creatorId == AppState.account.id)),
       gigs: computed(() => AppState.gigs[props.band.id]),
-
-
     }
   }
 }

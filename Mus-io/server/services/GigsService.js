@@ -29,7 +29,7 @@ class GigsService {
     }
 
     async editGig(update) {
-        const original = await dbContext.Gigs.findById(update.id)
+        const original = await dbContext.Gigs.findById(update.id).populate('venue').populate('band')
         if (!original) {
             throw new NotFound("There was no Gig at this id")
         }
