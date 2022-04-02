@@ -25,7 +25,7 @@
               <div class="col-12 main-font text-light ps-4 pb-3">
                 Base Asking Price: ${{ band.basePrice }}
               </div>
-              <div class="col-3 text-light ps-4 pb-3">
+              <div class="col-md-3 text-light ps-4 pb-3">
                 <a :href="band.spotify"
                   ><h3>
                     <i
@@ -35,7 +35,7 @@
                   </h3>
                 </a>
               </div>
-              <div class="col-3 text-light hoverable ps-4 pb-3">
+              <div class="col-md-3 text-light hoverable ps-4 pb-3">
                 <a :href="band.soundCloud"
                   ><h3>
                     <i
