@@ -69,7 +69,7 @@
     <h1 class="text-center text-light custom-text p-3" v-else>Performers</h1>
     <div class="row justify-content-center p-3 mt-5">
       <div
-        class="col-md-3 bg-dark p-0 m-3 shadow rounded"
+        class="col-md-3 bg-dark p-0 m-3 shadow rounded text-end"
         v-for="b in myBands"
         :key="b.id"
       >
@@ -78,7 +78,7 @@
           @click="deleteBand(b.id)"
           type="button"
           title="Delete Comment"
-          class="btn-close btn-close-white me-4 mt-3"
+          class="btn-close btn-close-white m-1"
           aria-label="Close"
         ></button>
         <PerformerCard :band="b" />
@@ -97,7 +97,7 @@
     </h1>
     <div class="row justify-content-center p-3 mt-5">
       <div
-        class="col-md-3 bg-dark p-0 m-3 shadow rounded"
+        class="col-md-3 bg-dark p-0 m-3 shadow rounded text-end"
         v-for="v in myVenues"
         :key="v.id"
       >
@@ -106,7 +106,7 @@
           @click="deleteVenue(v.id)"
           type="button"
           title="Delete Comment"
-          class="btn-close btn-close-white me-4 mt-3"
+          class="btn-close btn-close-white m-1"
           aria-label="Close"
         ></button>
         <VenueCard :venue="v" />
