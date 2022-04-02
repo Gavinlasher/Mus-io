@@ -60,6 +60,8 @@ export default {
           if (await Pop.confirm()) {
             await gigsService.deleteGig(id, props.venue.id)
           }
+          Modal.getOrCreateInstance(document.getElementById('edit-venue-gig' + id)).hide()
+
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
@@ -68,7 +70,7 @@ export default {
       async editGig(id) {
         try {
           await gigsService.editGig(id, props.venue.id, editable.value)
-          //   Modal.getOrCreateInstance(document.getElementById('edit-venue-gig')).hide()
+          Modal.getOrCreateInstance(document.getElementById('edit-venue-gig' + id)).hide()
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')

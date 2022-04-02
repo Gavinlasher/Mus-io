@@ -8,7 +8,7 @@
       <input type="date" v-model="editable.startDate" />
     </div>
     <button class="btn btn-danger" @click="deleteOffer(venueOffer.id)">
-      Cancel
+      Delete
     </button>
 
     <button
@@ -59,8 +59,8 @@ export default {
         try {
           r.status = 'accepted'
           r.startDate = editable.value.startDate
-          await gigsService.createGig(r)
           Modal.getOrCreateInstance(document.getElementById('band-a-offer' + props.venueOffer.id)).hide()
+          await gigsService.createGig(r)
         } catch (error) {
           logger.error(error)
         }
@@ -68,8 +68,8 @@ export default {
       async deleteOffer(id) {
         try {
           if (await Pop.confirm())
-            await offersService.deleteOffer(id)
-          Modal.getOrCreateInstance(document.getElementById('band-a-offer' + props.venueOffer.id)).hide()
+            Modal.getOrCreateInstance(document.getElementById('band-a-offer' + props.venueOffer.id)).hide()
+          await offersService.deleteOffer(id)
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')

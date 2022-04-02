@@ -39,6 +39,7 @@ import { onMounted } from '@vue/runtime-core'
 import { gigsService } from '../services/GigsService'
 import Pop from '../utils/Pop'
 import { logger } from '../utils/Logger'
+import { Modal } from "bootstrap"
 export default {
   props: {
     band: {
@@ -58,6 +59,8 @@ export default {
           if (await Pop.confirm()) {
             await gigsService.deleteGig(id, props.band.id)
           }
+          Modal.getOrCreateInstance(document.getElementById('edit-band-gig' + id)).hide()
+
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
@@ -66,6 +69,7 @@ export default {
       async editGig(id) {
         try {
           await gigsService.editGig(id, props.band.id, editable.value)
+          Modal.getOrCreateInstance(document.getElementById('edit-band-gig' + id)).hide()
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
