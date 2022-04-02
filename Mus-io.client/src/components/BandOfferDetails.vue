@@ -16,10 +16,10 @@
       </select>
     </div>
     <button @click="decline(bandOffer)" type="button" class="btn btn-danger">
-      Delete
+      Decline
     </button>
     <button @click="accept(bandOffer)" type="button" class="btn btn-success">
-      Create Gig
+      Accept
     </button>
   </div>
 </template>
