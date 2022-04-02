@@ -18,6 +18,12 @@
         :data-bs-target="'#band-a-offer' + r.id"
         v-if="r.status == 'accepted'"
       />
+      <img
+        :src="r.venue.bannerImg"
+        alt=""
+        class="img-fluid offer-pp selectable"
+        v-if="r.status == 'declined'"
+      />
       <Modal :id="'band-offer' + r.id">
         <template #title> {{ r.venue.name }} </template>
         <template #body><VenueOfferDetails :venueOffer="r" /></template>
