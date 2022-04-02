@@ -62,6 +62,8 @@
       <input
         v-model="editable.capacity"
         required
+        min="0"
+        max="20000"
         type="number"
         class="form-control"
         aria-describedby="helpId"

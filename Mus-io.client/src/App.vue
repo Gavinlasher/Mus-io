@@ -1,6 +1,8 @@
 <template>
-  <header>
-    <Navbar />
+  <header class="container-fluid">
+    <div class="row">
+      <Navbar />
+    </div>
   </header>
   <main class="container-fluid bg-gradient">
     <router-view />

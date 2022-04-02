@@ -62,6 +62,7 @@
         v-model="editable.basePrice"
         required
         type="number"
+        min="0"
         class="form-control"
         aria-describedby="helpId"
         placeholder="Base Price....."

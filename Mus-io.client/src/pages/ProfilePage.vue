@@ -145,7 +145,7 @@
           <div class="col-8" v-for="v in myVenues" :key="v.id">
             <VenueReceived :venue="v" />
           </div>
-          <h1>Messages</h1>
+          <h1>Messages from Accepted Offers</h1>
           <span v-for="a in acceptedOffers" :key="a.id">
             <Accepted :acceptedOffer="a" />
           </span>
