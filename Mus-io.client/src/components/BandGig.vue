@@ -1,7 +1,7 @@
 <template>
   <!-- TODO PUT A BORDER AROUND THIS -->
-  <div>
-    <h2 v-if="gigs.length > 0">{{ band.name }}</h2>
+  <div class="bg-light">
+    <h2 v-if="gigs?.length > 0">{{ band.name }}</h2>
     <div v-for="g in gigs" :key="g.id">
       <p>Performer - {{ band.name }}</p>
       <p>Playing at - {{ g.venue.name }}</p>
@@ -14,7 +14,7 @@
         Edit
       </button>
       <Modal :id="'edit-band-gig' + g.id">
-        <template #title>Gig - {{ venue.name }} </template>
+        <template #title>Gig - {{ g.venue.name }} </template>
         <template #body>
           <label for="bands" class="">Change Band:</label>
           <select v-model="editable.bandId" class="ms-5" required>
@@ -76,7 +76,8 @@ export default {
           Pop.toast(error.message, 'error')
         }
       },
-      gigs: computed(() => AppState.gigs[props.band.id])
+      gigs: computed(() => AppState.gigs[props.band.id]),
+
 
     }
   }

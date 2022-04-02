@@ -1,33 +1,33 @@
 <template>
-  <h2 v-if="gigs.length > 0">{{ venue.name }}</h2>
-  <div v-for="g in gigs" :key="g.id">
-    <p>Performer - {{ g.band.name }}</p>
-    <p>Playing at - {{ venue.name }}</p>
-    <p>Date - {{ g.startDate }}</p>
-    <button
-      data-bs-toggle="modal"
-      :data-bs-target="'#edit-venue-gig' + g.id"
-      class="btn btn-outline-primary"
-    >
-      Edit
-    </button>
-    <Modal :id="'edit-venue-gig' + g.id">
-      <template #title> {{ venue.name }} </template>
-      <template #body>
-        <label for="venues" class="">Change Venue:</label>
-        <select v-model="editable.venueId" class="ms-5" required>
-          <option v-for="v in myVenues" :key="v.id" :value="v.id">
-            {{ v.name }}
-          </option>
-        </select>
-        <button class="btn btn-outline-info" @click="editGig(g.id)">
-          Edit
-        </button>
-        <button class="btn btn-outline-danger" @click="deleteGig(g.id)">
-          Delete
-        </button>
-      </template>
-    </Modal>
+  <div class="bg-light mt-2" style="max-width: 25vh">
+    <h2 class="ps-2" v-if="gigs?.length > 0">{{ venue.name }}</h2>
+    <div class="ps-2" v-for="g in gigs" :key="g.id">
+      <p>Performer - {{ g.band.name }}</p>
+      <p>Playing at - {{ venue.name }}</p>
+      <p>Date - {{ g.startDate }}</p>
+      <button
+        data-bs-toggle="modal"
+        :data-bs-target="'#edit-venue-gig' + g.id"
+        class="btn btn-info mb-1"
+      >
+        Edit
+      </button>
+      <Modal :id="'edit-venue-gig' + g.id">
+        <template #title> {{ venue.name }} </template>
+        <template #body>
+          <label for="venues" class="">Change Venue:</label>
+          <select v-model="editable.venueId" class="ms-5" required>
+            <option v-for="v in myVenues" :key="v.id" :value="v.id">
+              {{ v.name }}
+            </option>
+          </select>
+          <button class="btn btn-info ms-3" @click="editGig(g.id)">Edit</button>
+          <button class="btn btn-danger ms-3" @click="deleteGig(g.id)">
+            Delete
+          </button>
+        </template>
+      </Modal>
+    </div>
   </div>
 </template>
 
@@ -67,11 +67,8 @@ export default {
       },
       async editGig(id) {
         try {
-          if (await Pop.confirm()) {
-            await gigsService.editGig(id, editable.value)
-            Modal.getOrCreateInstance(document.getElementById('edit-venue-gig')).hide()
-
-          }
+          await gigsService.editGig(id, editable.value)
+          //   Modal.getOrCreateInstance(document.getElementById('edit-venue-gig')).hide()
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
