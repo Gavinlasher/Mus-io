@@ -98,10 +98,8 @@ import { venuesService } from "../services/VenuesService"
 import { useRoute, useRouter } from "vue-router"
 import { AppState } from "../AppState"
 import { profilesService } from "../services/ProfilesService"
-import Calendar from "../components/Calendar.vue"
 
 export default {
-  components: { Calendar },
   setup() {
 
     const route = useRoute()

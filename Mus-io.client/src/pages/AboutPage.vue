@@ -1,8 +1,4 @@
-<template>
-  <div class="about">
-    <Calendar />
-  </div>
-</template>
+<template></template>
 
 <script>
 export default {
