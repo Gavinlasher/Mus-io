@@ -63,6 +63,7 @@ class BandsService {
         const doomedBand = await dbContext.Bands.findById(band)
         const allOffers = await dbContext.Offers.deleteMany({ bandId: band })
         const allGigs = await dbContext.Gigs.deleteMany({ bandId: band })
+        const allMessages = await dbContext.Messages.deleteMany({ bandId: band })
         if (doomedBand.creatorId.toString() !== userId) {
             throw new Forbidden('You cannot delete this Band')
         }
