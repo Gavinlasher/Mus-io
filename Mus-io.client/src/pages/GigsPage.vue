@@ -13,7 +13,7 @@
     </div>
     <!-- Recieveds -->
     <div class="col-12 mt-5">
-      <div class="row scrollable mt-5">
+      <div class="row scrollable mt-5" style="min-height: 20vh">
         <div class="col-6" v-for="b in myBands" :key="b.id">
           <BandOfferGig :band="b" :filter="filterBy" />
         </div>

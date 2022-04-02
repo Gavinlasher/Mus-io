@@ -48,7 +48,7 @@ class OffersService {
 
     async deleteOffer(offerId, userId) {
         const doomedOffer = await dbContext.Offers.findById(offerId)
-        if (doomedOffer.creatorId.toString() !== userId) {
+        if (doomedOffer.creatorId.toString() !== userId && doomedOffer.recipientId.toString() !== userId) {
             throw new Forbidden('You cannot delete this Offer')
         }
         await doomedOffer.remove()

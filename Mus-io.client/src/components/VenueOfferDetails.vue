@@ -1,27 +1,26 @@
 <template>
   <div class="row">
-      
-      <div class="col-12">
-          {{venueOffer.body}}
-      </div>
-      <div class="col-12">
-          Status: 
-          {{venueOffer.status}}
-      </div>
-      <div class="col-12">
-          <label for="bands" class="">Bands:</label>
+    <div class="col-12">
+      {{ venueOffer.body }}
+    </div>
+    <div class="col-12">
+      Status:
+      {{ venueOffer.status }}
+    </div>
+    <div class="col-12">
+      <label for="bands" class="">Bands:</label>
       <select v-model="editable.bandId" class="ms-5" required>
         <option v-for="b in myBands" :key="b.id" :value="b.id">
           {{ b.name }}
         </option>
       </select>
-      </div>
-       <button @click="decline(venueOffer)" type="button" class="btn btn-danger">
-            Decline
-          </button>
-          <button @click="accept(venueOffer)" type="button" class="btn btn-success">
-            Accept
-          </button>
+    </div>
+    <button @click="decline(venueOffer)" type="button" class="btn btn-danger">
+      Decline
+    </button>
+    <button @click="accept(venueOffer)" type="button" class="btn btn-success">
+      Accept
+    </button>
   </div>
 </template>
 
@@ -36,16 +35,16 @@ import Pop from '../utils/Pop'
 import { offersService } from '../services/OffersService'
 import { Modal } from 'bootstrap'
 export default {
-    props: {
-        venueOffer: {
-            type: Object,
-            required: true
-        }
-    },
+  props: {
+    venueOffer: {
+      type: Object,
+      required: true
+    }
+  },
 
-    setup(props){
-        const editable = ref({})
-        watchEffect(async () => {
+  setup(props) {
+    const editable = ref({})
+    watchEffect(async () => {
       try {
         await venuesService.getAll()
         await bandsService.getAll()
@@ -54,14 +53,15 @@ export default {
         Pop.toast(error.message, "error")
       }
     })
-        return {
-            editable,
-            myBands: computed(() => AppState.bands.filter(b => b.creatorId == AppState.account.id)),
-             async decline(r) {
+    return {
+      editable,
+      myBands: computed(() => AppState.bands.filter(b => b.creatorId == AppState.account.id)),
+      async decline(r) {
         try {
           r.status = 'declined'
           await offersService.declineOffer(r)
           Pop.toast('Offer Declined', 'info')
+          Modal.getOrCreateInstance(document.getElementById('band-offer' + props.venueOffer.id)).hide()
         } catch (error) {
           Pop.toast(error.message, 'error')
           logger.error(error)
@@ -77,12 +77,11 @@ export default {
           logger.error(error)
         }
       }
-        }
     }
+  }
 }
 </script>
 
 
 <style lang="scss" scoped>
-
 </style>

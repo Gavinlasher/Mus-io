@@ -1,7 +1,7 @@
 <template>
   <!-- TODO PUT A BORDER AROUND THIS -->
   <div>
-    <h2 v-if="gigs">{{ band.name }}</h2>
+    <h2 v-if="gigs.length > 0">{{ band.name }}</h2>
     <div v-for="g in gigs" :key="g.id">
       <p>Performer - {{ band.name }}</p>
       <p>Playing at - {{ g.venue.name }}</p>

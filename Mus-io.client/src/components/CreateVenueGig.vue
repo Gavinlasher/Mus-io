@@ -7,6 +7,9 @@
       <label for="date">Start Date:</label>
       <input type="date" v-model="editable.startDate" />
     </div>
+    <button class="btn btn-danger" @click="deleteOffer(venueOffer.id)">
+      Cancel
+    </button>
 
     <button
       @click="createGig(venueOffer)"
@@ -29,6 +32,7 @@ import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { Modal } from 'bootstrap'
+import { offersService } from '../services/OffersService'
 export default {
   props: {
     venueOffer: {
@@ -59,6 +63,16 @@ export default {
           Modal.getOrCreateInstance(document.getElementById('band-a-offer' + props.venueOffer.id)).hide()
         } catch (error) {
           logger.error(error)
+        }
+      },
+      async deleteOffer(id) {
+        try {
+          if (await Pop.confirm())
+            await offersService.deleteOffer(id)
+          Modal.getOrCreateInstance(document.getElementById('band-a-offer' + props.venueOffer.id)).hide()
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
         }
       }
     }

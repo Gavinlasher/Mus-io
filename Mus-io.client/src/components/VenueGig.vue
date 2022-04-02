@@ -1,5 +1,5 @@
 <template>
-  <h2 v-if="gigs">{{ venue.name }}</h2>
+  <h2 v-if="gigs.length > 0">{{ venue.name }}</h2>
   <div v-for="g in gigs" :key="g.id">
     <p>Performer - {{ g.band.name }}</p>
     <p>Playing at - {{ venue.name }}</p>
