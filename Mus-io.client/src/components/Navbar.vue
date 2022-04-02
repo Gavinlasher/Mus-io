@@ -1,67 +1,67 @@
 <template>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-0">
-    <div class="d-flex w-100 justify-content-between flex-wrap">
-      <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-        <span class="mx-1"> </span>
-        <div class="d-flex flex-column align-items-center">
-          <h2
-            class="
-              text-success
-              glow
-              main-font
-              text-success
-              px-md-4
-              my-0
-              mx-md-3
-              p-2
-              fa fa-apple
-              border border-secondary
-            "
-            id="apple"
-          >
-            <b>Mus.io</b>
-          </h2>
-        </div>
-      </router-link>
-      <router-link class="navbar-brand d-flex" :to="{ name: 'Gigs' }">
-        <span class="mx-1"> </span>
-        <div class="d-flex flex-column align-items-center">
-          <h2
-            class="
-              text-success
-              glow
-              main-font
-              text-success
-              px-md-4
-              my-0
-              mx-md-3
-              p-2
-              fa fa-apple
-              border border-secondary
-            "
-            id="apple"
-          >
-            <b>Gigs</b>
-          </h2>
-        </div>
-      </router-link>
+    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+      <span class="mx-1"> </span>
+      <div class="d-flex flex-column align-items-center">
+        <h2
+          class="
+            text-success
+            glow
+            main-font
+            text-success
+            px-md-4
+            my-0
+            mx-md-3
+            p-2
+            fa fa-apple
+            border border-secondary
+          "
+          id="apple"
+        >
+          <b>Mus.io</b>
+        </h2>
+      </div>
+    </router-link>
+    <router-link class="navbar-brand d-flex" :to="{ name: 'Gigs' }">
+      <span class="mx-1"> </span>
+      <div class="d-flex flex-column align-items-center">
+        <h2
+          class="
+            text-success
+            glow
+            main-font
+            text-success
+            px-md-4
+            my-0
+            mx-md-3
+            p-2
+            fa fa-apple
+            border border-secondary
+          "
+          id="apple"
+        >
+          <b>Gigs</b>
+        </h2>
+      </div>
+    </router-link>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarText"
-        aria-controls="navbarText"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon" />
-      </button>
-      <div
-        class="collapse navbar-collapse row justify-content-end"
-        id="navbarText"
-      >
-        <span class="text-end"><Login /></span>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarText"
+      aria-controls="navbarText"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon" />
+    </button>
+    <div
+      class="collapse navbar-collapse gx-0 row justify-content-end"
+      id="navbarText"
+    >
+      <div class="col-12 text-end">
+        <span class=""><Login /></span>
       </div>
     </div>
   </nav>
