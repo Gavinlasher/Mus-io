@@ -38,6 +38,7 @@ import { bandsService } from "../services/BandsService"
 import { logger } from "../utils/Logger"
 import { AppState } from "../AppState"
 import { offersService } from "../services/OffersService"
+import { Modal } from "bootstrap"
 export default {
   props: {
     band: {
@@ -63,6 +64,7 @@ export default {
       async decline(r) {
         try {
           r.status = 'declined'
+          Modal.getOrCreateInstance(document.getElementById('band-a-offer' + r.id)).hide()
           await offersService.declineOffer(r)
           Pop.toast('Offer Declined', 'info')
         } catch (error) {
@@ -73,6 +75,7 @@ export default {
       async accept(r) {
         try {
           r.status = 'accepted'
+          Modal.getOrCreateInstance(document.getElementById('band-a-offer' + r.id)).hide()
           await offersService.acceptBandOffer(r)
         } catch (error) {
           Pop.toast(error.message, 'error')

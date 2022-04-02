@@ -59,9 +59,9 @@ export default {
       async decline(r) {
         try {
           r.status = 'declined'
+          Modal.getOrCreateInstance(document.getElementById('band-offer' + props.venueOffer.id)).hide()
           await offersService.declineOffer(r)
           Pop.toast('Offer Declined', 'info')
-          Modal.getOrCreateInstance(document.getElementById('band-offer' + props.venueOffer.id)).hide()
         } catch (error) {
           Pop.toast(error.message, 'error')
           logger.error(error)
@@ -71,8 +71,8 @@ export default {
         try {
           r.status = 'accepted'
           r.bandId = editable.value.bandId
-          await offersService.acceptBandOffer(r)
           Modal.getOrCreateInstance(document.getElementById('band-offer' + props.venueOffer.id)).hide()
+          await offersService.acceptBandOffer(r)
         } catch (error) {
           logger.error(error)
         }

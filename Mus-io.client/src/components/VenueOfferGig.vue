@@ -7,7 +7,7 @@
         alt=""
         class="img-fluid offer-pp selectable"
         data-bs-toggle="modal"
-        :data-bs-target="'#venue-offer' + r.id"
+        :data-bs-target="'#venue-a-offer' + r.id"
         v-if="r.status == 'pending'"
       />
       <img
@@ -18,7 +18,7 @@
         :data-bs-target="'#venue-a-offer' + r.id"
         v-if="r.status == 'accepted'"
       />
-      <Modal :id="'venue-offer' + r.id">
+      <Modal :id="'venue-a-offer' + r.id">
         <template #title> {{ r.band.name }} </template>
         <template #body><BandOfferDetails :bandOffer="r" /></template>
       </Modal>
@@ -38,6 +38,7 @@ import Pop from "../utils/Pop"
 import { venuesService } from "../services/VenuesService"
 import { AppState } from "../AppState"
 import { offersService } from "../services/OffersService"
+import { Modal } from "bootstrap"
 export default {
   props: {
     venue: {
@@ -64,6 +65,7 @@ export default {
       async declineVenue(r) {
         try {
           r.status = 'declined'
+          Modal.getOrCreateInstance(document.getElementById('venue-a-offer' + r.id)).hide()
           await offersService.declineVenueOffer(r)
           Pop.toast("Offer Declined", 'info')
         } catch (error) {
@@ -74,6 +76,7 @@ export default {
       async acceptVenue(r) {
         try {
           r.status = 'accepted'
+          Modal.getOrCreateInstance(document.getElementById('venue-a-offer' + r.id)).hide()
           await offersService.acceptVenueOffer(r)
         } catch (error) {
           logger.error(error)

@@ -9,7 +9,7 @@
     </div>
 
     <button class="btn btn-danger" @click="deleteOffer(bandOffer.id)">
-      Cancel
+      Delete
     </button>
     <button
       @click="createGig(bandOffer)"
@@ -58,20 +58,22 @@ export default {
         try {
           r.status = 'accepted'
           r.startDate = editable.value.startDate
-          await gigsService.createGig(r)
           Modal.getOrCreateInstance(document.getElementById('band-a-offer' + props.bandOffer.id)).hide()
+          await gigsService.createGig(r)
         } catch (error) {
           logger.error(error)
         }
       },
       async deleteOffer(id) {
         try {
-          if (await Pop.confirm())
+          if (await Pop.confirm()) {
             await offersService.deleteOffer(id)
+          }
+          Modal.getOrCreateInstance(document.getElementById('band-a-offer' + props.bandOffer.id)).hide()
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
-          Modal.getOrCreateInstance(document.getElementById('band-a-offer' + props.bandOffer.id)).hide()
+
 
         }
       }
