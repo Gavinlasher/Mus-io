@@ -25,7 +25,7 @@ class GigsService {
     async editGig(id, body) {
         const res = await api.put('api/gigs/' + id, body)
         // AppState.gigs.filter(g => g.id !== id) TODO HOW TO DELETE SOMETHING FROM AN OBJECT
-        AppState.gigs = res.data
+        // AppState.gigs = res.data
     }
 }
 
