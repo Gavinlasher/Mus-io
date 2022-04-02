@@ -56,10 +56,10 @@ export default {
       editable,
       async deleteGig(id) {
         try {
+          Modal.getOrCreateInstance(document.getElementById('edit-band-gig' + id)).hide()
           if (await Pop.confirm()) {
             await gigsService.deleteGig(id, props.band.id)
           }
-          Modal.getOrCreateInstance(document.getElementById('edit-band-gig' + id)).hide()
 
         } catch (error) {
           logger.error(error)
@@ -68,8 +68,8 @@ export default {
       },
       async editGig(id) {
         try {
-          await gigsService.editGig(id, props.band.id, editable.value)
           Modal.getOrCreateInstance(document.getElementById('edit-band-gig' + id)).hide()
+          await gigsService.editGig(id, props.band.id, editable.value)
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
