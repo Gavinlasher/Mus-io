@@ -47,6 +47,7 @@
               </div>
               <div class="col-12 ps-4 pb-3">
                 <button
+                  v-if="!hasId"
                   class="btn btn-primary rounded-pill hoverable"
                   data-bs-toggle="modal"
                   data-bs-target="#create-offer"
@@ -208,6 +209,7 @@ export default {
       account: computed(() => AppState.account),
       writer: computed(() => AppState.activeBand.writer),
       band: computed(() => AppState.activeBand),
+      hasId: computed(() => AppState.offers.find((o) => o.creatorId == AppState.account.id)),
       myVenues: computed(() => AppState.venues.find(v => v.creatorId == AppState.account.id)),
       async save() {
         try {

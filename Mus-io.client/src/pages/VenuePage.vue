@@ -23,6 +23,7 @@
               </div>
               <div class="col-12 ps-4 pb-3">
                 <button
+                  v-if="!hasId"
                   class="btn btn-primary rounded-pill"
                   data-bs-toggle="modal"
                   data-bs-target="#create-offer"
@@ -112,6 +113,7 @@ export default {
     return {
       venue: computed(() => AppState.activeVenue),
       account: computed(() => AppState.account),
+      hasId: computed(() => AppState.offers.find((o) => o.creatorId == AppState.account.id)),
       async goTo(id) {
         try {
           await profilesService.getProfile(id)
