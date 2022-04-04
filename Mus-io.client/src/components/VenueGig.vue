@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-light mt-2" style="max-width: 25vh">
+  <div class="bg-light mt-2 rounded shadow p-2" style="max-width: 25vh">
     <h2 class="ps-2" v-if="gigs?.length > 0">{{ venue.name }}</h2>
     <div class="ps-2" v-for="g in gigs" :key="g.id">
       <p>Performer - {{ g.band.name }}</p>

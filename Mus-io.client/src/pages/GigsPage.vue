@@ -25,10 +25,10 @@
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-4" v-for="b in myBands" :key="b.id">
+      <div class="col-md-4" v-for="b in myBands" :key="b.id">
         <BandGig :band="b" />
       </div>
-      <div class="col-4" v-for="v in myVenues" :key="v.id">
+      <div class="col-md-4" v-for="v in myVenues" :key="v.id">
         <VenueGig :venue="v" />
       </div>
     </div>
