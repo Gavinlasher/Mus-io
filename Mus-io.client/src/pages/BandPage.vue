@@ -131,7 +131,7 @@
       <div class="col-12 spacer" style="height: 15vh"></div>
       <div
         class="col-md-4 text-light mb-5 ms-4 selectable"
-        @click="goTo(band.creator.id)"
+        @click="goTo(band.creator?.id)"
         title="band manager"
       >
         <div class="row">
