@@ -1,8 +1,5 @@
 <template>
   <div class="">
-    <!-- <h4 class="text-info">
-      {{ acceptedOffers }}
-    </h4> -->
     <div
       @click="goTo('Offer')"
       class="col-10 m-4 bg-primary shadow rounded hoverable p-3 card"

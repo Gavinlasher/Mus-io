@@ -49,8 +49,6 @@
         :key="b.id"
       >
         <PerformerCard :band="b" />
-
-        <!-- <OffCanvas /> -->
       </div>
     </div>
     <h1 class="text-center text-light custom-text p-3 main-font">My Venues</h1>
@@ -76,21 +74,6 @@
     <template #title> Edit Account </template>
     <template #body><EditAccount :accountData="account" /></template>
   </Modal>
-
-  <!-- <OffCanvas> </OffCanvas> -->
-  <!-- <OffCanvas>
-    <template #requests>
-      <div class="row">
-        <div class="col-8" v-for="o in offers" :key="o.id">
-          <div v-if="o.creatorId == account.id">
-            <h4>{{ o.band.name }} is wanting to friend you</h4>
-            <h4>{{ o.body }} || this persons budget is {{ o.band.price }}</h4>
-          </div>
-        </div>
-      </div>
-    </template>
-  </OffCanvas> -->
-  <!-- <OffCanvas /> -->
 </template>
 
 <script>

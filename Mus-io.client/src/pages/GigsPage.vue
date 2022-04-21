@@ -11,7 +11,6 @@
     <div class="col-4 btn btn-outline-primary" @click="filterBy = 'declined'">
       Declined
     </div>
-    <!-- Recieveds -->
     <div class="col-12 mt-5">
       <div class="row scrollable mt-5" style="min-height: 20vh">
         <div class="col-6" v-for="b in myBands" :key="b.id">

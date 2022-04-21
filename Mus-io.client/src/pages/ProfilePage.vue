@@ -82,8 +82,6 @@
           aria-label="Close"
         ></button>
         <PerformerCard :band="b" />
-
-        <!-- <OffCanvas /> -->
       </div>
     </div>
     <h1
@@ -147,22 +145,7 @@
         </div>
       </template>
     </OffCanvas>
-
-    <!-- <OffCanvas> </OffCanvas> -->
-    <!-- <OffCanvas> -->
-    <!-- <template #requests> -->
-    <!-- <div class="row">
-        <div class="col-8" v-for="o in offers" :key="o.id">
-          <div v-if="o.creatorId == account.id">
-            <h4>{{ o.band.name }} is wanting to friend you</h4>
-            <h4>{{ o.body }} || this persons budget is {{ o.band.price }}</h4>
-          </div>
-        </div>
-      </div> -->
-    <!-- </template> -->
-    <!-- </OffCanvas> -->
   </div>
-  <!-- <OffCanvas /> -->
 </template>
 
 <script>
@@ -180,13 +163,6 @@ export default {
   setup() {
     const route = useRoute();
     const router = useRouter();
-    // onMounted(async () => {
-    //   try {
-
-    //   } catch (error) {
-    //     logger.log(error)
-    //   }
-    // })
     onMounted(async () => {
       try {
       } catch (error) {
@@ -288,9 +264,6 @@ img {
   transition: 50ms ease-in-out;
 }
 
-/* .bg-darkblue{
-  background-color: 
-} */
 h2 {
   font-weight: bold;
 }

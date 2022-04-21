@@ -60,7 +60,7 @@
       class="collapse navbar-collapse gx-0 row justify-content-end"
       id="navbarText"
     >
-      <div class="col-12 text-end">
+      <div class="col-5 col-md-6 text-end">
         <span class=""><Login /></span>
       </div>
     </div>

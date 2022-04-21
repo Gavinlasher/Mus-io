@@ -55,7 +55,6 @@
                   Send Offer
                 </button>
               </div>
-              <!-- NOTE - V if account == creatorId -->
               <div class="col-12 ps-4 pb-3" v-if="band.creatorId == account.id">
                 <button
                   class="btn btn-primary main-font rounded-pill"
