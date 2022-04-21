@@ -130,7 +130,6 @@
             <h2 class="text-info">{{ offer.band.name }}</h2>
             <h3>{{ offer.body }}</h3>
           </div>
-          <!-- add a prop to the recived offers and pass it to the get service -->
           <h1>My recieved offers</h1>
           <div class="col-8" v-for="b in myBands" :key="b.id">
             <Offer :band="b" />

@@ -1,7 +1,6 @@
 <template>
-  <div class="container-fluid mt-5">
-    <div class="py-5"></div>
-    <h2 class="mt-5 capitalize">My {{ filterBy }} Offers</h2>
+  <div class="container-fluid">
+    <h2 class="mt-5 capitalize text-light">My {{ filterBy }} Offers:</h2>
     <div class="col-4 btn btn-outline-primary" @click="filterBy = 'pending'">
       Pending
     </div>
@@ -12,23 +11,32 @@
       Declined
     </div>
     <div class="col-12 mt-5">
-      <div class="row scrollable mt-5" style="min-height: 20vh">
-        <div class="col-6" v-for="b in myBands" :key="b.id">
+      <h2 class="mt-5 text-light">Offers From Bands:</h2>
+      <div class="row mt-2">
+        <div class="col-12" v-for="b in myBands" :key="b.id">
           <BandOfferGig :band="b" :filter="filterBy" />
         </div>
-        <div class="col-6" v-for="v in myVenues" :key="v.id">
-          <VenueOfferGig :venue="v" :filter="filterBy" />
+        <h2 class="mt-5 text-light">Offers From Venues:</h2>
+        <div class="row mt-2">
+          <div class="col-12" v-for="v in myVenues" :key="v.id">
+            <VenueOfferGig :venue="v" :filter="filterBy" />
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-4" v-for="b in myBands" :key="b.id">
-        <BandGig :band="b" />
+      <div class="col-12">
+        <h1 class="mt-4 text-light">Gigs:</h1>
       </div>
-      <div class="col-md-4" v-for="v in myVenues" :key="v.id">
-        <VenueGig :venue="v" />
+      <div class="row">
+        <div class="col-md-3" v-for="b in myBands" :key="b.id">
+          <BandGig :band="b" />
+        </div>
+        <div class="col-md-3" v-for="v in myVenues" :key="v.id">
+          <VenueGig :venue="v" />
+        </div>
       </div>
     </div>
   </div>
