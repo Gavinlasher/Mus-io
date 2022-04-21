@@ -1,7 +1,7 @@
 <template>
   <div @click="goTo">
     <img
-      class="img-fluid rounded-bottom shadow mt-3"
+      class="img-fluid rounded-bottom shadow"
       :src="band.bannerImg"
       @error="setAltImg"
       alt=""

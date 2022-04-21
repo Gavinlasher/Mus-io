@@ -97,7 +97,7 @@
     </h1>
     <div class="row justify-content-center p-3 mt-5">
       <div
-        class="col-md-3 bg-dark p-0 m-3 shadow rounded text-end"
+        class="col-md-3 bg-dark p-0 shadow rounded text-end"
         v-for="v in myVenues"
         :key="v.id"
       >
@@ -105,7 +105,7 @@
           v-if="account.id == v.creatorId"
           @click="deleteVenue(v.id)"
           type="button"
-          title="Delete Comment"
+          title="Delete Venue"
           class="btn-close btn-close-white m-1"
           aria-label="Close"
         ></button>
