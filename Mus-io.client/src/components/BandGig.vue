@@ -15,7 +15,7 @@
       <Modal :id="'edit-band-gig' + g.id">
         <template #title>Gig - {{ g.venue.name }} </template>
         <template #body>
-          <label for="bands" class="">Change Band:</label>
+          <label for="bands">Change Band:</label>
           <select v-model="editable.bandId" class="ms-5" required>
             <option v-for="b in myBands" :key="b.id" :value="b.id">
               {{ b.name }}

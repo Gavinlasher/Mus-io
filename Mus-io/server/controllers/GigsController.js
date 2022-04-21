@@ -22,8 +22,6 @@ export class GigsController extends BaseController {
         } catch (error) {
             next(error)
         }
-
-
     }
 
     async createGig(req, res, next) {
