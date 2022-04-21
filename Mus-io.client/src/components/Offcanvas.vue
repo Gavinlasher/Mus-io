@@ -26,14 +26,12 @@
 <script>
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState"
-import { onMounted, watchEffect } from "@vue/runtime-core"
-import { useRoute } from "vue-router"
+import { watchEffect } from "@vue/runtime-core"
 import { logger } from "../utils/Logger"
 import { bandsService } from "../services/BandsService"
 import Pop from '../utils/Pop'
 export default {
   setup() {
-    const route = useRoute()
     watchEffect(async () => {
       if (AppState.activeBand.id) {
         try {
@@ -42,9 +40,7 @@ export default {
           Pop.toast(error.message, 'error')
           logger.error(error)
         }
-
       }
-
     })
     return {
       account: computed(() => AppState.account),

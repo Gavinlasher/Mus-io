@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <div
       @click="goTo('Offer')"
       class="col-10 m-4 bg-primary shadow rounded hoverable p-3 card"
@@ -11,9 +11,6 @@
 
 
 <script>
-import { computed } from "@vue/runtime-core"
-import { AppState } from "../AppState"
-import { logger } from "../utils/Logger"
 import { useRouter } from "vue-router"
 export default {
   props: {
@@ -30,7 +27,6 @@ export default {
           name: page,
           params: { id: props.acceptedOffer.id },
         })
-
       }
     }
   }
