@@ -3,7 +3,11 @@
     <div class="row">
       <div class="div mt-5"></div>
       <div class="col-12 p-4 mt-4">
-        <img :src="venue.bannerImg" alt="" class="img-fluid img-banner" />
+        <img
+          :src="venue.bannerImg"
+          alt=""
+          class="img-fluid img-banner rounded shadow"
+        />
       </div>
       <div class="col-12 ps-4 pb-3">
         <h1 class="text-light title">{{ venue.name }}</h1>
@@ -56,7 +60,7 @@
       <div class="col-12 spacer" style="height: 15vh"></div>
       <div
         class="col-md-4 text-light mb-5 ms-4 selectable"
-        @click="goTo(venue.creator.id)"
+        @click="goTo(venue.creator?.id)"
         title="venue manager"
       >
         <div class="row">
@@ -66,14 +70,14 @@
           <div class="col-12">
             <img
               class="img-fluid pp mt-4"
-              :src="venue.creator.picture"
+              :src="venue.creator?.picture"
               alt=""
               srcset=""
-              :title="venue.creator.name"
+              :title="venue.creator?.name"
             />
           </div>
           <div class="col-12 mt-4">
-            <h6><i class="mdi mdi-email"></i> {{ venue.creator.email }}</h6>
+            <h6><i class="mdi mdi-email"></i> {{ venue.creator?.email }}</h6>
           </div>
         </div>
       </div>

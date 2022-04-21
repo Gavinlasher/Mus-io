@@ -83,17 +83,6 @@
         placeholder="Location....."
       />
     </div>
-    <!-- <div class="col-md-4 mb-2">
-      <label for="" class="form-label">type: </label>
-      <input
-        v-model="editable.type"
-        required
-        type="text"
-        class="form-control"
-        aria-describedby="helpId"
-        placeholder="type....."
-      />
-    </div> -->
 
     <div class="col-12 d-flex justify-content-end">
       <button class="btn btn-primary">Create</button>

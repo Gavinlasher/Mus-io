@@ -88,11 +88,17 @@ import Pop from '../utils/Pop'
 import { logger } from '../utils/Logger'
 import { venuesService } from '../services/VenuesService'
 import { Modal } from 'bootstrap'
+import { watchEffect } from "@vue/runtime-core"
 export default {
   setup() {
     const editable = ref({})
+    let writerEditable = ref({})
+    watchEffect(() => {
+      editable.value = AppState.activeVenue;
+    })
     return {
       editable,
+      writerEditable,
       async editVenue() {
         try {
           await venuesService.editVenue(editable.value, AppState.activeVenue.id)
